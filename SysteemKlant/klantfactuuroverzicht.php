@@ -76,12 +76,10 @@
             </form>
                     <br>
         </div>
-
-        <div class='push'></div>
-        <div id='footer'>
-            <div id='footerleft'>Klant systeem</div>
-
-            <div id='footerright'>&copy;Bens Development 2013 - 2014</div>
         </div>
+        </div>
+        <footer>
+            <?php include 'footer.php'; ?>
+        </footer>
     </body>
 </html>
