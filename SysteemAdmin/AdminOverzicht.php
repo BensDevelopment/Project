@@ -32,7 +32,10 @@ else
                 </form>
                 <form method="POST" action="AdminTicketOverzicht.php">
                     <input type="submit" name="Ticket Overzicht" value="Ticket Overzicht">
-                </form>                
+                </form> 
+                <form method="POST" action="Adminfactuuroverzicht.php">
+                    <input type="submit" name="Factuur Overzicht" value="Factuur Overzicht">
+                </form>         
             </div>
             <div class='push'></div>
             <div id='footer'>

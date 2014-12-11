@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Joshua van Gelder, Jeffrey Hamberg, Daan Hagemans, Sander van der Stelt-->
+<!-- Joshua van Gelder, Jeffrey Hamberg, Daan Hagemans, Sander van der Stelt, Léyon Courtz-->
 <?php
 session_start();
 if ($_SESSION["login"] != 1) {

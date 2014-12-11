@@ -202,10 +202,12 @@ if ($_SESSION["login"] != 1) {
                             ?>
                     </table>
                 </div>
+                    <input type="submit" name="back" value="Terug" formaction="AdminOverzicht.php">   
+                    <input type ="submit" name="Sluiten" Value="Sluiten" formaction="">
 
                 <input type ="submit" name="Sluiten" Value="Sluiten" formaction="">
                 <input type="submit" name="WijzigenTO" Value="Wijzigen" formaction="AdminTicketWijzigen.php">
-
+                
                 <br><br><br>
                 <!--
                 <h1>Gesloten Tickets:<br></h1>

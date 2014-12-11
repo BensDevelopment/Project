@@ -53,8 +53,8 @@
                     {
                         $invoiceID = $invoice;
                     }
-                    echo "<label>Factuur ID:</label><label>" . $invoiceID . "</label>";
-                    
+                    echo "<label>Factuur nummer:</label><label>" . $invoiceID . "</label>";
+                    echo "$date";
 
                     mysqli_close($link);
                     ?>
@@ -66,9 +66,10 @@
                 $stmt2 = mysqli_prepare($link, "SELECT * FROM line WHERE invoice_number = $invoiceID");
                 mysqli_stmt_execute($stmt2);
                 mysqli_stmt_bind_result($stmt2, $lineID, $IN, $D1, $D2, $amount, $price, $BTW);
-                echo "<table><th>Regel ID</th><th>Factuur ID</th><th>Beschrijving</th><th>Beschrijving</th><th>Hoeveelheid</th><th>prijs</th><th>BTW</th>";
+                echo "<table><th>Beschrijving</th><th>Aantal</th><th>prijs</th>";
                 while (mysqli_stmt_fetch($stmt2)){
-                   echo "<tr><td>$lineID</td><td>$IN</td><td>$D1</td><td>$D2</td><td>$amount</td><td>$price</td><td>$BTW</td></tr>" ;
+                   echo "<tr><td>$D1</td><td>$amount</td><td>$price</td></tr>" ;
+                   
                 }
                 echo "</table>";
                 ?>
