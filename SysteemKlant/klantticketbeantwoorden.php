@@ -104,8 +104,7 @@
                 <br>
                 <form method="POST" action="klantticketbeantwoorden.php">
                     Uw antwoord:<br>
-                    <textarea name="beschrijving">                        
-                    </textarea>
+                    <textarea name="beschrijving"></textarea>
                     <br>
                     <input type="submit" name="submit" value="Beantwoorden">
                     <input type="hidden" name="ticketid['<?php echo "$ticketid"; ?>']">
