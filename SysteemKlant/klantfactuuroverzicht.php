@@ -26,8 +26,7 @@
                 <h1>Factuur Overzicht</h1><br>
                 <!-- NIEUW GEPLAATSTE CODE-->
                 <?php
-                if(isset($_POST["betaald"]))
-                {
+                if (isset($_POST["betaald"])) {
                     //send email
                 }
                 include "link.php";
@@ -36,8 +35,7 @@
                 $userid = mysqli_prepare($link, "SELECT user_id, first_name, last_name FROM User WHERE mail='$username'");
                 mysqli_stmt_execute($userid);
                 mysqli_stmt_bind_result($userid, $user, $fname, $lname);
-                while (mysqli_stmt_fetch($userid))
-                {
+                while (mysqli_stmt_fetch($userid)) {
                     $user;
                     $fname;
                     $lname;
@@ -49,36 +47,32 @@
                 mysqli_stmt_bind_result($stmt2, $name);
                 mysqli_stmt_fetch($stmt2);
                 mysqli_close($link);
-                ?>               
+                ?>
                 <div id="factuur">
                     <p>Naam: <?php echo "$fname $lname"; ?>
                     </p>
                     <p>
                         Bedrijfsnaam: <?php
-                        include "link.php";
-                        $count = mysqli_prepare($link, "SELECT COUNT(C.company_name) FROM Customer C JOIN Customer_User U ON U.user_id=C.customer_id WHERE U.user_id=$user");
-                        mysqli_stmt_execute($count);
-                        mysqli_stmt_bind_result($count, $ammount);
-                        mysqli_stmt_fetch($count);
-                        mysqli_close($link);
-                        if ($ammount == 1)
-                        {
-                            echo "$name";
-                        }
-                        else
-                        {
-                            echo "<select name=company_name>";
-                            include "link.php";
-                            $company_name = mysqli_prepare($link, "SELECT C.company_name FROM Customer C JOIN Customer_User U ON U.customer_id=C.customer_id WHERE U.user_id=$user");
-                            mysqli_stmt_execute($company_name);
-                            mysqli_stmt_bind_result($company_name, $companyname);
-                            while (mysqli_stmt_fetch($company_name))
-                            {
-                                echo "<option value='$companyname'>$companyname</option>";
-                            }
-                            echo "</select>";
-                        }
-                        ?>
+                include "link.php";
+                $count = mysqli_prepare($link, "SELECT COUNT(C.company_name) FROM Customer C JOIN Customer_User U ON U.user_id=C.customer_id WHERE U.user_id=$user");
+                mysqli_stmt_execute($count);
+                mysqli_stmt_bind_result($count, $ammount);
+                mysqli_stmt_fetch($count);
+                mysqli_close($link);
+                if ($ammount == 1) {
+                    echo "$name";
+                } else {
+                    echo "<select name=company_name>";
+                    include "link.php";
+                    $company_name = mysqli_prepare($link, "SELECT C.company_name FROM Customer C JOIN Customer_User U ON U.customer_id=C.customer_id WHERE U.user_id=$user");
+                    mysqli_stmt_execute($company_name);
+                    mysqli_stmt_bind_result($company_name, $companyname);
+                    while (mysqli_stmt_fetch($company_name)) {
+                        echo "<option value='$companyname'>$companyname</option>";
+                    }
+                    echo "</select>";
+                }
+                ?>
                     <p>
                         <br>
                     <p>Facturen: <?php
@@ -87,14 +81,10 @@
                         mysqli_stmt_execute($stat);
                         mysqli_stmt_bind_result($stat, $CID, $date, $pc);
                         echo "<table><tr><th>Factuur nummer</th><th>Datum</th><th>Status</th></tr>";
-                        while (mysqli_stmt_fetch($stat))
-                        {
-                            if ($pc = 0)
-                            {
+                        while (mysqli_stmt_fetch($stat)) {
+                            if ($pc == 0) {
                                 $ps = "Niet betaald";
-                            }
-                            else
-                            {
+                            } else {
                                 $ps = "Betaald";
                             }
                             echo "<form method='POST' action='klantfactuurinzien.php' ><tr><td>$CID</td><td>$date</td><td>$ps</td><td><input type='hidden' name=CID[$CID] ><input type='submit' name='submit' value='Bekijken'></form></td></tr>";
@@ -108,9 +98,9 @@
                     <br>
                 </div>
             </div>
-        </div>   
+        </div>
         <footer>
-            <?php include 'footer.php'; ?>
+                        <?php include 'footer.php'; ?>
         </footer>
     </body>
 </html>

@@ -113,7 +113,6 @@
                         if ($_POST["description1"] == "" && $_POST["Price1"] == "" && $_POST["Count1"] == "") {
                             echo "Begin bij de eerste regel met invullen.";
                         } else {
-                            $invoicenr = $_POST['invoicenr'];
                             $test1 = 1; // test wordt aangemaakt om te checken of beide tests goed zijn uitgevuld. voornamelijk voor het testen van de code
                             for ($i = 1; $i <= 5; $i++) { // for loop zodat alle regels van de if niet handmatig moeten worden geschreven
                                 if ($_POST['description' . $i] == "" && $_POST['Count' . $i] == "" && $_POST['Price' . $i] != "" || $_POST['Price' . $i] == "" && $_POST['Count' . $i] == "" && $_POST['description' . $i] != "" || $_POST['description' . $i] == "" && $_POST['Price' . $i] == "" && $_POST['Count' . $i] != "" || $_POST['description' . $i] == "" && $_POST['Count' . $i] != "" && $_POST['Price' . $i] != "" || $_POST['Count' . $i] == "" && $_POST['description' . $i] != "" && $_POST['Price' . $i] != "" || $_POST['Price' . $i] == "" && $_POST['Count' . $i] != "" && $_POST['description' . $i] != "") {
