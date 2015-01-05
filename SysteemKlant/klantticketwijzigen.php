@@ -88,18 +88,20 @@
                             <option value="cms">CMS</option>
                             <option value="hosting">Hosting</option>
                         </select>                                                            
-                    </p>                    
-                    <textarea name="beschrijving"><?php echo "$description" ?></textarea>
+                    </p> 
+                    <p>Beschrijving:</p>
+                    <p><?php echo "$description" ?></p>
                     <br>
                     <?php
-                    //include "link.php";
-                    //$reactions = mysqli_prepare($link, "SELECT text, U.mail FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticketid");
-                    //mysqli_stmt_bind_result($reactions, $text, $mail);
-                    //mysqli_stmt_execute($reactions); // Deze query wordt gebruikt om alle reacties uit de reaction tabel te halen.
-                    //while (mysqli_stmt_fetch($reactions))
-                    //{
-                    //    echo "<textarea>$text</textarea><br>";
-                    //}
+                    include "link.php";
+                    echo "Reacties";
+                    $reactions = mysqli_prepare($link, "SELECT text, U.mail FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticketid");
+                    mysqli_stmt_bind_result($reactions, $text, $mail);
+                    mysqli_stmt_execute($reactions); // Deze query wordt gebruikt om alle reacties uit de reaction tabel te halen.
+                    while (mysqli_stmt_fetch($reactions))
+                    {
+                        echo "<p>$text<br></p>";
+                    }
                     ?>
                     <br>
                     <input type="hidden" <?php echo 'name="tid[' . $tid . ']"'  ?>>                   
@@ -116,14 +118,14 @@
                     $description = $_POST["beschrijving"];
                     $category = $_POST["categorie"];
                     $creation_date = $datetime;
-                    if ($description == "" || $category == "")
+                    if ($category == "")
                     {
-                        echo "<p class='foutmelding'>Er is geen categorie en/of beschrijving gegeven.</p>";
+                        echo "<p class='foutmelding'>Er is geen categorie gegeven.</p>";
                     }
                     else
                     {
                         include"link.php";
-                        $insert = mysqli_prepare($link, "UPDATE ticket SET last_time_date=NOW(), description='$description', category='$category' WHERE ticket_id=$ticketid");
+                        $insert = mysqli_prepare($link, "UPDATE ticket SET last_time_date=NOW(), category='$category' WHERE ticket_id=$ticketid");
                         mysqli_stmt_execute($insert);
                         header("location: klantticketoverzicht.php");
                         mysqli_close($link);
