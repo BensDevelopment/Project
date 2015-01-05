@@ -81,7 +81,7 @@
                         ?>
                     <p>
                         <br>
-                    <p>Facaturen: <?php
+                    <p>Facturen: <?php
                         include"link.php";
                         $stat = mysqli_prepare($link, "SELECT invoice_number, date, payment_completed FROM invoice WHERE user_id = $user");
                         mysqli_stmt_execute($stat);
