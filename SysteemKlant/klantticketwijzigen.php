@@ -18,32 +18,15 @@
                     <?php
                     include 'menubackend.php';
                     ?>
-                </div>
-                <!--EINDE MENU-->
-            </header>
-            <!--BEGIN CONTENT-->
+                </div>                
+            </header>            
             <div id="content">
                 <h1>Ticket wijzigen</h1><br>
                 <?php
                 $username = $_SESSION['username'];
                 $password = $_SESSION['password'];
-                if (isset($_POST["verzenden"]))
-                {
-                    $tidarray = $_POST['tid'];
-                    foreach ($tidarray as $t => $notused)
-                    {
-                        $ticketid = $t;
-                    }
-                    echo $ticketid;
-                }
-                else
-                {
-                    $ticketidarray = $_POST["ticketid"];
-                    foreach ($ticketidarray as $ticket => $notused)
-                    {
-                        $ticketid = $ticket;
-                    }
-                }
+                $ticketid = $_POST["ticketid"];
+                
                 include "link.php";
                 $loginQuery = mysqli_prepare($link, "SELECT user_id, first_name, last_name FROM User WHERE mail='$username'");
                 mysqli_stmt_execute($loginQuery);
@@ -57,26 +40,22 @@
                 mysqli_close($link);
 
                 include "link.php";
-                $GetDescription = mysqli_prepare($link, "SELECT ticket_id, description, category FROM Ticket WHERE ticket_id=$ticketid");
+                $GetDescription = mysqli_prepare($link, "SELECT description, category FROM Ticket WHERE ticket_id=$ticketid");
                 mysqli_stmt_execute($GetDescription);
-                mysqli_stmt_bind_result($GetDescription, $tid, $description, $category);
+                mysqli_stmt_bind_result($GetDescription, $description, $category);
                 while (mysqli_stmt_fetch($GetDescription))
                 {
-                    $tid;
                     $description;
                     $category;
                 }
                 mysqli_close($link);
 
                 date_default_timezone_set('CET');
-                $datetime = date("Y-m-d H:i:s");  //function to get date and time                
+                $datetime = date("Y-m-d H:i:s");
                 ?>                
                 <p> 
                     Naam: <?php echo "$fname $lname"; ?> 
-                </p>                                                            
-                <!--<form method="POST" action="">
-                    <input type="submit" name="BestandUploaden" value="Bestand Uploaden">
-                </form> -->                  
+                </p>                                                                            
                 <p> 
                     Datum: <?php echo $datetime; ?>                
                 </p>                
@@ -91,29 +70,29 @@
                     </p> 
                     <p>Beschrijving:</p>
                     <p><?php echo "$description" ?></p>
+                    
                     <br>
                     <?php
                     include "link.php";
                     echo "Reacties";
                     $reactions = mysqli_prepare($link, "SELECT text, U.mail FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticketid");
                     mysqli_stmt_bind_result($reactions, $text, $mail);
-                    mysqli_stmt_execute($reactions); // Deze query wordt gebruikt om alle reacties uit de reaction tabel te halen.
+                    mysqli_stmt_execute($reactions);
                     while (mysqli_stmt_fetch($reactions))
                     {
                         echo "<p>$text<br></p>";
                     }
                     ?>
                     <br>
-                    <input type="hidden" <?php echo 'name="tid[' . $tid . ']"'  ?>>                   
+                    <input type="hidden" name="ticketid" value="<?php echo "$ticketid"; ?>">                   
                     <input type="submit" name="verzenden" value="Verzenden">                    
                 </form>
                 <form method="POST" action="klantticketoverzicht.php">
                     <input type="submit" name="annuleren" value="Annuleren"> 
                 </form>
-
-                <!-- text field and button to send text field and cancel button to go back -->            
+                
                 <?php
-                if (isset($_POST["verzenden"]))//Met deze if loop wordt de ticket geupdate. Ook wordt er gekeken of de huidige categorie en text veld wel volledig zijn meegegeven.
+                if (isset($_POST["verzenden"]))
                 {
                     $description = $_POST["beschrijving"];
                     $category = $_POST["categorie"];
@@ -132,8 +111,7 @@
                     }
                 }
                 ?>
-            </div>
-            <!--EINDE CONTENT-->
+            </div>            
         </div>
         <footer>
             <?php include 'footer.php'; ?>

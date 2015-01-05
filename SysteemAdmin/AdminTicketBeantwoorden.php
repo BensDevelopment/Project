@@ -8,10 +8,7 @@ if ($_SESSION["login"] != 1) {
     session_destroy();
 } else {
     if (isset($_POST["submit"])) {
-        $ticketidarray = $_POST["Beantwoorden"]; //Deze foreach is nodig om de ticketid uit de array te halen die wordt meegegeven vanaf de vorige pagina.
-        foreach ($ticketidarray as $ticketid => $notused) {
-            $ticket_id = $ticketid;
-        }
+        $ticket_id = $_POST['ticket_id'];
         include "link.php"; //Met deze query wordt de nieuwe reactie in de tabel gezet.
         $description = $_POST["beschrijving"];
         $reactionquery = mysqli_prepare($link, "INSERT INTO Reaction SET ticket_id=$ticket_id, text='$description', time=NOW(), user_id=$login");
@@ -41,10 +38,7 @@ if ($_SESSION["login"] != 1) {
                 <h1>Ticket beantwoorden</h1>
                 <div id="ticket">
                     <?php
-                    $ticketidarray = $_POST["Beantwoorden"]; //Deze foreach is nodig om de ticketid uit de array te halen die wordt meegegeven vanaf de vorige pagina.
-                    foreach ($ticketidarray as $ticket => $notused) {
-                        $ticketid = $ticket;
-                    }
+                    $ticket_id = $_POST['$ticket_id'];
                     ?>
                     <form method="POST" action="">
                         <?php
@@ -65,12 +59,12 @@ if ($_SESSION["login"] != 1) {
                         }
                         mysqli_close($link);
                         include "link.php";
-                        $reactions = mysqli_prepare($link, "SELECT text, time, U.mail FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticketid ORDER BY time");
-                        mysqli_stmt_bind_result($reactions, $text, $time, $mail);
+                        $reactions = mysqli_prepare($link, "SELECT text, time, U.mail, U.first_name FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticketid ORDER BY time");
+                        mysqli_stmt_bind_result($reactions, $text, $time, $mail,$first_name);
                         mysqli_stmt_execute($reactions); // Deze query wordt gebruikt om alle reacties uit de reaction tabel te halen.
                         echo "<br><label>Reactie:</label>";
                         while (mysqli_stmt_fetch($reactions)) {
-                            echo "<br><table class='table_admin'><td class='table_reactie'><span class='datum'>$time</span><br>$text</td></table>";
+                            echo "<br><table class='table_admin'><td class='table_reactie'>$first_name<br><span class='datum'>$time</span><br>$text</td></table>";
                         }
                         ?>
                         <br>
@@ -78,11 +72,8 @@ if ($_SESSION["login"] != 1) {
                             Uw antwoord:<br>
                             <textarea name="beschrijving"></textarea><br>
                             <input type="submit" name="submit" value="Beantwoorden">
-                            <input type="hidden" name="Beantwoorden[<?php echo $ticketid; ?>]">
-                        </form>
-                        <form method="POST" action='AdminTicketOverzicht.php'>
-                            <input type='submit' name='terug' value='Terug'>
-                            <input type="hidden" name="ticketid[<?php echo $ticketid; ?>]">
+                            <input type="hidden" name="ticket_id" value='<?php echo $ticket_id ?>'>
+                            <input type='submit' name='terug' value='Terug' formaction=''>
                         </form>
                 </div>
             </div>
