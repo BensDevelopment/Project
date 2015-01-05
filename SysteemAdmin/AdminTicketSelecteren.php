@@ -30,9 +30,7 @@ if ($_SESSION["login"] != 1) {
                     <?php
                     include "link.php";
                     //De Ticked_iD wordt hieronder uit de form gehaald omdat het in array form wordt opgeslagen.
-                    foreach ($_POST["ticket_id"] AS $ticketid => $notused) {
-                        $ticket_id = $ticketid;
-                    }
+                    $ticket_id = $_POST["ticket_id"];
                     $status = mysqli_prepare($link, "SELECT COUNT(reaction_id) FROM Reaction WHERE ticket_id=$ticket_id");
                     mysqli_stmt_bind_result($status, $count);
                     mysqli_stmt_execute($status);
