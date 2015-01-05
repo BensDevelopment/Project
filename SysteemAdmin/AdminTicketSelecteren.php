@@ -77,31 +77,6 @@ if ($_SESSION["login"] != 1) {
                             echo "<br><table class='table_admin'><td class='table_reactie'><span class='datum'>$time</span><br>$text</td></table>";
                         }
                     }
-                    /* De if loop is hieronder nodig om te true/false status van de ticket om te zetten naar text.
-                      $stmt1 = mysqli_prepare($link, "SELECT C.company_name, T.category, T.description, T.completed_status, C.customer_id, T.creation_date FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id=$ticket_id ");
-                      mysqli_stmt_bind_result($stmt1, $compname, $cat, $desc, $completed, $CID, $creation);
-                      mysqli_stmt_execute($stmt1);
-                      while (mysqli_stmt_fetch($stmt1))
-                      {
-                      echo "<label>Ticket ID: </label><label>$ticket_id</label><br><label>Klant ID: </label><label>$compname</label><br><label>Category: </label><label>$cat</label><br><label>Status: </label><label>";
-                      if ($completed == 1)
-                      {
-                      echo "Gesloten";
-                      }
-                      else
-                      {
-                      echo "Open";
-                      }
-                      echo "</label><br><label>Customer ID: </label><label>$CID</label><br><label><b>Description: </b></label><br><label>$creation</label><br><label>$desc</label><br>";
-                      }
-                      $stmt2 = mysqli_prepare($link, "SELECT time, text, U.mail FROM reaction R JOIN User U ON U.user_id = R.user_ID WHERE R.ticket_id = $ticket_id ORDER BY time ASC ");
-
-                      mysqli_stmt_bind_result($stmt2, $time, $text, $mail);
-                      mysqli_stmt_execute($stmt2);
-                      while (mysqli_stmt_fetch($stmt2))
-                      {
-                      echo"<label><b>Reactie:</b></label><br><label>$mail</label><br><label>$time</label><br><label>$text</label><br>";
-                      } */
                     ?><br>
                     <form method="POST" action=''>
                         <input type='submit' name='terug' value='Terug' formaction="AdminTicketOverzicht.php">
