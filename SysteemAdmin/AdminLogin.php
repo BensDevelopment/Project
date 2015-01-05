@@ -58,7 +58,7 @@
             ?>
         </div>
         <div id='content'>
-            <h1>login</h1>
+            <h1>Login</h1>
             <div class="login">
                 <form action="AdminLogin.php" method="POST">
                     <label>Gebruikersnaam:</label><br>

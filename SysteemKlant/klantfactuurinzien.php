@@ -11,16 +11,13 @@
             <header>
                 <div id="logo">
                     <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
-                </div>
-                <!--BEGIN MENU-->
+                </div>                
                 <div id="menu">
                     <?php
                     include 'menubackend.php';
                     ?>
                 </div>
-                <!--EINDE MENU-->
-            </header>
-            <!--BEGIN CONTENT-->
+            </header>            
             <div id="content">
                 <h1>Factuur inzien</h1><br>
                 <?php
@@ -36,7 +33,7 @@
                     $userid;
                 }
                 mysqli_close($link);
-                ?> <!-- Dit maakt connectie met de database en zorgt voor de start van de inlogsessie -->
+                ?>
                 <div id="factuur">
                     <p><?php
                         include"link.php";
@@ -47,7 +44,6 @@
                         {
                             echo "<label>Naam:</label>$fname $lname";
                         }
-
                         mysqli_close($link);
                         ?>
                     </p>
@@ -76,18 +72,16 @@
                             
                         }
                         mysqli_close($link);
-                        $factuurarray = $_POST["CID"];
-                        foreach ($factuurarray as $invoice => $notused)
-                        {
-                            $invoiceID = $invoice;
-                        }
+
+                        $invoice = $_POST["CID"];
+
                         echo "<label>Factuurnummer:</label>$invoiceID";
                         echo "<br>";
                         echo "<label>Datum:</label>$date";
                         ?>
                     </p>
-
-                    <p>Factuur:
+                    <p>
+                        Factuur:
                         <?php
                         $total = 0;
                         include"link.php";
@@ -110,13 +104,14 @@
                         echo "<label class='factuur'><strong>Totaal</strong></label>€ $totalincbtw";
                         ?>
                     </p>
-                    <p>IBAN: NL 83 RABO 0344 4625 36</p>
+                    <p>
+                        IBAN: NL 83 RABO 0344 4625 36
+                    </p>
                     <?php
                     if ($payment_completed == 1)
                     {
-                        echo '<p>Deze factuur dient binnen 14 dagen op bovenstaande rekeningnummer t.n.v. D. van Beek<br> 
-                    o.v.v. factuurnummer en datum overgemaakt te zijn.</p>
-                    <p class="foutmelding">Deze factuur is nog niet voldaan.</p>';
+                        echo '<p>Gelieve deze factuur binnen 14 dagen op bovenstaande rekeningnummer t.n.v. D. van Beek<br> o.v.v. factuurnummer en datum overmaken.</p>
+                        <p class="foutmelding">Deze factuur is nog niet voldaan.</p>';
                     }
                     else
                     {

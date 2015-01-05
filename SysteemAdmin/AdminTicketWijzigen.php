@@ -45,19 +45,23 @@ if ($_SESSION["login"] != 1) {
                 while (mysqli_stmt_fetch($stmt1)) {
                     echo"
                 <form action='' method='POST'>
-                    <label>Customer ID: </label><label><input type='text' value='$CID' name='Customer_ID'></label><br><br>
+                    <label>Klant ID: </label><label><input type='text' value='$CID' name='Customer_ID'></label><br><br>
                     <label>Klant: </label><label>$compname</label><br>
                     <label>Aanmaak Datum: </label><label>$creation</label><br>
                     <label>Laatst Gewijzigd: </label><label>$lastchanged</label><br>
                     <label>Verzonden Hosting: </label><label>$send</label><br>
                     <label>User ID: </label><label><input type='text' value='$userid' name='User ID'></label><br><br>
-                    <label>Mail: </label><label>$mail</label><br>
+                    <label>E-mail: </label><label>$mail</label><br>
                         <label>Titel: </label><input type=text name=titel value='$titel'><br>
                     <label>Categorie: </label><select id=''Categorie' name='categorie'>
+                    
                             <option value='$category'>$category</option>
-                            <option value='website'>Website</option>
-                            <option value='cms'>CMS</option>
-                            <option value='hosting'>Hosting</option>
+                                <option value='cms'>CMS</option>
+                                <option value='factuur'>Factuur</option>
+                                <option value='hosting'>Hosting</option>
+                                <option value='website'>Website</option>
+                            
+                            
                         </select> <br>
                     <label>Omschrijving: </label><br><textarea rows='4' cols='40' name='Description'>$desc</textarea><br>"
                     . "<input type='hidden' name='ticket_id' value=$ticket_id></label>";
