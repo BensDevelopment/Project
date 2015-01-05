@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <title>Bens Developement</title>
         <link href="stijl.css" rel="stylesheet" type="text/css"/>
+        <script src="include/functionGoBack.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="container">
@@ -113,6 +114,7 @@
 
                 </form>
                 <form method="POST" action="klantticketoverzicht.php">
+                    <submit onclick="goBack()">Terug</submit>  
                     <input type="submit" name="Back" value="Terug">
                 </form><!-- text field and button to send text field and cancel button to go back -->                            
             </div>

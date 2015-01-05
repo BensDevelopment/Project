@@ -34,7 +34,7 @@
                     }
                     echo '<h1>Factuur nummer: '.$invoiceID.'</h1>';
                     if ($invoiceID != ""){
-                    $stat = mysqli_prepare($link, "SELECT customer_id, company_name, street, house_number, city, kvk_number, btw_number FROM customer where customer_id IN (SELECT invoice_number FROM Invoice WHERE invoice_number = $invoiceID )");
+                    $stat = mysqli_prepare($link, "SELECT customer_id, company_name, street, house_number, city, kvk_number, btw_number FROM customer where customer_id IN (SELECT customer_id FROM Invoice WHERE invoice_number = $invoiceID )");
                     mysqli_stmt_execute($stat);
                     mysqli_stmt_bind_result($stat, $customer_id,$company_name,$street, $housen, $city, $kvk, $btw);
                     while (mysqli_stmt_fetch($stat))
@@ -48,20 +48,20 @@
                     ?>
                         <p><?php 
                     	include "link.php";
-                    	$stat2 = mysqli_prepare($link, "SELECT date, invoice_number, payment_completed FROM invoice WHERE customer_id = $customer_id");
+                    	$stat2 = mysqli_prepare($link, "SELECT date, invoice_number, payment_completed FROM invoice WHERE customer_id = $customer_id AND invoice_number = $invoiceID ");
                     	mysqli_stmt_execute($stat2);
                     	mysqli_stmt_bind_result($stat2, $date, $invoiceID, $payment_completed);
-                    	mysqli_stmt_fetch($stat2);
+                    	while (mysqli_stmt_fetch($stat2)){
                         if ($payment_completed == 1) {
                             $payment_completed = "Betaald";
                         } else {
                             $payment_completed = "Niet betaald";
                         }
-                        echo '<label>Factuur status:</label> '.$payment_completed;
+                        echo "<label>Factuur status:</label> $payment_completed";
                         echo "<br><label>Factuurnummer:</label>$invoiceID";
-                    	echo "<br><label>Datum:</label>$date";
-        
+                    	echo "<br><label>Datum:</label>$date";                      
                     	mysqli_close($link);
+                        }
                     	?>
                 	</p>
                 	<p>Factuur:
