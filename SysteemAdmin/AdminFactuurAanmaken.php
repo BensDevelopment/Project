@@ -1,19 +1,22 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Admin Systeem</title>
-        <link href="stijl.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <body>
-        <div id='bovenbalk'>
-            <div id='logo'>
-                <img src="img/logo-bens.png" alt=""/>
+<!DOCTYPE html>
+<!-- Jeffrey Hamberg, Joshua van Gelder, Sander van der Stelt-->
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Admin Systeem</title>
+            <link href="stijl.css" rel="stylesheet" type="text/css">
+        </head>
+        <body>
+            <div id='bovenbalk'>
+                <div id='logo'>
+                    <img src="img/logo-bens.png" alt=""/>
+                </div>
+                <?php
+                include 'menu.php';
+                ?>
             </div>
-            <?php
-            include 'menu.php';
-            ?>
-        </div>
-        <div id='content'>
+            <div id='content'>
+                <h1>Factuur aanmaken</h1>
             <form method="POST" >
 
                 <?php
@@ -33,11 +36,11 @@
                     mysqli_stmt_execute($factuurnr);
                     ?>
                 </select> <br>
-                <label>Factuur nummer:<?php
+                <label>Factuur nummer:</label> <?php
                     while (mysqli_stmt_fetch($factuurnr)) {
                         echo $var1 + 1;
                     }
-                    ?></label>
+                    ?>
                 <br>
                 <table>
                     <tr><th><label>Omschrijving:</label></th><th><label>Aantal:</label></th><th><label>Prijs:</label></th></tr>
@@ -165,6 +168,9 @@
                 <input type="submit" formaction="AdminOverzicht.php" value="terug" name="terug">
                 <input type="submit" name="submit" value="opslaan" onclick="this.form.submit">
             </form>
-        </div>
-    </body>
-</html>
+            </div>
+                <?php
+                include 'footeradmin.php';
+                ?>
+        </body>       
+    </html>
