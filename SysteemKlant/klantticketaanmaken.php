@@ -32,7 +32,8 @@
                 $userinfo = mysqli_prepare($link, "SELECT user_id, first_name, last_name FROM User WHERE mail='$username'");
                 mysqli_stmt_execute($userinfo);
                 mysqli_stmt_bind_result($userinfo, $login, $fname, $lname);
-                while (mysqli_stmt_fetch($userinfo)) {
+                while (mysqli_stmt_fetch($userinfo))
+                {
                     $login;
                     $fname;
                     $lname;
@@ -68,7 +69,8 @@
                         $customer_id = mysqli_prepare($link, "SELECT C.company_name, C.customer_id FROM Customer C JOIN Customer_User U ON C.customer_id=U.customer_id WHERE U.user_id=$login");
                         mysqli_stmt_execute($customer_id);
                         mysqli_stmt_bind_result($customer_id, $companyname, $customerid);
-                        while (mysqli_stmt_fetch($customer_id)) {
+                        while (mysqli_stmt_fetch($customer_id))
+                        {
                             echo "<option value='$customerid'>$companyname</option>";
                         }
                         mysqli_close($link);
@@ -88,17 +90,21 @@
                 <!-- text field and button to send text field and cancel button to go back -->
                 <?php
                 include"link.php";
-                if (isset($_POST["verzenden"])) { //Deze if loop doet de insert in de tabel ticket. Ook wordt er gekeken of er wel een beschrijving en categorie mee wordt gegeven
+                if (isset($_POST["verzenden"]))
+                { //Deze if loop doet de insert in de tabel ticket. Ook wordt er gekeken of er wel een beschrijving en categorie mee wordt gegeven
                     $description = $_POST["beschrijving"];
                     $category = $_POST["categorie"];
                     $customer = $_POST["customerid"];
                     $creation_date = $datetime;
                     $titel = $_POST["titel"];
-                    if ($description == "" || $category == "" || $customer == "") {
+                    if ($description == "" || $category == "" || $customer == "")
+                    {
                         echo "<p class='foutmelding'>Er is geen categorie en/of beschrijving gegeven.</p>";
-                    } else {
+                    }
+                    else
+                    {
                         include"link.php"; //Dit is de insert query waar de nieuwe informatie in de tabel wordt geinsert.
-                        $insert = mysqli_prepare($link, "INSERT INTO ticket SET category='$category', creation_date=NOW(), last_time_date='$creation_date', description='$description', customer_id=$customer, user_id=$login, completed_status=0, archived_status=0, titel=$titel");
+                        $insert = mysqli_prepare($link, "INSERT INTO ticket SET category='$category', creation_date=NOW(), last_time_date='$creation_date', description='$description', customer_id=$customer, user_id=$login, completed_status=0, archived_status=0, titel='$titel'");
                         mysqli_stmt_execute($insert);
                         mysqli_close($link);
                         echo "<p class='succesmelding'>Uw ticket is verzonden.</p>";
@@ -121,7 +127,7 @@
             <!--EINDE CONTENT-->
         </div>
         <footer>
-            <?php include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
         </footer>
     </body>
 </html>
