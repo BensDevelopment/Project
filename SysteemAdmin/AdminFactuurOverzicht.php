@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--Léyon Courtz -->
+<!--Léyon Courtz, Sander van der Stelt-->
 <?php
 session_start();
 if ($_SESSION["login"] != 1) {
