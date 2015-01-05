@@ -112,7 +112,7 @@
                     </p>
                     <p>IBAN: NL 83 RABO 0344 4625 36</p>
                     <?php
-                    if ($payment_completed == '')
+                    if ($payment_completed == 1)
                     {
                         echo '<p>Deze factuur dient binnen 14 dagen op bovenstaande rekeningnummer t.n.v. D. van Beek<br> 
                     o.v.v. factuurnummer en datum overgemaakt te zijn.</p>
