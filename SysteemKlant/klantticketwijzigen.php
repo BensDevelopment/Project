@@ -70,6 +70,7 @@
                     </p> 
                     <p>Beschrijving:</p>
                     <p><?php echo "$description" ?></p>
+                    
                     <br>
                     <?php
                     include "link.php";

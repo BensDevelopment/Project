@@ -7,20 +7,6 @@ if ($_SESSION["login"] != 1) {
     session_unset();
     session_destroy();
 } else {
-    include 'link.php';
-    if (isset($_POST["wijzigen"])) {
-        $query = mysqli_prepare($link, 'INSERT INTO ticket (customer_id, creation_date, last_time_date, send_date, user_id, description, titel ) VALUES (?,?,?,?,?,?,?)');
-        mysqli_stmt_bind_param($query, 'isssis', $CID, $creation, $lastchange, $send, $user_id, $desc, $titel);
-        $CID = $_POST["Customer_ID"];
-        $creation = $_POST["Creation Date"];
-        $lastchange = $_POST["Last Changed Date"];
-        $send = $_POST["Send Date to Hosting"];
-        $user_id = $_POST["User ID"];
-        $desc = $_POST["Description"];
-        $titel = $_POST["Titel"];
-    } else {
-
-    }
     ?>
     <html>
         <head>
@@ -41,7 +27,7 @@ if ($_SESSION["login"] != 1) {
                 <?php
                 // Hieronder wordt gechecked welke POST moet gebruikt worden
                 include 'link.php';
-                if (isset($_POST["wijzigen"])) {
+                if (isset($_POST["Wijzigen"])) {
                     foreach ($_POST["ticket_id"] AS $ticketid => $notused) {
                         $ticket_id = $ticketid;
                     }
@@ -63,19 +49,23 @@ if ($_SESSION["login"] != 1) {
                 while (mysqli_stmt_fetch($stmt1)) {
                     echo"
                 <form action='' method='POST'>
-                    <label>Customer ID: </label><label><input type='text' value='$CID' name='Customer_ID'></label><br><br>
+                    <label>Klant ID: </label><label><input type='text' value='$CID' name='Customer_ID'></label><br><br>
                     <label>Klant: </label><label>$compname</label><br>
                     <label>Aanmaak Datum: </label><label>$creation</label><br>
                     <label>Laatst Gewijzigd: </label><label>$lastchanged</label><br>
                     <label>Verzonden Hosting: </label><label>$send</label><br>
                     <label>User ID: </label><label><input type='text' value='$userid' name='User ID'></label><br><br>
-                    <label>Mail: </label><label>$mail</label><br>
+                    <label>E-mail: </label><label>$mail</label><br>
                         <label>Titel: </label><input type=text name=titel value='$titel'><br>
                     <label>Categorie: </label><select id=''Categorie' name='categorie'>
+                    
                             <option value='$category'>$category</option>
-                            <option value='website'>Website</option>
-                            <option value='cms'>CMS</option>
-                            <option value='hosting'>Hosting</option>
+                                <option value='cms'>CMS</option>
+                                <option value='factuur'>Factuur</option>
+                                <option value='hosting'>Hosting</option>
+                                <option value='website'>Website</option>
+                            
+                            
                         </select> <br>
                     <label>Omschrijving: </label><br><textarea rows='4' cols='40' name='Description'>$desc</textarea><br>"
                     . "<input type='hidden' name='ticket_id[$ticket_id]'</label>";
