@@ -68,7 +68,7 @@ if ($_SESSION["login"] != 1) {
                         $reactions = mysqli_prepare($link, "SELECT text, time, U.mail FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticketid ORDER BY time");
                         mysqli_stmt_bind_result($reactions, $text, $time, $mail);
                         mysqli_stmt_execute($reactions); // Deze query wordt gebruikt om alle reacties uit de reaction tabel te halen.
-                        echo "<br><br><label>Reactie:</label>";
+                        echo "<br><label>Reactie:</label>";
                         while (mysqli_stmt_fetch($reactions)) {
                             echo "<br><table class='table_admin'><td class='table_reactie'><span class='datum'>$time</span><br>$text</td></table>";
                         }
