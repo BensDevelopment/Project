@@ -32,7 +32,7 @@
                     mysqli_stmt_bind_result($factuurnr, $var1);
                     mysqli_stmt_execute($factuurnr);
                     ?>
-                </select></label> <br>
+                </select> <br>
                 <label>Factuur nummer:<?php
                     while (mysqli_stmt_fetch($factuurnr)) {
                         echo $var1 + 1;
