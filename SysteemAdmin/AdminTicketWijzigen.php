@@ -9,16 +9,17 @@ if ($_SESSION["login"] != 1) {
 } else {
     include 'link.php';
     if (isset($_POST["wijzigen"])) {
-        $query = mysqli_prepare($link, 'INSERT INTO ticket (customer_id, creation_date, last_time_date, send_date, user_id, description ) VALUES (?,?,?,?,?,?)');
-        mysqli_stmt_bind_param($query, 'isssis', $CID, $creation, $lastchange, $send, $user_id, $desc);
-        $CID=$_POST["Customer_ID"];
-        $creation=$_POST["Creation Date"];
-        $lastchange=$_POST["Last Changed Date"];
-        $send=$_POST["Send Date to Hosting"];
-        $user_id=$_POST["User ID"];
-        $desc=$_POST["Description"];
+        $query = mysqli_prepare($link, 'INSERT INTO ticket (customer_id, creation_date, last_time_date, send_date, user_id, description, titel ) VALUES (?,?,?,?,?,?,?)');
+        mysqli_stmt_bind_param($query, 'isssis', $CID, $creation, $lastchange, $send, $user_id, $desc, $titel);
+        $CID = $_POST["Customer_ID"];
+        $creation = $_POST["Creation Date"];
+        $lastchange = $_POST["Last Changed Date"];
+        $send = $_POST["Send Date to Hosting"];
+        $user_id = $_POST["User ID"];
+        $desc = $_POST["Description"];
+        $titel = $_POST["Titel"];
     } else {
-        
+
     }
     ?>
     <html>
@@ -48,16 +49,16 @@ if ($_SESSION["login"] != 1) {
                     $userid = $_POST["User_ID"];
                     $category = $_POST["categorie"];
                     $CID = $_POST["Customer_ID"];
-                    ;
-                    $description = $category = $insert = mysqli_prepare($link, "UPDATE ticket SET last_time_date=NOW(), description='$description', user_id=$userid, category='$category', customer_id=$CID WHERE ticket_id=$ticket_id");
+                    $titel = $_POST["titel"];
+                    $insert = mysqli_prepare($link, "UPDATE ticket SET last_time_date=NOW(), description='$description', user_id=$userid, category='$category', customer_id=$CID, titel='$titel' WHERE ticket_id=$ticket_id");
                     mysqli_stmt_execute($insert);
                 } else {
                     foreach ($_POST["close/wijzig"] AS $ticketid => $notused) {
                         $ticket_id = $ticketid;
                     }
                 }
-                $stmt1 = mysqli_prepare($link, "SELECT T.customer_id, creation_date, last_time_date, send_date, T.user_id, C.company_name, U.mail, category, description FROM ticket T JOIN customer C On c.customer_id = T.customer_id JOIN User U ON U.user_id = T.user_id WHERE ticket_id=$ticket_id ");
-                mysqli_stmt_bind_result($stmt1, $CID, $creation, $lastchanged, $send, $userid, $compname, $mail, $category, $desc);
+                $stmt1 = mysqli_prepare($link, "SELECT T.customer_id, creation_date, last_time_date, send_date, T.user_id, C.company_name, U.mail, category, description, T.titel FROM ticket T JOIN customer C On c.customer_id = T.customer_id JOIN User U ON U.user_id = T.user_id WHERE ticket_id=$ticket_id ");
+                mysqli_stmt_bind_result($stmt1, $CID, $creation, $lastchanged, $send, $userid, $compname, $mail, $category, $desc, $titel);
                 mysqli_execute($stmt1);
                 while (mysqli_stmt_fetch($stmt1)) {
                     echo"
@@ -69,6 +70,7 @@ if ($_SESSION["login"] != 1) {
                     <label>Verzonden Hosting: </label><label>$send</label><br>
                     <label>User ID: </label><label><input type='text' value='$userid' name='User ID'></label><br><br>
                     <label>Mail: </label><label>$mail</label><br>
+                        <label>Titel: </label><input type=text name=titel value='$titel'><br>
                     <label>Categorie: </label><select id=''Categorie' name='categorie'>
                             <option value='$category'>$category</option>
                             <option value='website'>Website</option>
@@ -84,18 +86,18 @@ if ($_SESSION["login"] != 1) {
                 echo '<label>Reactie:</label><br>';
                 while (mysqli_stmt_fetch($stmt2)) {
                     echo"
-                <br><table class='table_admin'><td class='table_reactie'><span class='datum'>Aan: $mail<br>$time</span><br>$text</td></table>        
+                <br><table class='table_admin'><td class='table_reactie'><span class='datum'>Aan: $mail<br>$time</span><br>$text</td></table>
                 <br>";
                 }
                 ?>
-                
+
                 <input type="submit" name="Terug" value="Terug" formaction="AdminTicketOverzicht.php">
-<input type="submit" name="Wijzigen" value="Wijzigen">
+                <input type="submit" name="Wijzigen" value="Wijzigen">
                 </form>
             </div>
-            <?php 
-                include 'footeradmin.php';
-                ?>
+            <?php
+            include 'footeradmin.php';
+            ?>
         </body>
     </html>
 
