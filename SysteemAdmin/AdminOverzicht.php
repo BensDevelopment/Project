@@ -2,14 +2,11 @@
 <!-- Jeffrey Hamberg, Joshua van Gelder, Sander van der Stelt-->
 <?php
 session_start();
-if ($_SESSION['login'] != 1)
-{
+if ($_SESSION['login'] != 1) {
     echo 'U moet ingelogd zijn om deze pagina te bekijken';
     session_unset();
     session_destroy();
-}
-else
-{
+} else {
     ?>
     <html>
         <head>
@@ -28,7 +25,7 @@ else
             </div>
             <div id='content'>
                 <?php
-                include "link.php"; //Met deze query wordt 
+                include "link.php"; //Met deze query wordt
                 $ticketammount = mysqli_prepare($link, "SELECT COUNT(ticket_id) FROM Ticket WHERE completed_status=0");
                 mysqli_stmt_execute($ticketammount);
                 mysqli_stmt_bind_result($ticketammount, $count);
@@ -41,46 +38,40 @@ else
                 mysqli_stmt_fetch($factuurammount);
                 mysqli_close($link);
                 ?>
-                <div id="overzichtcontainer">    
-                <div id="overzicht">
-                    <p>U heeft <?php
-                        if ($count == 1)
-                        {
-                            echo $count . " open ticket";
-                        }
-                        else
-                        {
-                            echo $count . " open tickets";
-                        }
-                        ?>
-                    </p>
-                        <table>                    
+                <div id="overzichtcontainer">
+                    <div id="overzicht">
+                        <p>U heeft <?php
+                            if ($count == 1) {
+                                echo $count . " open ticket";
+                            } else {
+                                echo $count . " open tickets";
+                            }
+                            ?>
+                        </p>
+                        <table>
                             <tr>
+                                <th>Titel</th>
                                 <th>Categorie</th>
                                 <th>Aanmaak Datum</th>
-                            </tr>                    
+                            </tr>
                             <?php
                             include "link.php";
-                            $tickets = mysqli_prepare($link, " SELECT category, creation_date, ticket_id FROM Ticket WHERE completed_status=0 ORDER BY creation_date DESC");
+                            $tickets = mysqli_prepare($link, " SELECT category, creation_date, ticket_id, titel FROM Ticket WHERE completed_status=0 ORDER BY creation_date DESC");
                             mysqli_stmt_execute($tickets);
-                            mysqli_stmt_bind_result($tickets, $category, $creation, $ticketid);
-                            while (mysqli_stmt_fetch($tickets))
-                            {
-                                echo "<tr><td>$category</td><td>$creation</td></tr>";
+                            mysqli_stmt_bind_result($tickets, $category, $creation, $ticketid, $titel);
+                            while (mysqli_stmt_fetch($tickets)) {
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td></tr>";
                             }
                             ?>
                         </table></div>
-                        <div id="overzicht">
+                    <div id="overzicht">
                         <p>U heeft <?php
-                            if ($count2 == 1)
-                            {
+                            if ($count2 == 1) {
                                 echo $count2 . " open factuur";
-                            }
-                            else
-                            {
+                            } else {
                                 echo"$count2 open facturen";
                             }
-                            ?> 
+                            ?>
                         </p>
                         <table>
                             <tr>
@@ -92,26 +83,25 @@ else
                             $facturen = mysqli_prepare($link, " SELECT invoice_number, date FROM Invoice WHERE payment_completed=0 ORDER BY date DESC");
                             mysqli_stmt_execute($facturen);
                             mysqli_stmt_bind_result($facturen, $number, $date);
-                            while (mysqli_stmt_fetch($facturen))
-                            {
+                            while (mysqli_stmt_fetch($facturen)) {
                                 echo "<tr><td>$number</td><td>$date</td></tr>";
                             }
                             ?>
                         </table>
-                        </div>
-                <div id="overzicht">
-                    <form method="POST" action="AdminTicketAanmaken.php">
-                        <input type="submit" name="Ticket aanmaken" value="Ticket aanmaken">
-                    </form>
-                    <form method="POST" action="AdminFactuurAanmaken.php">
-                        <input type="submit" name="Factuur aanmaken" value="Factuur aanmaken">
-                    </form> 
+                    </div>
+                    <div id="overzicht">
+                        <form method="POST" action="AdminTicketAanmaken.php">
+                            <input type="submit" name="Ticket aanmaken" value="Ticket aanmaken">
+                        </form>
+                        <form method="POST" action="AdminFactuurAanmaken.php">
+                            <input type="submit" name="Factuur aanmaken" value="Factuur aanmaken">
+                        </form>
+                    </div>
                 </div>
             </div>
-            </div>
-                <?php
-                include 'footeradmin.php';
-                ?>
-        </body>       
+            <?php
+            include 'footeradmin.php';
+            ?>
+        </body>
     </html>
 <?php } ?>
