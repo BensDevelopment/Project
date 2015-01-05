@@ -50,7 +50,7 @@
                     Selecteer een bestand om te uploaden:<br><br>
                     <input type="file" name="fileToUpload" id="fileToUpload">
                     <p>
-                        Titel: <input type="input" name="titel">
+                        Titel: <input type="text" name="titel">
                     </p>
                     <p>
                         Datum: <?php echo $datetime; ?>
