@@ -68,7 +68,7 @@
                         mysqli_stmt_bind_result($customer_id, $companyname, $customerid);
                         while (mysqli_stmt_fetch($customer_id))
                         {
-                            echo "<option value='$companyname'>$companyname</option>";
+                            echo "<option value='$customerid'>$companyname</option>";
                         }
                         mysqli_close($link);
                         ?>
@@ -78,7 +78,6 @@
                     <textarea name="beschrijving"></textarea>
                     <br>
                     <input type="submit" name="verzenden" value="Verzenden">
-                    <input type="hidden" name="customerid" value="<?php echo $customerid; //Dit is nodig om de customerid mee te geven zodat hij in de database kan worden gezet        ?>">
                 </form> 
 
                 <form method="POST" action="klantoverzicht.php">
