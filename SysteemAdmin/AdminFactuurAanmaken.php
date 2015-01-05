@@ -19,7 +19,7 @@
                 <?php
                 include 'link.php';
                 date_default_timezone_set('Europe/Amsterdam');
-                echo '<label>Datum: </label>' . date('Y-m-d') . '<br>';
+                echo '<label>Datum: </label>' . date('d-m-Y') . '<br>';
                 $date = date('Y-m-d');
                 $stmt1 = mysqli_prepare($link, "SELECT company_name FROM Customer");
                 mysqli_execute($stmt1);
@@ -28,14 +28,14 @@
                     while (mysqli_stmt_fetch($stmt1)) {
                         echo"<option value='$comp'>$comp</option>";
                     }
-                    $factuurnr = mysqli_prepare($link, "SELECT MAX(invoice_nummer) FROM invoice ");
+                    $factuurnr = mysqli_prepare($link, "SELECT MAX(invoice_number) FROM invoice ");
                     mysqli_stmt_bind_result($factuurnr, $var1);
                     mysqli_stmt_execute($factuurnr);
                     ?>
                 </select></label> <br>
                 <label>Factuur nummer:<?php
                     while (mysqli_stmt_fetch($factuurnr)) {
-                        echo "$var1";
+                        echo $var1 + 1;
                     }
                     ?></label>
                 <br>
@@ -110,53 +110,53 @@
                     <?php
                     if (isset($_POST["submit"])) {
 
-                    } elseif ($_POST["description1"] == "" && $_POST["Price1"] == "" && $_POST["Count1"] == "") {
-                        echo "Begin bij de eerste regel met invullen.";
-                    } else {
-                        $invoicenr = $_POST['invoicenr'];
-                        $test1 = 1; // test wordt aangemaakt om te checken of beide tests goed zijn uitgevuld. voornamelijk voor het testen van de code
-                        for ($i = 1; $i <= 5; $i++) { // for loop zodat alle regels van de if niet handmatig moeten worden geschreven
-                            if ($_POST['description' . $i] == "" && $_POST['Count' . $i] == "" && $_POST['Price' . $i] != "" || $_POST['Price' . $i] == "" && $_POST['Count' . $i] == "" && $_POST['description' . $i] != "" || $_POST['description' . $i] == "" && $_POST['Price' . $i] == "" && $_POST['Count' . $i] != "" || $_POST['description' . $i] == "" && $_POST['Count' . $i] != "" && $_POST['Price' . $i] != "" || $_POST['Count' . $i] == "" && $_POST['description' . $i] != "" && $_POST['Price' . $i] != "" || $_POST['Price' . $i] == "" && $_POST['Count' . $i] != "" && $_POST['description' . $i] != "") {
-                                echo 'factuur regel ' . $i . ' is niet goed ingevuld.<br>';
-                                $test2 = 0;
-                                break 1;
-                            } else {
-                                $test2 = 1;
-                            }
-                        }
-                        if ($test1 == 1 && $test2 == 1) {
-                            $compname = $_POST['Bedrijfsnaam'];
-                            print($compname);
-                            $stmt2 = mysqli_prepare($link, "SELECT customer_id FROM Customer WHERE company_name = '$compname'");
-                            mysqli_stmt_bind_result($stmt2, $CID);
-                            mysqli_stmt_execute($stmt2);
-                            while (mysqli_stmt_fetch($stmt2)) {
-                                $CID = $CID;
-                            }
-                            $stmt3 = mysqli_prepare($link, "SELECT user_id FROM customer_user WHERE customer_id = $CID");
-                            mysqli_stmt_bind_result($stmt3, $UID);
-                            mysqli_stmt_execute($stmt3);
-                            mysqli_stmt_fetch($stmt3);
-                            while (mysqli_stmt_fetch($stmt3)) {
-                                $UID = $UID;
-                            }
-                            $stmt4 = mysqli_prepare($link, "INSERT INTO Invoice (customer_id, user_id, payment_completed, date) VALUES ($CID,$UID,0,'$date') ");
-                            mysqli_stmt_execute($stmt4);
-                            $stmt5 = mysqli_prepare($link, "SELECT MAX(invoice_number) FROM invoice");
-                            mysqli_stmt_bind_result($stmt5, $Inmr);
-                            mysqli_stmt_execute($stmt5);
-                            while (mysqli_stmt_fetch($stmt5)) {
-                                $Inmr = $Inmr;
-                            }
-                            for ($i = 1; $i <= 5; $i++) {
-                                if ($_POST['description' . $i] != "" && $_POST['Count' . $i] != "" && $_POST['Price' . $i] != "") {
-                                    $description = $_POST['description' . $i];
-                                    $count = $_POST['Count' . $i];
-                                    $price = $_POST['Price' . $i];
-                                    $statement = mysqli_prepare($link, "INSERT INTO Line (invoice_number, description, amount, price, btw) VALUES ($Inmr,'$description',$count,$price, 21)");
-                                    mysqli_stmt_execute($statement);
+                        if ($_POST["description1"] == "" && $_POST["Price1"] == "" && $_POST["Count1"] == "") {
+                            echo "Begin bij de eerste regel met invullen.";
+                        } else {
+                            $invoicenr = $_POST['invoicenr'];
+                            $test1 = 1; // test wordt aangemaakt om te checken of beide tests goed zijn uitgevuld. voornamelijk voor het testen van de code
+                            for ($i = 1; $i <= 5; $i++) { // for loop zodat alle regels van de if niet handmatig moeten worden geschreven
+                                if ($_POST['description' . $i] == "" && $_POST['Count' . $i] == "" && $_POST['Price' . $i] != "" || $_POST['Price' . $i] == "" && $_POST['Count' . $i] == "" && $_POST['description' . $i] != "" || $_POST['description' . $i] == "" && $_POST['Price' . $i] == "" && $_POST['Count' . $i] != "" || $_POST['description' . $i] == "" && $_POST['Count' . $i] != "" && $_POST['Price' . $i] != "" || $_POST['Count' . $i] == "" && $_POST['description' . $i] != "" && $_POST['Price' . $i] != "" || $_POST['Price' . $i] == "" && $_POST['Count' . $i] != "" && $_POST['description' . $i] != "") {
+                                    echo 'factuur regel ' . $i . ' is niet goed ingevuld.<br>';
+                                    $test2 = 0;
+                                    break 1;
                                 } else {
+                                    $test2 = 1;
+                                }
+                            }
+                            if ($test1 == 1 && $test2 == 1) {
+                                $compname = $_POST['Bedrijfsnaam'];
+                                $stmt2 = mysqli_prepare($link, "SELECT customer_id FROM Customer WHERE company_name = '$compname'");
+                                mysqli_stmt_bind_result($stmt2, $CID);
+                                mysqli_stmt_execute($stmt2);
+                                while (mysqli_stmt_fetch($stmt2)) {
+                                    $CID = $CID;
+                                }
+                                $stmt3 = mysqli_prepare($link, "SELECT user_id FROM customer_user WHERE customer_id = $CID");
+                                mysqli_stmt_bind_result($stmt3, $UID);
+                                mysqli_stmt_execute($stmt3);
+                                mysqli_stmt_fetch($stmt3);
+                                while (mysqli_stmt_fetch($stmt3)) {
+                                    $UID = $UID;
+                                }
+                                $stmt4 = mysqli_prepare($link, "INSERT INTO Invoice (customer_id, user_id, payment_completed, date) VALUES ($CID,$UID,0,'$date') ");
+                                mysqli_stmt_execute($stmt4);
+                                $stmt5 = mysqli_prepare($link, "SELECT MAX(invoice_number) FROM invoice");
+                                mysqli_stmt_bind_result($stmt5, $Inmr);
+                                mysqli_stmt_execute($stmt5);
+                                while (mysqli_stmt_fetch($stmt5)) {
+                                    $Inmr = $Inmr;
+                                }
+                                for ($i = 1; $i <= 5; $i++) {
+                                    if ($_POST['description' . $i] != "" && $_POST['Count' . $i] != "" && $_POST['Price' . $i] != "") {
+                                        $description = $_POST['description' . $i];
+                                        $count = $_POST['Count' . $i];
+                                        $price = $_POST['Price' . $i];
+                                        $statement = mysqli_prepare($link, "INSERT INTO Line (invoice_number, description, amount, price, btw) VALUES ($Inmr,'$description',$count,$price, 21)");
+                                        mysqli_stmt_execute($statement);
+                                    } else {
 
+                                    }
                                 }
                             }
                         }
