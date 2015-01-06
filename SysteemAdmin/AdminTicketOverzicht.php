@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Joshua van Gelder, Jeffrey Hamberg lelthisiscode-->
+<!-- Joshua van Gelder, Jeffrey Hamberg -->
 <?php
 session_start();
 if ($_SESSION["login"] != 1) {
@@ -48,9 +48,6 @@ if ($_SESSION["login"] != 1) {
                     <table>
                         <tr>
                             <th>
-                                Titel
-                            </th>
-                            <th>
                                 <?php
                                 if (isset($_POST["sorttit"])) {
                                     echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sorttitDESC' value='Titel'></form>";
@@ -98,6 +95,7 @@ if ($_SESSION["login"] != 1) {
                             </th>
                             <th></th>
                             <th>Bekijken</th>
+                            <th>Beantwoorden</th>
                         </tr>
                         <form method="POST" action="AdminTicketSelecteren.php">
                             <?php
@@ -238,13 +236,15 @@ if ($_SESSION["login"] != 1) {
                             ?>
                     </table>
                 </div>
-                <input type="submit" name="back" value="Terug" formaction="AdminOverzicht.php">
                 <input type="submit" name="WijzigenTO" Value="Wijzigen" formaction="AdminTicketWijzigen.php">
                 <input type ="submit" name="Sluiten" Value="Sluiten" formaction="">
                 <input type="submit" name="Openen" Value="Open" formaction="">
-
-                <br><br><br>
+                <br><br>
+                <form>
+                <input type="submit" name="back" value="Terug" formaction="AdminOverzicht.php">
+                </form>
                 <!--
+                <br><br><br>
                 <h1>Gesloten Tickets:<br></h1>
                 <table>
                     <tr><th>Klant</th><th>Catagorie</th><th>Aanmaak datum</th><th>Status</th><th></th><th>Bekijken</th></tr>
