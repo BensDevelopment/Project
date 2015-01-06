@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Joshua van Gelder, Jeffrey Hamberg lelthisiscode-->
+<!-- Joshua van Gelder, Jeffrey Hamberg -->
 <?php
 session_start();
 if ($_SESSION["login"] != 1) {
@@ -48,9 +48,6 @@ if ($_SESSION["login"] != 1) {
                     <table>
                         <tr>
                             <th>
-                                Titel
-                            </th>
-                            <th>
                                 <?php
                                 if (isset($_POST["sorttit"])) {
                                     echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sorttitDESC' value='Titel'></form>";
@@ -81,9 +78,9 @@ if ($_SESSION["login"] != 1) {
                             <th>
                                 <?php
                                 if (isset($_POST["sortct"])) {
-                                    echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sortctDESC' value='Aanmaak Datum'></form>";
+                                    echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sortctDESC' value='Aanmaak Daytime'></form>";
                                 } else {
-                                    echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sortct' value='Aanmaak Datum'></form>";
+                                    echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sortct' value='Aanmaak Daytime'></form>";
                                 }
                                 ?>
                             </th>
@@ -98,6 +95,7 @@ if ($_SESSION["login"] != 1) {
                             </th>
                             <th></th>
                             <th>Bekijken</th>
+                            <th>Beantwoorden</th>
                         </tr>
                         <form method="POST" action="AdminTicketSelecteren.php">
                             <?php
@@ -112,7 +110,7 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortcatDESC"])) {
                                 $stmt5 = mysqli_prepare($link, "SELECT C.company_name ,category, creation_date, completed_status, ticket_id, titel FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY category DESC");
@@ -124,7 +122,7 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td><td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>S</td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_id]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>S</td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortct"])) {
                                 $stmt6 = mysqli_prepare($link, " SELECT C.company_name ,category, creation_date, completed_status, ticket_id, titel FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY creation_date ");
@@ -136,7 +134,7 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td><td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortctDESC"])) {
                                 $stmt7 = mysqli_prepare($link, "SELECT C.company_name ,category, creation_date, completed_status, ticket_id, titel FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY creation_date DESC ");
@@ -148,7 +146,7 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td><td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortcomp"])) {
                                 $stmt8 = mysqli_prepare($link, " SELECT C.company_name ,category, creation_date, completed_status, ticket_id, titel FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY company_name ");
@@ -160,7 +158,7 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td><td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortcompDESC"])) {
                                 $stmt9 = mysqli_prepare($link, " SELECT C.company_name ,category, creation_date, completed_status, ticket_id, titel FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY company_name DESC ");
@@ -172,7 +170,7 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td><td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortstat"])) {
                                 $stmt8 = mysqli_prepare($link, "SELECT C.company_name, category, creation_date, completed_status, ticket_id, titel FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY completed_status ");
@@ -184,7 +182,7 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td><td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortstatDESC"])) {
                                 $stmt9 = mysqli_prepare($link, "SELECT C.company_name, category, creation_date, completed_status, ticket_id, titel FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY completed_status DESC");
@@ -196,7 +194,7 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td><td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sorttitDESC"])) {
                                 $stmt9 = mysqli_prepare($link, "SELECT C.company_name, category, creation_date, completed_status, ticket_id, titel FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY title DESC");
@@ -208,7 +206,7 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td><td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sorttit"])) {
                                 $stmt9 = mysqli_prepare($link, "SELECT C.company_name, category, creation_date, completed_status, ticket_id, titel FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY title DESC");
@@ -220,7 +218,7 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td><td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } else {
                                 $stmt10 = mysqli_prepare($link, "SELECT C.company_name, category, creation_date, completed_status, ticket_id, titel FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id");
@@ -232,20 +230,21 @@ if ($_SESSION["login"] != 1) {
                                     } else {
                                         $completed = "Open";
                                     }
-                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td><td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td></tr>";
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td><td><input type='submit' name='ticket_id' value='Bekijken'></td><td><input type='submit' name='Beantwoorden' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             }
                             ?>
                     </table>
                 </div>
-                <input type="submit" name="back" value="Terug" formaction="AdminOverzicht.php">
                 <input type="submit" name="WijzigenTO" Value="Wijzigen" formaction="AdminTicketWijzigen.php">
                 <input type ="submit" name="Sluiten" Value="Sluiten" formaction="">
                 <input type="submit" name="Openen" Value="Open" formaction="">
-                <input type="hidden" name="ticketid[<?php echo $ticketid; ?>]">
-
-                <br><br><br>
+                <br><br>
+                <form>
+                <input type="submit" name="back" value="Terug" formaction="AdminOverzicht.php">
+                </form>
                 <!--
+                <br><br><br>
                 <h1>Gesloten Tickets:<br></h1>
                 <table>
                     <tr><th>Klant</th><th>Catagorie</th><th>Aanmaak datum</th><th>Status</th><th></th><th>Bekijken</th></tr>

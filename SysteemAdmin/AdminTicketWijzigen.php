@@ -25,12 +25,10 @@ if ($_SESSION["login"] != 1) {
             </div>
             <div id='content'>
                 <?php
-                // Hieronder wordt gechecked welke POST moet gebruikt worden
+                // Hieronder wordt gechecked welke POST gebruikt moet worden
                 include 'link.php';
                 if (isset($_POST["Wijzigen"])) {
-                    foreach ($_POST["ticket_id"] AS $ticketid => $notused) {
-                        $ticket_id = $ticketid;
-                    }
+                    $ticket_id = $_POST["ticket_id"];
                     $description = $_POST["Description"];
                     $userid = $_POST["User_ID"];
                     $category = $_POST["categorie"];
@@ -39,9 +37,7 @@ if ($_SESSION["login"] != 1) {
                     $insert = mysqli_prepare($link, "UPDATE ticket SET last_time_date=NOW(), description='$description', user_id=$userid, category='$category', customer_id=$CID, titel='$titel' WHERE ticket_id=$ticket_id");
                     mysqli_stmt_execute($insert);
                 } else {
-                    foreach ($_POST["close/wijzig"] AS $ticketid => $notused) {
-                        $ticket_id = $ticketid;
-                    }
+                    $ticket_id = $_POST['ticket_id'];
                 }
                 $stmt1 = mysqli_prepare($link, "SELECT T.customer_id, creation_date, last_time_date, send_date, T.user_id, C.company_name, U.mail, category, description, T.titel FROM ticket T JOIN customer C On c.customer_id = T.customer_id JOIN User U ON U.user_id = T.user_id WHERE ticket_id=$ticket_id ");
                 mysqli_stmt_bind_result($stmt1, $CID, $creation, $lastchanged, $send, $userid, $compname, $mail, $category, $desc, $titel);
@@ -68,7 +64,7 @@ if ($_SESSION["login"] != 1) {
                             
                         </select> <br>
                     <label>Omschrijving: </label><br><textarea rows='4' cols='40' name='Description'>$desc</textarea><br>"
-                    . "<input type='hidden' name='ticket_id[$ticket_id]'</label>";
+                    . "<input type='hidden' name='ticket_id' value=$ticket_id></label>";
                 }
                 $stmt2 = mysqli_prepare($link, "SELECT text, time, U.mail FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticket_id");
                 mysqli_stmt_bind_result($stmt2, $text, $time, $mail);
