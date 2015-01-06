@@ -96,11 +96,12 @@
                                 {
                                     $ps = "Betaald";
                                 }
-                                echo "<form method='POST' action='klantfactuurinzien.php' ><tr><td>$CID</td><td>$date</td><td>$ps</td><td><input type='hidden' name=CID value='$CID' ><input type='submit' name='submit' value='Bekijken'></form></td></tr>";
+                                echo "<form method='POST'><tr><td>$CID</td><td>$date</td><td>$ps</td><td><input type='hidden' name=CID value='$CID' ><input type='submit' name='submit' value='Bekijken' formaction='klantfactuurinzien.php'></form></td></tr>";
                             }
                             print ("</table>");
                             ?>
                     </form>
+                    <br>
                     <form class="knop_link" method="post" action="KlantOverzicht.php">
                         <input type="submit" name="back" value="Terug">
                     </form>
