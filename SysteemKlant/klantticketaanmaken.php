@@ -60,6 +60,7 @@
                         <option value="website">Website</option>
                         <option value="cms">CMS</option>
                         <option value="hosting">Hosting</option>
+                        <option value="factuur">Factuur</option> 
                     </select>
                     <select name="customerid">
                         <?php
@@ -84,7 +85,7 @@
                 <form method="POST" action="klantoverzicht.php">
                     <input type="submit" name="annuleren" value="Annuleren">
                 </form>
-                
+
                 <?php
                 include"link.php";
                 if (isset($_POST["verzenden"]))
@@ -105,18 +106,15 @@
                         mysqli_stmt_execute($insert);
                         mysqli_close($link);
                         echo "<p class='succesmelding'>Uw ticket is verzonden.</p>";
-
-                        /* !Deze code werkt niet op de local server.!
-                          //default headers
+                        /*
                           $headers = "MIME-Version: 1.0" . "\r\n";
                           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-                          //more headers
                           $headers .= 'From: <ticketsysteem@bensdevelopment.nl>' . "\r\n";
                           $headers .= 'Cc: admin@bensdevelopment.nl' . "\r\n";
-                          $to="jpjvangelder@gmail.com";
-                          $subject="Niewe ticket aangemaakt";
-                          $message="Beste, <br><br> er is een niewe ticket aangemaakt met category:$category";
-                          mail($to,$subject,$message,$headers);
+                          $to = "jpjvangelder@gmail.com";
+                          $subject = "Niewe ticket aangemaakt";
+                          $message = "Beste, <br><br> er is een niewe ticket aangemaakt met category:$category en titel:$titel";
+                          mail($to, $subject, $message, $headers);
                         */
                     }
                 }

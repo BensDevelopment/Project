@@ -37,7 +37,7 @@
                 }
                 mysqli_close($link);
 
-                include "link.php"; //Met deze query wordt 
+                include "link.php";
                 $ticketammount = mysqli_prepare($link, "SELECT COUNT(ticket_id) FROM Ticket WHERE user_id=$login AND completed_status=0");
                 mysqli_stmt_execute($ticketammount);
                 mysqli_stmt_bind_result($ticketammount, $count);
