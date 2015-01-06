@@ -48,7 +48,7 @@
                             if (isset($_POST["submit"])) {
                                 echo $_POST["description1"];
                             }
-                            ?>"></td><td><input type="number" name="Count1" value="<?php
+                            ?>"></td><td><input type="text" name="Count1" value="<?php
                                 if (isset($_POST["submit"])) {
                                     echo $_POST["Count1"];
                                 }
@@ -61,7 +61,7 @@
                             if (isset($_POST["submit"])) {
                                 echo $_POST["description2"];
                             }
-                            ?>"></td><td><input type="number" name="Count2" value="<?php
+                            ?>"></td><td><input type="text" name="Count2" value="<?php
                                 if (isset($_POST["submit"])) {
                                     echo $_POST["Count2"];
                                 }
@@ -74,7 +74,7 @@
                             if (isset($_POST["submit"])) {
                                 echo $_POST["description3"];
                             }
-                            ?>"></td><td><input type="number" name="Count3" value="<?php
+                            ?>"></td><td><input type="text" name="Count3" value="<?php
                                 if (isset($_POST["submit"])) {
                                     echo $_POST["Count3"];
                                 }
@@ -87,7 +87,7 @@
                             if (isset($_POST["submit"])) {
                                 echo $_POST["description4"];
                             }
-                            ?>"></td><td><input type="number" name="Count4" value="<?php
+                            ?>"></td><td><input type="text" name="Count4" value="<?php
                                 if (isset($_POST["submit"])) {
                                     echo $_POST["Count4"];
                                 }
@@ -100,7 +100,7 @@
                             if (isset($_POST["submit"])) {
                                 echo $_POST["description5"];
                             }
-                            ?>"></td><td><input type="number" name="Count5" value="<?php
+                            ?>"></td><td><input type="text" name="Count5" value="<?php
                                 if (isset($_POST["submit"])) {
                                     echo $_POST["Count5"];
                                 }
