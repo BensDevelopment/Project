@@ -20,7 +20,12 @@ a:visited{
     color: #000;
     text-decoration: underline;
 }
-
+hr{
+    border-top:0px;
+    border-bottom:1px solid lightgrey;
+    margin-top:40px;
+    margin-bottom:30px;
+}
 .error_message{
     color: #ff0000;
 }
@@ -133,7 +138,9 @@ a:visited{
     margin-left: auto;
     margin-right:auto;
 }
-
+#content table th{
+    min-width:50px;
+}
 #content table a{
     text-decoration: none;
 }

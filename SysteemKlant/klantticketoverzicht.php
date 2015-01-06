@@ -71,7 +71,18 @@
                     <br>                                       
                     <table>
                         <tr>
-                            <th>Titel</th>
+                            <th>
+                                <?php                                
+                                if (isset($_POST["sorttit"]))
+                                {
+                                    echo "<form class='table_hdr' method='POST' action='klantticketoverzicht.php'><input type='submit' name='sorttitDESC' value='Titel'></form>";
+                                }
+                                else
+                                {
+                                    echo "<form class='table_hdr' method='POST' action='klantticketoverzicht.php'><input type='submit' name='sorttit' value='Titel'></form>";
+                                }
+                                ?>
+                            </th>
                             <th>
                                 <?php                                
                                 if (isset($_POST["sortcat"]))
@@ -129,8 +140,8 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td>"
-                                . "<td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td>"
+                                . "<td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
                             }
                         }
@@ -149,8 +160,8 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td>"
-                                . "<td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td>"
+                                . "<td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
                             }
                         }
@@ -169,8 +180,8 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td>"
-                                . "<td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td>"
+                                . "<td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
                             }
                         }
@@ -189,8 +200,8 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td>"
-                                . "<td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td>"
+                                . "<td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
                             }
                         }
@@ -209,8 +220,8 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td>"
-                                . "<td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td>"
+                                . "<td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
                             }
                         }
@@ -229,8 +240,48 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td>"
-                                . "<td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td>"
+                                . "<td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
+                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                            }
+                        }
+                        elseif (isset($_POST["sorttitDESC"]))
+                        {
+                            $stmt9 = mysqli_prepare($link, " SELECT titel, category, creation_date, completed_status, ticket_id FROM ticket WHERE user_id=$user ORDER BY titel DESC ");
+                            mysqli_stmt_execute($stmt9);
+                            mysqli_stmt_bind_result($stmt9, $titel, $category, $creation, $completed, $ticketid);
+                            while (mysqli_stmt_fetch($stmt9))
+                            {
+                                if ($completed == 1)
+                                {
+                                    $completed = "Gesloten";
+                                }
+                                else
+                                {
+                                    $completed = "Open";
+                                }
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td>"
+                                . "<td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
+                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                            }
+                        }
+                        elseif (isset($_POST["sorttit"]))
+                        {
+                            $stmt9 = mysqli_prepare($link, " SELECT titel, category, creation_date, completed_status, ticket_id FROM ticket WHERE user_id=$user ORDER BY titel ");
+                            mysqli_stmt_execute($stmt9);
+                            mysqli_stmt_bind_result($stmt9, $titel, $category, $creation, $completed, $ticketid);
+                            while (mysqli_stmt_fetch($stmt9))
+                            {
+                                if ($completed == 1)
+                                {
+                                    $completed = "Gesloten";
+                                }
+                                else
+                                {
+                                    $completed = "Open";
+                                }
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td>"
+                                . "<td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
                             }
                         }
@@ -249,16 +300,16 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td>"
-                                . "<td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='submit' formaction='klantticketinzien.php' value='Bekijken'></td>"
+                                . "<td><form method='POST'><input type='submit' formaction='klantticketwijzigen.php' value='Wijzigen'></td><td><input type='submit' formaction='klantticketbeantwoorden.php' value='Beantwoorden'></td>"
+                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
                             }
                         }
                         ?>
                     </table>
                     <br>
-                    <form class="knop_link" method="post" action="klantoverzicht.php">
-                        <input type="submit" name="back" value="Terug">
+                    <form class="knop_link" method="post">
+                        <input type="submit" name="back" value="Terug" formaction="klantoverzicht.php">
                     </form>
                 </div>                
             </div>            

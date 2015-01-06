@@ -40,7 +40,7 @@ if ($_SESSION['login'] != 1) {
                 ?>
                 <div id="overzichtcontainer">
                     <div id="overzicht">
-                        <p>U heeft <?php
+                        <p>Er zijn <?php
                             if ($count == 1) {
                                 echo $count . " open ticket";
                             } else {
@@ -65,7 +65,7 @@ if ($_SESSION['login'] != 1) {
                             ?>
                         </table></div>
                     <div id="overzicht">
-                        <p>U heeft <?php
+                        <p>Er zijn <?php
                             if ($count2 == 1) {
                                 echo $count2 . " open factuur";
                             } else {

@@ -48,7 +48,7 @@
                     }
                     else
                     {
-                        if (isset($login))//met de volgend if loop wordt bepaald of er goed is ingelogd.
+                        if (isset($login)) //met de volgend if loop wordt bepaald of er goed is ingelogd.
                         {
                             $username = $_POST["username"];
                             $password = $_POST["password"];
@@ -73,7 +73,7 @@
                         }
                     }
                 }
-                if (isset($_GET["link"]))
+                if (isset($_GET["link"])) //Deze if loop bekijkt of de gebruiker van een uitlogknop komt, en zet de status van de gebruikker dan op offline
                 {
                     $username = $_SESSION['username'];
                     $password = $_SESSION['password'];

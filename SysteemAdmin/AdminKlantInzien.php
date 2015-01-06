@@ -46,6 +46,7 @@ if ($_SESSION["login"] != 1) {
                     mysqli_close($link);
                     ?>
                 </p>
+                <hr> 
                 <h1>Tickets</h1>
                 <br>
                 <table>
@@ -207,8 +208,7 @@ if ($_SESSION["login"] != 1) {
                         }
                         ?>
                 </table>
-            </div>
-            <input type="submit" name="back" value="Terug" formaction="AdminOverzicht.php">
+
             <input type="submit" name="WijzigenTO" Value="Wijzigen" formaction="AdminTicketWijzigen.php">
             <input type ="submit" name="Sluiten" Value="Sluiten" formaction="">
             <input type="submit" name="Openen" Value="Open" formaction="">
@@ -253,6 +253,7 @@ if ($_SESSION["login"] != 1) {
             }
         }
         ?>
+        <hr>            
         <h1>Facturen</h1>
         <br>
         <table>
@@ -411,9 +412,11 @@ if ($_SESSION["login"] != 1) {
                 }
                 ?>
         </table>
-        <input type="submit" name="Terug" value="Terug" formaction="AdminOverzicht.php">
         <input type="submit" name="betaald" Value="Betaald" formaction="">
         <input type="submit" name="nietbetaald" value="Niet betaald" formaction="">
+        </form><br><br>
+    <form>
+    <input type="submit" name="Terug" value="Terug" formaction="AdminOverzicht.php">
     </form>
     </div>
     <?php
@@ -422,10 +425,6 @@ if ($_SESSION["login"] != 1) {
             echo'<p class="foutmelding"> U heeft geen factuur geselecteerd.</p>';
         }
     }
-    include 'footeradmin.php';
-    ?>
-    </div>
-    <?php
     include 'footeradmin.php';
     ?>
     </body>

@@ -25,7 +25,7 @@ if ($_SESSION["login"] != 1) {
             </div>
             <div id='content'>
                 <?php
-                // Hieronder wordt gechecked welke POST moet gebruikt worden
+                // Hieronder wordt gechecked welke POST gebruikt moet worden
                 include 'link.php';
                 if (isset($_POST["Wijzigen"])) {
                     $ticket_id = $_POST["ticket_id"];

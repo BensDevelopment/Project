@@ -37,7 +37,7 @@
                 }
                 mysqli_close($link);
 
-                include "link.php"; //Met deze query wordt 
+                include "link.php";
                 $ticketammount = mysqli_prepare($link, "SELECT COUNT(ticket_id) FROM Ticket WHERE user_id=$login AND completed_status=0");
                 mysqli_stmt_execute($ticketammount);
                 mysqli_stmt_bind_result($ticketammount, $count);
@@ -97,7 +97,7 @@
                         </tr>
                         <?php
                         include "link.php";
-                        $facturen = mysqli_prepare($link, " SELECT invoice_number, date FROM Invoice WHERE user_id=$login AND payment_completed=0 ORDER BY date DESC");
+                        $facturen = mysqli_prepare($link, "SELECT invoice_number, date FROM Invoice WHERE user_id=$login AND payment_completed=0 ORDER BY date DESC");
                         mysqli_stmt_execute($facturen);
                         mysqli_stmt_bind_result($facturen, $number, $date);
                         while (mysqli_stmt_fetch($facturen))
