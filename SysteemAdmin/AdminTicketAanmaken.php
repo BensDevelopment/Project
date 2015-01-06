@@ -58,6 +58,7 @@ session_start();
                         <option value="website">Website</option>
                         <option value="cms">CMS</option>
                         <option value="hosting">Hosting</option>
+                        <option value="Factuur">Factuur</option>
                     </select>
                     <select name="customerid">
                         <?php
