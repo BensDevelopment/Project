@@ -78,9 +78,9 @@ if ($_SESSION["login"] != 1) {
                             <th>
                                 <?php
                                 if (isset($_POST["sortct"])) {
-                                    echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sortctDESC' value='Aanmaak Datum'></form>";
+                                    echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sortctDESC' value='Aanmaak Daytime'></form>";
                                 } else {
-                                    echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sortct' value='Aanmaak Datum'></form>";
+                                    echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sortct' value='Aanmaak Daytime'></form>";
                                 }
                                 ?>
                             </th>
