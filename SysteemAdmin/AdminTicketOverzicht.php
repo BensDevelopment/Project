@@ -125,7 +125,7 @@ else
                             include "link.php";
                             if (isset($_POST["sortcat"]))
                             { // Elke if en elseif die hier volgen zijn verschillende clausules voor omhoog en omlaag gesorteerde categorien.
-                                $stmt4 = mysqli_prepare($link, "SELECT title, C.company_name, category, creation_date, completed_status, ticket_id FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY category");
+                                $stmt4 = mysqli_prepare($link, "SELECT title, C.company_name, category, creation_date, completed_status, ticket_id FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY category ASC");
                                 mysqli_stmt_execute($stmt4);
                                 mysqli_stmt_bind_result($stmt4, $titel, $company_name, $category, $creation, $completed, $ticket_ID);
                                 while (mysqli_stmt_fetch($stmt4))

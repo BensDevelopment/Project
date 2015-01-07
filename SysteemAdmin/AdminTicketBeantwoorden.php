@@ -15,10 +15,15 @@ else
         $ticketid = $_POST['ticket_id'];
         include "link.php"; //Met deze query wordt de nieuwe reactie in de tabel gezet.
         $description = $_POST["beschrijving"];
-        $reactionquery = mysqli_prepare($link, "INSERT INTO Reaction SET ticket_id=$ticketid, text='$description', time=NOW(), user_id=$login");
+        $login = $_SESSION['username'];
+        $query1 = mysqli_prepare($link, "SELECT user_id FROM user WHERE mail ='$login'");
+        mysqli_stmt_execute($query1);
+        mysqli_stmt_bind_result($query1, $loginid);
+        while(mysqli_stmt_fetch($query1)){
+            $user_id = $loginid;
+        }
+        $reactionquery = mysqli_prepare($link, "INSERT INTO Reaction SET ticket_id=$ticketid, text='$description', time=NOW(), user_id=$user_id");
         mysqli_stmt_execute($reactionquery);
-        mysqli_stmt_fetch($reactionquery);
-        header("AdminTicketBeantwoorden.php");
     }
     else
     {
