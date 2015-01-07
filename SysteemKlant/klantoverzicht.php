@@ -70,7 +70,7 @@
                         </tr>                    
                         <?php
                         include "link.php";
-                        $tickets = mysqli_prepare($link, " SELECT titel, category, creation_date, ticket_id FROM Ticket WHERE user_id=$login AND completed_status=0 ORDER BY creation_date DESC");
+                        $tickets = mysqli_prepare($link, " SELECT title, category, creation_date, ticket_id FROM Ticket WHERE user_id=$login AND completed_status=0 ORDER BY creation_date DESC");
                         mysqli_stmt_execute($tickets);
                         mysqli_stmt_bind_result($tickets, $titel, $category, $creation, $ticketid);
                         while (mysqli_stmt_fetch($tickets))

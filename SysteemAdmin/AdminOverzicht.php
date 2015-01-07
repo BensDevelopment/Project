@@ -56,7 +56,7 @@ if ($_SESSION['login'] != 1) {
                             </tr>
                             <?php
                             include "link.php";
-                            $tickets = mysqli_prepare($link, " SELECT category, creation_date, ticket_id, titel FROM Ticket WHERE completed_status=0 ORDER BY creation_date DESC");
+                            $tickets = mysqli_prepare($link, " SELECT category, creation_date, ticket_id, title FROM Ticket WHERE completed_status=0 ORDER BY creation_date DESC");
                             mysqli_stmt_execute($tickets);
                             mysqli_stmt_bind_result($tickets, $category, $creation, $ticketid, $titel);
                             while (mysqli_stmt_fetch($tickets)) {

@@ -95,7 +95,7 @@ session_start();
                         echo "<p class='foutmelding'>Er is geen categorie en/of beschrijving gegeven.</p>";
                     } else {
                         include"link.php"; //Dit is de insert query waar de nieuwe informatie in de tabel wordt geinsert.
-                        $insert = mysqli_prepare($link, "INSERT INTO ticket SET category='$category', creation_date=NOW(), last_time_date='$creation_date', description='$description', customer_id=$customer, user_id=$login, completed_status=0, archived_status=0, titel='$titel'");
+                        $insert = mysqli_prepare($link, "INSERT INTO ticket SET category='$category', creation_date=NOW(), last_time_date='$creation_date', description='$description', customer_id=$customer, user_id=$login, completed_status=0, archived_status=0, title='$titel'");
                         mysqli_stmt_execute($insert);
                         mysqli_close($link);
                         echo "<p class='succesmelding'>Uw ticket is verzonden.</p>";

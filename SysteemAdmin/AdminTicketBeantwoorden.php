@@ -47,7 +47,7 @@ else
                     include "link.php";
                     $ticketid = $_POST["ticket_id"];
                     //De if loop is hieronder nodig om te true/false status van de ticket om te zetten naar text.
-                    $description = mysqli_prepare($link, "SELECT T.category, T.description, T.completed_status, T.creation_date, T.titel FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id=$ticketid");
+                    $description = mysqli_prepare($link, "SELECT T.category, T.description, T.completed_status, T.creation_date, T.title FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id=$ticketid");
                     mysqli_stmt_bind_result($description, $cat, $desc, $completed, $creation, $titel);
                     mysqli_stmt_execute($description);
                     while (mysqli_stmt_fetch($description))
