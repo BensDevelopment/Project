@@ -533,11 +533,9 @@ else
                             }
                         }
                         ?>
+                        <input type="submit" formaction="AdminKlantOverzicht.php" value="Terug naar Overzicht">
                     </form>                    
                     <hr>            
-                    <form>
-                        <input type="submit" name="Terug" value="Terug" formaction="AdminOverzicht.php">
-                    </form>
             </div>
             <?php
             if (isset($_POST["nietbetaald"]) || isset($_POST["betaald"]))
