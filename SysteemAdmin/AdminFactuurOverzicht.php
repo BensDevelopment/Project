@@ -38,9 +38,9 @@ if ($_SESSION["login"] != 1) {
                 <div id='logo'>
                     <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
-    <?php
-    include 'include/php/menu.php';
-    ?>
+            <?php
+                include 'include/php/menu.php';
+            ?>
             </div>
             <div id='content'>
                 <h1>Facturen</h1>
