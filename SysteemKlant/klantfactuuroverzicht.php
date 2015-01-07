@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php session_start(); ?>
-<!-- Bart Holsappel-->
+<!-- Bart Holsappel, Joshua van Gelder-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -15,14 +15,13 @@
                 </div>                
                 <div id="menu">
                     <?php
-                        include 'include/php/menubackend.php';
+                    include 'include/php/menubackend.php';
                     ?>
                 </div>                
             </header>
             <div id="content">
                 <h1>Factuur Overzicht</h1><br>                
                 <?php
-                
                 if (isset($_POST["betaald"]))
                 {
                     //send email
@@ -53,7 +52,6 @@
                     <p>Naam: <?php echo "$fname $lname"; ?>
                     </p>
                     <p>
-                    <form id="customerid">
                         Bedrijfsnaam: <?php
                         include "link.php";
 
@@ -61,7 +59,6 @@
                         mysqli_stmt_execute($count);
                         mysqli_stmt_bind_result($count, $ammount);
                         mysqli_stmt_fetch($count);
-                        mysqli_close($link);
                         if ($ammount == 1)
                         {
                             echo "$name";
@@ -81,38 +78,38 @@
                         }
                         ?>
                         <br>
-                        <p>Facturen: <?php
-                            include"link.php";
-                            $stat = mysqli_prepare($link, "SELECT invoice_number, date, payment_completed FROM invoice WHERE user_id = $user");
-                            mysqli_stmt_execute($stat);
-                            mysqli_stmt_bind_result($stat, $invoice_number, $date, $pc);
-                            echo "<table><tr><th>Factuur nummer</th><th>Datum</th><th>Status</th></tr>";
-                            while (mysqli_stmt_fetch($stat))
+                    <p>Facturen: <?php
+                        include"link.php";
+                        $stat = mysqli_prepare($link, "SELECT invoice_number, date, payment_completed FROM invoice WHERE user_id = $user");
+                        mysqli_stmt_execute($stat);
+                        mysqli_stmt_bind_result($stat, $invoice_number, $date, $pc);
+                        echo "<table><tr><th>Factuur nummer</th><th>Datum</th><th>Status</th></tr>";
+                        while (mysqli_stmt_fetch($stat))
+                        {
+                            if ($pc == 0)
                             {
-                                if ($pc == 0)
-                                {
-                                    $ps = "Niet betaald";
-                                }
-                                else
-                                {
-                                    $ps = "Betaald";
-                                }
-                                echo "<form method='POST'><tr><td>$invoice_number</td><td>$date</td><td>$ps</td><td><input type='hidden' name='invoice_number' value='$invoice_number'><input type='image' src='afbeeldingen/bekijken.png'name='submit'  formaction='klantfactuurinzien.php'></form></td></tr>";
+                                $ps = "Niet betaald";
                             }
-                            print ("</table>");
-                            ?>
-                    </form>
-                    <br>
-                    <form method="post" action="KlantOverzicht.php">
-                        <input type="submit" name="back" value="Terug">
+                            else
+                            {
+                                $ps = "Betaald";
+                            }
+                            echo "<tr><td>$invoice_number</td><td>$date</td><td>$ps</td><td><form method='POST'><input type='hidden' name='invoice_number' value='$invoice_number'>"
+                            . "<input type='image' src='afbeeldingen/bekijken.png' name='submit' formaction='klantfactuurinzien.php'></form></td></tr>";
+                        }
+                        print ("</table>");
+                        ?>
+                        <br>
+                    <form method="POST">
+                        <input type="submit" name="back" value="Terug" formaction="KlantOverzicht.php">
                     </form>
                     <br>
                 </div>
             </div>
         </div>
         <footer>
-            <?php 
-                include 'include/php/footer.php';
+            <?php
+            include 'include/php/footer.php';
             ?>
         </footer>
     </body>
