@@ -2,7 +2,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Bens Developement</title>
-        <link href="stijl.css" rel="stylesheet" type="text/css"/>
+        <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="container">
@@ -12,7 +12,7 @@
                 </div>
                 <!--BEGIN MENU-->
                 <div id="menu">
-                <?php include 'menu.php'; ?>
+                <?php include 'include/php/menu.php'; ?>
                 </div>
                 <!--EINDE MENU-->
             </header>
@@ -25,7 +25,7 @@
             <!--EINDE CONTENT-->
                     </div>
             <footer>
-                <?php include 'footer.php';?>
+                <?php include 'include/php/footer.php';?>
             </footer>
     </body>
 </html>
