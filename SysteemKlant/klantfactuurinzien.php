@@ -64,7 +64,7 @@
                         mysqli_close($link);
                         ?>
                     <p><?php
-                        //$invoiceID = $_POST["invoice_number"];
+                        $invoiceID = $_POST["invoice_number"];
                         include "link.php";
                         $stat2 = mysqli_prepare($link, "SELECT date, payment_completed FROM invoice WHERE user_id = $user");
                         mysqli_stmt_execute($stat2);
