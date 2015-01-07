@@ -53,7 +53,7 @@ else
                     mysqli_close($link);
                     ?>
                 </p>
-                <hr> 
+                </div> 
                 <?php
             include 'include/php/footeradmin.php';
             ?>

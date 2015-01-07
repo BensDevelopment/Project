@@ -31,7 +31,7 @@
                 <div id="factuur">
                     <?php
                     include "link.php";
-                    $invoiceID = $_POST["invoice_number"]; // Deze foreach gaat factuurnummers door                    
+                    $invoiceID = $_POST["invoice_number"];                
                     echo '<h1>Factuur nummer: ' . $invoiceID . '</h1>';
                     if ($invoiceID != "")
                     { //customer (gebruiker) wordt gezocht die correspondeert met de juiste factuurnummer.

@@ -12,6 +12,7 @@ else
 {
     if (isset($_POST["submit"]))
     {
+        $_SESSION = $_POST['ticket_id'];
         $ticketid = $_POST['ticket_id'];
         include "link.php"; //Met deze query wordt de nieuwe reactie in de tabel gezet.
         $description = $_POST["beschrijving"];
