@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- Sander van der Stelt; Gelieve het commentaar door te lezen!, Léyon Courtz -->
+<!-- Sander van der Stelt, Léyon Courtz -->
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Bens Developement</title>
-        <link href="stijl.css" rel="stylesheet" type="text/css"/>
+        <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="container">
@@ -13,7 +13,9 @@
                     <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
                 <div id="menu">
-                    <?php include 'menu.php'; // Menu wordt hier geladen.?>
+                    <?php 
+                        include 'include/php/menu.php'; // Menu wordt hier geladen.
+                    ?>
                 </div>
             </header>
             <div id="content">
@@ -97,7 +99,9 @@
             </div>
         </div>
         <footer>
-            <?php include 'footer.php'; //Footer wordt hier geladen.?>
+            <?php 
+                include 'include/php/footer.php'; //Footer wordt hier geladen.
+            ?>
         </footer>
     </body>
 </html>

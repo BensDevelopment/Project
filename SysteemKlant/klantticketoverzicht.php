@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Bens Developement</title>
-        <link href="stijl.css" rel="stylesheet" type="text/css"/>
+        <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="container">
@@ -15,7 +15,7 @@
                 </div>                
                 <div id="menu">
                     <?php
-                    include 'menubackend.php';
+                    include 'include/php/menubackend.php';
                     ?>
                 </div>                
             </header>            
@@ -315,7 +315,9 @@
             </div>            
         </div>
         <footer>
-            <?php include 'footer.php'; ?>
+            <?php 
+                include 'include/php/footer.php'; 
+            ?>
         </footer>
     </body>
 </html>
