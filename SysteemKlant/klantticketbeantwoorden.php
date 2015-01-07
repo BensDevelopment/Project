@@ -22,31 +22,6 @@
             <div id="content">
                 <h1>Ticket beantwoorden</h1><br>
                 <?php
-                if (isset($_POST["submit"]))
-                {
-
-                    $ticketid = $_POST["ticketid"];
-                    $username = $_SESSION['username'];
-                    $password = $_SESSION['password'];
-
-                    include "link.php";
-                    $userinfo = mysqli_prepare($link, "SELECT user_id, first_name, last_name FROM User WHERE mail='$username'");
-                    mysqli_stmt_execute($userinfo);
-                    mysqli_stmt_bind_result($userinfo, $login, $fname, $lname);
-                    while (mysqli_stmt_fetch($userinfo))
-                    {
-                        $login;
-                        $fname;
-                        $lname;
-                    }
-                    mysqli_close($link);
-
-                    include "link.php";
-                    $description = $_POST["beschrijving"];
-                    $reactionquery = mysqli_prepare($link, "INSERT INTO Reaction SET ticket_id=$ticketid, text='$description', time=NOW(), user_id=$login");
-                    mysqli_stmt_execute($reactionquery);                    
-                }
-
                 $ticketid = $_POST["ticketid"];
                 $username = $_SESSION['username'];
                 $password = $_SESSION['password'];
@@ -111,10 +86,33 @@
                     {
                         echo "Deze ticket is gesloten en u kan er niet meer op reageren.<br>Als dit niet zo hoort te zijn neem dan contact op met de administrator.";
                     }
+                    if (isset($_POST["submit"]))
+                    {
+
+                        $ticketid = $_POST["ticketid"];
+                        $username = $_SESSION['username'];
+                        $password = $_SESSION['password'];
+
+                        include "link.php";
+                        $userinfo = mysqli_prepare($link, "SELECT user_id, first_name, last_name FROM User WHERE mail='$username'");
+                        mysqli_stmt_execute($userinfo);
+                        mysqli_stmt_bind_result($userinfo, $login, $fname, $lname);
+                        while (mysqli_stmt_fetch($userinfo))
+                        {
+                            $login;
+                            $fname;
+                            $lname;
+                        }
+                        mysqli_close($link);
+
+                        include "link.php";
+                        $description = $_POST["beschrijving"];
+                        $reactionquery = mysqli_prepare($link, "INSERT INTO Reaction SET ticket_id=$ticketid, text='$description', time=NOW(), user_id=$login");
+                        mysqli_stmt_execute($reactionquery);
+                    }
                     ?>               
                     <input type='submit' name='terug' value='terug' formaction="klantticketoverzicht.php">
                 </form>
-
             </div>
             <!--EINDE CONTENT-->
         </div>

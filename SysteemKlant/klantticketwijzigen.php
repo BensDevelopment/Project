@@ -26,7 +26,7 @@
                 $username = $_SESSION['username'];
                 $password = $_SESSION['password'];
                 $ticketid = $_POST["ticketid"];
-                
+
                 include "link.php";
                 $loginQuery = mysqli_prepare($link, "SELECT user_id, first_name, last_name FROM User WHERE mail='$username'");
                 mysqli_stmt_execute($loginQuery);
@@ -47,8 +47,7 @@
                 {
                     $description;
                     $category;
-                }
-                mysqli_close($link);
+                }                
 
                 date_default_timezone_set('CET');
                 $datetime = date("Y-m-d H:i:s");
@@ -71,17 +70,25 @@
                     </p> 
                     <p>Beschrijving:</p>
                     <p><?php echo "$description" ?></p>
-                    
+
                     <br>
                     <?php
-                    include "link.php";
-                    echo "Reacties";
-                    $reactions = mysqli_prepare($link, "SELECT text, U.mail FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticketid");
-                    mysqli_stmt_bind_result($reactions, $text, $mail);
-                    mysqli_stmt_execute($reactions);
-                    while (mysqli_stmt_fetch($reactions))
+                    $status = mysqli_prepare($link, "SELECT COUNT(reaction_id) FROM Reaction WHERE ticket_id=$ticketid");
+                    mysqli_stmt_bind_result($status, $count);
+                    mysqli_stmt_execute($status);
+                    mysqli_stmt_fetch($status);
+                    mysqli_close($link);
+                    if ($count > 0)
                     {
-                        echo "<p>$text<br></p>";
+                        include "link.php";
+                        echo "Reacties";
+                        $reactions = mysqli_prepare($link, "SELECT text, U.mail FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticketid");
+                        mysqli_stmt_bind_result($reactions, $text, $mail);
+                        mysqli_stmt_execute($reactions);
+                        while (mysqli_stmt_fetch($reactions))
+                        {
+                            echo "<p>$text<br></p>";
+                        }
                     }
                     ?>
                     <br>
@@ -91,7 +98,7 @@
                 <form method="POST" action="klantticketoverzicht.php">
                     <input type="submit" name="annuleren" value="Annuleren"> 
                 </form>
-                
+
                 <?php
                 if (isset($_POST["verzenden"]))
                 {
@@ -115,8 +122,8 @@
             </div>            
         </div>
         <footer>
-            <?php 
-                include 'include/php/footer.php'; 
+            <?php
+            include 'include/php/footer.php';
             ?>
         </footer>
     </body>
