@@ -12,7 +12,7 @@
                 </div>
                 <div id="menu">
                     <?php 
-                    include "menu.php"; 
+                        include "include/php/menu.php"; 
                     ?>
                 </div>
             </header>
@@ -115,7 +115,9 @@
             </div>
         </div>
         <footer>
-            <?php include 'footer.php'; ?>
+            <?php 
+                include 'include/php/footer.php'; 
+            ?>
         </footer>
     </body>
 </html>
