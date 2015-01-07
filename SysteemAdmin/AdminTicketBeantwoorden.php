@@ -29,16 +29,16 @@ else
         <head>
             <meta charset="UTF-8">
             <title>Admin Systeem</title>
-            <link href="stijl.css" rel="stylesheet" type="text/css">
+            <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
         </head>
         <body>
             <div id='bovenbalk'>
                 <div id='logo'>
-                    <img src="img/logo-bens.png" alt="">
+                    <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
-                    <?php
-                    include 'menu.php';
-                    ?>
+                <?php
+                    include 'include/php/menu.php';
+                ?>
             </div>
             <div id='content'>
                 <h1>Ticket beantwoorden</h1>
@@ -85,9 +85,9 @@ else
                     </form>
                 </div>
             </div>
-    <?php
-    include 'footeradmin.php';
-    ?>
+            <?php
+                include 'include/php/footeradmin.php';
+            ?>
         </body>
     </html>
 <?php } ?>

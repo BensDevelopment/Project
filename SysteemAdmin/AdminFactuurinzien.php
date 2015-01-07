@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<!--Bart Holsappel en Daan Hagemans en Léyon Courtz, Sander van der Stelt-->
+<!--Bart Holsappel, Léyon Courtz, Sander van der Stelt-->
     <html>
         <head>
             <meta charset="UTF-8">
             <title>Admin Systeem</title>
-            <link href="stijl.css" rel="stylesheet" type="text/css"/>
+            <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
         </head>
         <body>
 
             <div id='bovenbalk'>
                 <div id='logo'>
-                    <img src="img/logo-bens.png" alt="">
+                    <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
                 <?php
-                include 'menu.php';
+                    include 'include/php/menu.php';
                 ?>
             </div>
             <div id='content'>
@@ -28,12 +28,12 @@
             	<div id="factuur">
                     <?php 
                     include "link.php";
-                    $invoiceIDarray = $_POST["invoice_number"];
+                    $invoiceIDarray = $_POST["invoice_number"]; // Deze foreach gaat factuurnummers door
                     foreach ($invoiceIDarray as $invoice => $notused) {
                         $invoiceID = $invoice;
                     }
                     echo '<h1>Factuur nummer: '.$invoiceID.'</h1>';
-                    if ($invoiceID != ""){
+                    if ($invoiceID != ""){ //customer (gebruiker) wordt gezocht die correspondeert met de juiste factuurnummer.
                     $stat = mysqli_prepare($link, "SELECT customer_id, company_name, street, house_number, city, kvk_number, btw_number FROM customer where customer_id IN (SELECT customer_id FROM Invoice WHERE invoice_number = $invoiceID )");
                     mysqli_stmt_execute($stat);
                     mysqli_stmt_bind_result($stat, $customer_id,$company_name,$street, $housen, $city, $kvk, $btw);
@@ -47,12 +47,12 @@
                     }
                     ?>
                         <p><?php 
-                    	include "link.php";
+                    	include "link.php"; //Factuurgegevens worden opgezocht aan de hand an de gebruiker en het factuurnummer.
                     	$stat2 = mysqli_prepare($link, "SELECT date, invoice_number, payment_completed FROM invoice WHERE customer_id = $customer_id AND invoice_number = $invoiceID ");
                     	mysqli_stmt_execute($stat2);
                     	mysqli_stmt_bind_result($stat2, $date, $invoiceID, $payment_completed);
                     	while (mysqli_stmt_fetch($stat2)){
-                        if ($payment_completed == 1) {
+                        if ($payment_completed == 1) { //Status staat als integer in de database, hier wordt het omgezet naar tekst.
                             $payment_completed = "Betaald";
                         } else {
                             $payment_completed = "Niet betaald";
@@ -67,7 +67,7 @@
                 	<p>Factuur:
                     	<?php 
                     	$total = 0;
-                    	include"link.php";
+                    	include"link.php"; //Artikelen worden opgehaald met aantal, bedrag en omschrijvingen.
                     	$stmt3 = mysqli_prepare($link, "SELECT line_id, invoice_number, description, description2, amount, price, btw FROM line WHERE invoice_number = $invoiceID");
                     	mysqli_stmt_execute($stmt3);
                     	mysqli_stmt_bind_result($stmt3, $lineID, $IN, $D1, $D2, $amount, $price, $BTW);
@@ -76,15 +76,15 @@
                         	$total = $total + ($amount * $price);
                         	echo "<tr><td>$D1</td><td>$amount</td><td>€ $price</td></tr>";
                     	}
-                    	$BTWsub = ($BTW / 100) + 1;
-                    	$totalincbtw = $total * $BTWsub;
-                    	$BTWtotal = $totalincbtw - $total;
+                    	$BTWsub = ($BTW / 100) + 1; //Berekening van de subtotaal
+                    	$totalincbtw = $total * $BTWsub; //Berekening van Btw
+                    	$BTWtotal = $totalincbtw - $total; //Berekening van het totale factuurbedrag
                     	echo "</table><br>";
                     	echo "<label class='factuur'>Subtotaal</label>€ $total<br>";
                     	echo "<label class='factuur'>BTW 21 %</label>€ $BTWtotal<br>";
                     	echo "<label class='factuur'><strong>Totaal</label>€ $totalincbtw </strong>"; 
 
-                    	if ($payment_completed == "Niet betaald") {
+                    	if ($payment_completed == "Niet betaald") { //melding wordt getoond a.d.h.v. de betreffende status
                         	echo '<p class="foutmelding">Deze factuur is nog niet betaald.</p>';
                     	} else {
                         	echo '<p class="succesmelding">Deze factuur is betaald.</p>';
@@ -100,9 +100,9 @@
                 	<br>
             	</div>
         	</div></div>
-    	<footer>
-<?php include 'footeradmin.php'; ?>
-    	</footer>
+        <?php 
+            include 'include/php/footeradmin.php'; 
+        ?>
 	</body>
 </html>
 

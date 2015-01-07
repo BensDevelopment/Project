@@ -7,7 +7,8 @@ if ($_SESSION["login"] != 1) {
     session_unset();
     session_destroy();
 } else {
-    if (isset($_POST["betaald"])&& isset($_POST["close/wijzig"])) {
+    // Database wordt aangepast naar wijzigen van status, van 0 naar 1 of andersom.
+    if (isset($_POST["betaald"])&& isset($_POST["close/wijzig"])) { 
         foreach ($_POST["close/wijzig"] AS $invoicenumber => $notused) {
             include "link.php";
             $invoice_number = $invoicenumber;
@@ -30,16 +31,16 @@ if ($_SESSION["login"] != 1) {
         <head>
             <meta charset="UTF-8">
             <title>Admin factuuroverzicht</title>
-            <link href="stijl.css" rel="stylesheet" type="text/css">
+            <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
         </head>
         <body>
             <div id='bovenbalk'>
                 <div id='logo'>
-                    <img src="img/logo-bens.png" alt=""/>
+                    <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
-    <?php
-    include 'menu.php';
-    ?>
+            <?php
+                include 'include/php/menu.php';
+            ?>
             </div>
             <div id='content'>
                 <h1>Facturen</h1>
@@ -94,7 +95,7 @@ if ($_SESSION["login"] != 1) {
         mysqli_stmt_execute($stmt12);
         mysqli_stmt_bind_result($stmt12, $invoice_number, $customer_id, $date, $payment_completed);
         while (mysqli_stmt_fetch($stmt12)) {
-            if ($payment_completed == 1) {
+            if ($payment_completed == 1) { //Status staat als integer in de database, hier wordt het omgezet naar tekst.
                 $payment_completed = "Betaald";
             } else {
                 $payment_completed = "Niet betaald";
@@ -214,7 +215,7 @@ if ($_SESSION["login"] != 1) {
                         echo'<p class="foutmelding"> U heeft geen factuur geselecteerd.</p>';
                     }
                 }
-                include 'footeradmin.php';
+                include 'include/php/footeradmin.php';
                 ?>
         </body>       
     </html>

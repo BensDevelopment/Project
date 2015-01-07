@@ -13,15 +13,15 @@ if ($_SESSION["login"] != 1) {
         <head>
             <meta charset="UTF-8">
             <title>Admin Systeem</title>
-            <link href="stijl.css" rel="stylesheet" type="text/css"/>
+            <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
         </head>
         <body>
             <div id='bovenbalk'>
                 <div id='logo'>
-                    <img src="img/logo-bens.png" alt=""/>
+                    <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
                 <?php
-                include 'menu.php';
+                include 'include/php/menu.php';
                 ?>
             </div>
             <div id='content'>
@@ -425,7 +425,7 @@ if ($_SESSION["login"] != 1) {
             echo'<p class="foutmelding"> U heeft geen factuur geselecteerd.</p>';
         }
     }
-    include 'footeradmin.php';
+    include 'include/php/footeradmin.php';
     ?>
     </body>
     </html>

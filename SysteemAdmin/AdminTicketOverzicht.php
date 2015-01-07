@@ -37,17 +37,17 @@ else
         <head>
             <meta charset="UTF-8">
             <title>Admin Systeem</title>
-            <link href="stijl.css" rel="stylesheet" type="text/css"/>
+            <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
         </head>
         <body>
 
             <div id='bovenbalk'>
                 <div id='logo'>
-                    <img src="img/logo-bens.png" alt="">
+                    <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
-                <?php
-                include 'menu.php';
-                ?>
+            <?php
+                include 'include/php/menu.php';
+            ?>
             </div>
             <div id='content'>
                 <div id="ticket">
@@ -380,19 +380,17 @@ else
                     <input type ="submit" name="Openen" Value="Openen" formaction="">
                     <input type="submit" name="Wijzigen" Value="Wijzigen" formaction="AdminTicketWijzigen.php">
                 </table> -->
-            </form>
-        </div>
-        <?php
-        if (isset($_POST["Openen"]) || isset($_POST["Sluiten"]))
-        {
-            if (empty($_POST["close/wijzig"]))
-            {
-                echo'<p class="foutmelding"> U heeft geen ticket geselecteerd.</p>';
-            }
-        }
-        include 'footeradmin.php';
-        ?>
-    </body>
+                </form>
+            </div>
+            <?php
+                if (isset($_POST["Openen"]) || isset($_POST["Sluiten"])) {
+                    if (empty($_POST["close/wijzig"])) {
+                        echo'<p class="foutmelding"> U heeft geen ticket geselecteerd.</p>';
+                    }
+                }
+                include 'include/php/footeradmin.php';
+            ?>
+        </body>
     </html>
     <?php
 }

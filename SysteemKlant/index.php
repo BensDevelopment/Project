@@ -1,3 +1,8 @@
+<!--
+Sander van der Stelt.
+Dit is de index, dit is hardcode geprogrammeerd.
+Bens Development kan dit zelf uitbreiden zoals gewenst tevens geld dit ook voor de overige pagina's.
+-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -11,7 +16,9 @@
                     <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
                 <div id="menu">
-                    <?php include "menu.php"; ?>
+                    <?php 
+                        include "include/php/menu.php"; 
+                    ?>
                 </div>
             </header>
             <div id="slider">
@@ -24,12 +31,6 @@
                 </div>
             </div>
             <div id="content">
-                <!-- Dit staat in een comment omdat het nu niet werkt!
-                <div id="domein">
-                    <h1>Domein check</h1>
-                    <p><input type="text" value="www.uwdomeinnaam.nl" name="domein">
-                        <input type="submit" value="check"></p>
-                </div> -->
                 <?php
                 ?>
                 <h1>Paketten</h1>
@@ -113,7 +114,9 @@
             </div>
         </div>
         <footer>
-            <?php include 'footer.php'; ?>
+            <?php 
+                include 'include/php/footer.php'; 
+            ?>
         </footer>
     </body>
 </html>

@@ -5,13 +5,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Bens Developement</title>
-        <link href="stijl.css" rel="stylesheet" type="text/css"/>
+        <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id='bovenbalk'>
 
             <div id='logo'>
-                <img src="img/logo-bens.png" alt=""/>
+                <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
             </div>
             <div id='gebruiker'></div><div id='menu'><p class="adminsysteem">Bens Administratie Systeem</p></div>
             <?php
@@ -74,8 +74,8 @@
             </div>
         </div>
         <?php 
-                include 'footeradmin.php';
-                ?>
+            include 'include/php/footeradmin.php';
+        ?>
     </body>
 </html>
 </body>
