@@ -102,13 +102,10 @@
                         echo "<label class='factuur'><strong>Totaal</strong></label>€ $totalincbtw";
                         ?>
                     </p>
-                    <p>
-                        IBAN: NL 83 RABO 0344 4625 36
-                    </p>
                     <?php
-                    if ($payment_completed == 1)
+                    if ($payment_completed == 0)
                     {
-                        echo '<p>Gelieve deze factuur binnen 14 dagen op bovenstaande rekeningnummer t.n.v. D. van Beek<br> o.v.v. factuurnummer en datum overmaken.</p>
+                        echo '<p>Gelieve deze factuur binnen 14 dagen naar IBAN: NL 83 RABO 0344 4625 36 <br>t.n.v. D. van Beek o.v.v. factuurnummer en datum over te maken.</p>
                         <p class="foutmelding">Deze factuur is nog niet voldaan.</p>';
                     }
                     else
