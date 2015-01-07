@@ -43,7 +43,7 @@ else
 
             <div id='bovenbalk'>
                 <div id='logo'>
-                    <img src="img/logo-bens.png" alt="">
+                    <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
             <?php
                 include 'include/php/menu.php';

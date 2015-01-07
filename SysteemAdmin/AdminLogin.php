@@ -11,7 +11,7 @@
         <div id='bovenbalk'>
 
             <div id='logo'>
-                <img src="img/logo-bens.png" alt=""/>
+                <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
             </div>
             <div id='gebruiker'></div><div id='menu'><p class="adminsysteem">Bens Administratie Systeem</p></div>
             <?php
