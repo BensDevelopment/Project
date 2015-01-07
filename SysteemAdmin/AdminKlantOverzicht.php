@@ -28,7 +28,7 @@
                 $stat = mysqli_prepare($link, "SELECT company_name, emailadress, customer_id FROM Customer ORDER BY customer_id");
                 mysqli_stmt_execute($stat);
                 mysqli_stmt_bind_result($stat, $comname, $mail, $CID);
-                print("<table><tr><th>Bedrijfs naam</th><th>E-mail</th><th></th></tr>");
+                print("<table><tr><th>Bedrijfsnaam</th><th>E-mail</th><th></th></tr>");
                 while (mysqli_stmt_fetch($stat))
                 {
                     print("<form method='POST' action='AdminKlantInzien.php' ><tr><td>$comname</td><td>$mail</td><td><input type='hidden' name=CID[$CID] ><input type='submit' name='submit' value='Bekijken'></form></td></tr>");
