@@ -66,23 +66,24 @@
                 	</p>
                 	<p>Factuur:
                     	<?php 
-                    	$total = 0;
+                    	$subtotaal = 0;
                     	include"link.php"; //Artikelen worden opgehaald met aantal, bedrag en omschrijvingen.
                     	$stmt3 = mysqli_prepare($link, "SELECT line_id, invoice_number, description, description2, amount, price, btw FROM line WHERE invoice_number = $invoiceID");
                     	mysqli_stmt_execute($stmt3);
-                    	mysqli_stmt_bind_result($stmt3, $lineID, $IN, $D1, $D2, $amount, $price, $BTW);
+                    	mysqli_stmt_bind_result($stmt3,$lineID, $IN, $D1, $D2, $amount, $price, $BTW);
                     	echo "<table><th>Beschrijving</th><th>Aantal</th><th>Prijs</th>";
-                    	while (mysqli_stmt_fetch($stmt3)) {
-                        	$total = $total + ($amount * $price);
+                    	while ($rij=mysqli_stmt_fetch($stmt3)) {
                         	echo "<tr><td>$D1</td><td>$amount</td><td>€ $price</td></tr>";
+                                $subtotaal = $amount * $price;
                     	}
-                    	$BTWsub = ($BTW / 100) + 1; //Berekening van de subtotaal
-                    	$totalincbtw = $total * $BTWsub; //Berekening van Btw
-                    	$BTWtotal = $totalincbtw - $total; //Berekening van het totale factuurbedrag
+
+                    	$btwbedrag = ($subtotaal /100)* $BTW; //Berekening van het btwbedrag
+                        $totaal = $subtotaal + $btwbedrag; //Totaal berekenen
+                        
                     	echo "</table><br>";
-                    	echo "<label class='factuur'>Subtotaal</label>€ $total<br>";
-                    	echo "<label class='factuur'>BTW 21 %</label>€ $BTWtotal<br>";
-                    	echo "<label class='factuur'><strong>Totaal</label>€ $totalincbtw </strong>"; 
+                    	echo "<label class='factuur'>Subtotaal</label>€ $subtotaal<br>";
+                    	echo "<label class='factuur'>BTW 21 %</label>€ $btwbedrag<br>";
+                    	echo "<label class='factuur'><strong>Totaal</label>€ $totaal </strong>"; 
 
                     	if ($payment_completed == "Niet betaald") { //melding wordt getoond a.d.h.v. de betreffende status
                         	echo '<p class="foutmelding">Deze factuur is nog niet betaald.</p>';
