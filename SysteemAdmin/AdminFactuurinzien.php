@@ -72,7 +72,7 @@
                     </p>
                     <p>Factuur:
                         <?php
-                        $subtotaal = 0;
+                        $subtotal = 0;
                         include"link.php"; //Artikelen worden opgehaald met aantal, bedrag en omschrijvingen.
                         $stmt3 = mysqli_prepare($link, "SELECT line_id, invoice_number, description, description2, amount, price, btw FROM line WHERE invoice_number = $invoiceID");
                         mysqli_stmt_execute($stmt3);
