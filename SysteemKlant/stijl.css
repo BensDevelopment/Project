@@ -378,7 +378,7 @@ ul li:hover ul {
 }
 .table_hdr{
     margin-bottom: 0px;
-    float: left;
+    //float: left;    
 }
 .table_reactie{
     text-align: left !important;
