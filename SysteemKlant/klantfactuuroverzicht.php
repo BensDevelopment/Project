@@ -22,6 +22,7 @@
             <div id="content">
                 <h1>Factuur Overzicht</h1><br>                
                 <?php
+                
                 if (isset($_POST["betaald"]))
                 {
                     //send email
@@ -84,7 +85,7 @@
                             include"link.php";
                             $stat = mysqli_prepare($link, "SELECT invoice_number, date, payment_completed FROM invoice WHERE user_id = $user");
                             mysqli_stmt_execute($stat);
-                            mysqli_stmt_bind_result($stat, $CID, $date, $pc);
+                            mysqli_stmt_bind_result($stat, $invoice_number, $date, $pc);
                             echo "<table><tr><th>Factuur nummer</th><th>Datum</th><th>Status</th></tr>";
                             while (mysqli_stmt_fetch($stat))
                             {
@@ -96,13 +97,13 @@
                                 {
                                     $ps = "Betaald";
                                 }
-                                echo "<form method='POST'><tr><td>$CID</td><td>$date</td><td>$ps</td><td><input type='hidden' name=CID value='$CID' ><input type='submit' name='submit' value='Bekijken' formaction='klantfactuurinzien.php'></form></td></tr>";
+                                echo "<form method='POST'><tr><td>$invoice_number</td><td>$date</td><td>$ps</td><td><input type='hidden' name='invoice_number' value='$invoice_number'><input type='submit' name='submit' value='Bekijken' formaction='klantfactuurinzien.php'></form></td></tr>";
                             }
                             print ("</table>");
                             ?>
                     </form>
                     <br>
-                    <form class="knop_link" method="post" action="KlantOverzicht.php">
+                    <form method="post" action="KlantOverzicht.php">
                         <input type="submit" name="back" value="Terug">
                     </form>
                     <br>
