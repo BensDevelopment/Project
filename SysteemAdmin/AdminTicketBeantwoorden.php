@@ -79,9 +79,10 @@ else
                     <form method="POST">
                         Uw antwoord:<br>
                         <textarea name="beschrijving"></textarea><br>
+                        <input type='submit' name='terug' value='Terug' formaction='AdminTicketOverzicht.php'>
                         <input type="submit" name="submit" value="Beantwoorden" formaction="AdminTicketBeantwoorden.php">
                         <input type="hidden" name="ticket_id" value='<?php echo $ticketid ?>'>
-                        <input type='submit' name='terug' value='Terug' formaction='AdminTicketOverzicht.php'>
+                        
                     </form>
                 </div>
             </div>

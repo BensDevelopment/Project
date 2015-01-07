@@ -21,7 +21,6 @@ footer{
     margin:20px 0px 0px 0px;
     border-top:solid gray 4px;
     position:absolute;
-    top:100%;
 }
 h1{
     text-align: center;
@@ -35,9 +34,8 @@ h1{
     color:#777;
 }
 #content{
-    min-height: 500px;
+    min-height: 600px;
     height:auto;
-    //background-color: pink;
     width: 1000px;
     padding: 20px 60px;
     display: inline-block;

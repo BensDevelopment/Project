@@ -25,26 +25,27 @@
                 session_start();
                 $username = $_SESSION['username'];
                 $password = $_SESSION['password'];
-                $userid = mysqli_prepare($link, "SELECT user_id FROM User WHERE mail='$username'");
+                $userid = mysqli_prepare($link, "SELECT user_id,first_name, last_name FROM User WHERE mail='$username'");
                 mysqli_stmt_execute($userid);
-                mysqli_stmt_bind_result($userid, $user);
-                while (mysqli_stmt_fetch($userid))
-                {
-                    $userid;
+                mysqli_stmt_bind_result($userid,$user,$fname,$lname);
+                while (mysqli_stmt_fetch($userid)){
+                   echo "<label>Naam:</label>$fname $lname";
                 }
                 mysqli_close($link);
                 ?>
                 <div id="factuur">
                     <p><?php
+                    /*
                         include"link.php";
-                        $stmt = mysqli_prepare($link, "SELECT first_name, last_name FROM User WHERE mail='$username'");
-                        mysqli_stmt_execute($stmt);
-                        mysqli_stmt_bind_result($stmt, $fname, $lname);
-                        while (mysqli_stmt_fetch($stmt))
+                        $stmt0 = mysqli_prepare($link, "SELECT first_name, last_name FROM User WHERE userid= $userid");
+                        mysqli_stmt_execute($stmt0);
+                        mysqli_stmt_bind_result($stmt0, $fname, $lname);
+                        while (mysqli_stmt_fetch($stmt0))
                         {
                             echo "<label>Naam:</label>$fname $lname";
                         }
                         mysqli_close($link);
+                        echo "<label>Naam:</label>$fname $lname";*/
                         ?>
                     </p>
 
@@ -63,21 +64,18 @@
                         mysqli_close($link);
                         ?>
                     <p><?php
+                        //$invoiceID = $_POST["invoice_number"];
                         include "link.php";
                         $stat2 = mysqli_prepare($link, "SELECT date, payment_completed FROM invoice WHERE user_id = $user");
                         mysqli_stmt_execute($stat2);
                         mysqli_stmt_bind_result($stat2, $date, $payment_completed);
                         while (mysqli_stmt_fetch($stat2))
                         {
-                            
+                            echo "<label>Factuurnummer:</label>$invoiceID";
+                            echo "<br>";
+                            echo "<label>Datum:</label>$date";
                         }
                         mysqli_close($link);
-
-                        $invoice = $_POST["CID"];
-
-                        echo "<label>Factuurnummer:</label>$invoiceID";
-                        echo "<br>";
-                        echo "<label>Datum:</label>$date";
                         ?>
                     </p>
                     <p>

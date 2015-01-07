@@ -129,8 +129,8 @@ else
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                . "<td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td>"
-                                . "<td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>"
+                                . "<td><input type='image' src='afbeeldingen/bekijken.png' name='ticket_id[$ticket_ID]' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' name='Beantwoorden[$ticket_ID]'formaction='AdminTicketBeantwoorden.php'>"
                                 . "<input type='hidden' name='ticket_id' value=$ticket_ID></td></tr>";
                             }
                         }
@@ -150,8 +150,8 @@ else
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                . "<td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td>"
-                                . "<td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>"
+                                . "<td><input type='image' src='afbeeldingen/bekijken.png' name='ticket_id[$ticket_ID]' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' name='Beantwoorden[$ticket_ID]'formaction='AdminTicketBeantwoorden.php'>"
                                 . "<input type='hidden' name='ticket_id' value=$ticket_ID></td></tr>";
                             }
                         }
@@ -171,8 +171,8 @@ else
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                . "<td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td>"
-                                . "<td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>"
+                                . "<td><input type='image' src='afbeeldingen/bekijken.png' name='ticket_id[$ticket_ID]' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' name='Beantwoorden[$ticket_ID]'formaction='AdminTicketBeantwoorden.php'>"
                                 . "<input type='hidden' name='ticket_id' value=$ticket_ID></td></tr>";
                             }
                         }
@@ -192,8 +192,8 @@ else
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                . "<td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td>"
-                                . "<td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>"
+                                . "<td><input type='image' src='afbeeldingen/bekijken.png' name='ticket_id[$ticket_ID]' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' name='Beantwoorden[$ticket_ID]'formaction='AdminTicketBeantwoorden.php'>"
                                 . "<input type='hidden' name='ticket_id' value=$ticket_ID></td></tr>";
                             }
                         }
@@ -213,8 +213,8 @@ else
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                . "<td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td>"
-                                . "<td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>"
+                                . "<td><input type='image' src='afbeeldingen/bekijken.png' name='ticket_id[$ticket_ID]' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' name='Beantwoorden[$ticket_ID]'formaction='AdminTicketBeantwoorden.php'>"
                                 . "<input type='hidden' name='ticket_id' value=$ticket_ID></td></tr>";
                             }
                         }
@@ -234,8 +234,8 @@ else
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                . "<td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td>"
-                                . "<td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>"
+                                . "<td><input type='image' src='afbeeldingen/bekijken.png' name='ticket_id[$ticket_ID]' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' name='Beantwoorden[$ticket_ID]'formaction='AdminTicketBeantwoorden.php'>"
                                 . "<input type='hidden' name='ticket_id' value=$ticket_ID></td></tr>";
                             }
                         }
@@ -255,8 +255,8 @@ else
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                . "<td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td>"
-                                . "<td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>"
+                                . "<td><input type='image' src='afbeeldingen/bekijken.png' name='ticket_id[$ticket_ID]' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' name='Beantwoorden[$ticket_ID]'formaction='AdminTicketBeantwoorden.php'>"
                                 . "<input type='hidden' name='ticket_id' value=$ticket_ID></td></tr>";
                             }
                         }
@@ -276,8 +276,8 @@ else
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                . "<td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td>"
-                                . "<td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>"
+                                . "<td><input type='image' src='afbeeldingen/bekijken.png' name='ticket_id[$ticket_ID]' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' name='Beantwoorden[$ticket_ID]'formaction='AdminTicketBeantwoorden.php'>"
                                 . "<input type='hidden' name='ticket_id' value=$ticket_ID></td></tr>";
                             }
                         }
@@ -297,8 +297,8 @@ else
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                . "<td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td>"
-                                . "<td><input type='submit' name='Beantwoorden[$ticket_ID]' Value='Beantwoorden' formaction='AdminTicketBeantwoorden.php'>"
+                                . "<td><input type='image' src='afbeeldingen/bekijken.png' name='ticket_id[$ticket_ID]' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' name='Beantwoorden[$ticket_ID]'formaction='AdminTicketBeantwoorden.php'>"
                                 . "<input type='hidden' name='ticket_id' value=$ticket_ID></td></tr>";
                             }
                         }
@@ -385,7 +385,7 @@ else
                                 {
                                     $payment_completed = "Niet betaald";
                                 }
-                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='submit' name='invoice_number[$invoice_number]' value='Bekijken' formaction='AdminFactuurInzien.php'></td></tr>";
+                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='image' src='afbeeldingen/bekijken.png'name='invoice_number[$invoice_number]' formaction='AdminFactuurInzien.php'></td></tr>";
                             }
                         }
                         elseif (isset($_POST["sortfacDESC"]))
@@ -403,7 +403,7 @@ else
                                 {
                                     $payment_completed = "Niet betaald";
                                 }
-                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='submit' name='invoice_number[$invoice_number]' value='Bekijken' formaction='AdminFactuurInzien.php'></td></tr>";
+                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='image' src='afbeeldingen/bekijken.png'name='invoice_number[$invoice_number]' formaction='AdminFactuurInzien.php'></td></tr>";
                             }
                         }
                         elseif (isset($_POST["sortkl"]))
@@ -421,7 +421,7 @@ else
                                 {
                                     $payment_completed = "Niet betaald";
                                 }
-                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='submit' name='invoice_number[$invoice_number]' value='Bekijken' formaction='AdminFactuurInzien.php'></td></tr>";
+                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='image' src='afbeeldingen/bekijken.png'name='invoice_number[$invoice_number]' formaction='AdminFactuurInzien.php'></td></tr>";
                             }
                         }
                         elseif (isset($_POST["sortklDESC"]))
@@ -439,7 +439,7 @@ else
                                 {
                                     $payment_completed = "Niet betaald";
                                 }
-                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='submit' name='invoice_number[$invoice_number]' value='Bekijken' formaction='AdminFactuurInzien.php'></td></tr>";
+                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='image' src='afbeeldingen/bekijken.png'name='invoice_number[$invoice_number]' formaction='AdminFactuurInzien.php'></td></tr>";
                             }
                         }
                         elseif (isset($_POST["sortanmd"]))
@@ -457,7 +457,7 @@ else
                                 {
                                     $payment_completed = "Niet betaald";
                                 }
-                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='submit' name='invoice_number[$invoice_number]' value='Bekijken' formaction='AdminFactuurInzien.php'></td></tr>";
+                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='image' src='afbeeldingen/bekijken.png'name='invoice_number[$invoice_number]' formaction='AdminFactuurInzien.php'></td></tr>";
                             }
                         }
                         elseif (isset($_POST["sortanmdDESC"]))
@@ -475,7 +475,7 @@ else
                                 {
                                     $payment_completed = "Niet betaald";
                                 }
-                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='submit' name='invoice_number[$invoice_number]' value='Bekijken' formaction='AdminFactuurInzien.php'></td></tr>";
+                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='image' src='afbeeldingen/bekijken.png'name='invoice_number[$invoice_number]' formaction='AdminFactuurInzien.php'></td></tr>";
                             }
                         }
                         elseif (isset($_POST["sortstat"]))
@@ -493,7 +493,7 @@ else
                                 {
                                     $payment_completed = "Niet betaald";
                                 }
-                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='submit' name='invoice_number[$invoice_number]' value='Bekijken' formaction='AdminFactuurInzien.php'></td></tr>";
+                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='image' src='afbeeldingen/bekijken.png'name='invoice_number[$invoice_number]' formaction='AdminFactuurInzien.php'></td></tr>";
                             }
                         }
                         elseif (isset($_POST["sortstatDESC"]))
@@ -511,7 +511,7 @@ else
                                 {
                                     $payment_completed = "Niet betaald";
                                 }
-                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='submit' name='invoice_number[$invoice_number]' value='Bekijken' formaction='AdminFactuurInzien.php'></td></tr>";
+                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='image' src='afbeeldingen/bekijken.png'name='invoice_number[$invoice_number]' formaction='AdminFactuurInzien.php'></td></tr>";
                             }
                         }
                         else
@@ -529,7 +529,7 @@ else
                                 {
                                     $payment_completed = "Niet betaald";
                                 }
-                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='submit'  name='invoice_number[$invoice_number]' value='Bekijken' formaction='AdminFactuurInzien.php'></td></tr>";
+                                echo "<tr><td>$invoice_number</td><td>$customer_id </td> <td> $date</td> <td> $payment_completed </td><td><input type='checkbox' name='close/wijzig[$invoice_number]'></td><td><input type='image' src='afbeeldingen/bekijken.png'name='invoice_number[$invoice_number]' formaction='AdminFactuurInzien.php'></td></tr>";
                             }
                         }
                         ?>
