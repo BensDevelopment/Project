@@ -1,7 +1,7 @@
 <?php
 echo ("<div id='gebruiker'>
                 <ul id='nav'>
-                    <li><a href='#'> <img src='img/gebruiker.png' style='margin-top: -5px;'> <div id='showname'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Admin</div> <img  src='img/pijltje.png' id='pijltje'></a>
+                    <li><a href='#'> <img src='afbeeldingen/gebruiker.png' style='margin-top: -5px;'> <div id='showname'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Admin</div> <img  src='afbeeldingen/pijltje.png' id='pijltje'></a>
                         <ul>
                             <li><a href='AdminOverzicht.php'>Home</a></li>
                             <li id='uitloggen'><a href='Adminlogin.php?link=loguit'>Uitloggen</a></li>
