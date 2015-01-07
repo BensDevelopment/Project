@@ -11,7 +11,9 @@
                     <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
                 <div id="menu">
-                    <?php include "menu.php"; ?>
+                    <?php 
+                    include "menu.php"; 
+                    ?>
                 </div>
             </header>
             <div id="slider">
