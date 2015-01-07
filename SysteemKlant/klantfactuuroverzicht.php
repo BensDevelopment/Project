@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php session_start(); ?>
-<!-- Bart Holsappel-->
+<!-- Bart Holsappel, Joshua van Gelder-->
 <html>
     <head>
         <meta charset="UTF-8">

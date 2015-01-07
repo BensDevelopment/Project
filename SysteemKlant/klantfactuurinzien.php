@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--Bart Holsappel -->
+<!--Bart Holsappel, Joshua van Gelder-->
 <html>
     <head>
         <meta charset="UTF-8">

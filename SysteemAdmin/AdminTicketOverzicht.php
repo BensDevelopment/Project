@@ -354,32 +354,6 @@ else
                 <form>
                     <input type="submit" name="back" value="Terug" formaction="AdminOverzicht.php">
                 </form>
-                <!--
-                <br><br><br>
-                <h1>Gesloten Tickets:<br></h1>
-                <table>
-                    <tr><th>Klant</th><th>Catagorie</th><th>Aanmaak datum</th><th>Status</th><th></th><th>Bekijken</th></tr>
-                <?php /*
-                  include "link.php";
-                  $stmt11 = mysqli_prepare($link, "SELECT C.company_name, category, creation_date, completed_status, ticket_id FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id WHERE T.archived_status = 1");
-                  mysqli_stmt_execute($stmt11);
-                  mysqli_stmt_bind_result($stmt11, $company_name, $category, $creation, $completed, $ticket_ID);
-                  while (mysqli_stmt_fetch($stmt11))
-                  {
-                  if ($completed == 1)
-                  {
-                  $completed = "Gesloten";
-                  }
-                  else
-                  {
-                  $completed = "Open";
-                  }
-                  echo "<form method='POST' action='AdminTicketSelecteren'><tr><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='Open[$ticket_ID]'></td><td><input type='submit' name='ticket_id[$ticket_ID]' value='Bekijken'></td></tr>";
-                  } */
-                ?>
-                    <input type ="submit" name="Openen" Value="Openen" formaction="">
-                    <input type="submit" name="Wijzigen" Value="Wijzigen" formaction="AdminTicketWijzigen.php">
-                </table> -->
             </div>
             <?php
                 if (isset($_POST["Openen"]) || isset($_POST["Sluiten"])) {
