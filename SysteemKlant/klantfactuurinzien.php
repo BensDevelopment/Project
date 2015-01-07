@@ -122,7 +122,33 @@
                     <?php
                     if (isset($_POST["betaald"]))
                     {
-                        
+                        /* Mail word verzonden als deze online staat
+                            $to = 'financial@bensdevelopment.nl';
+                            $subject = "Factuur: $invoiceID is betaald";
+                            $message = "
+                            <html>
+                            <head>
+                              <title>Deze factuur is betaald</title>
+                            </head>
+                            <body>
+                              <p>
+                              Goedendag,<br>
+                              Factuur: $invoiceID is betaald
+                                  
+                              Met vriendelijke groet,
+                              $company_name<br>
+                              <br>
+                              $fname $lname
+                              </p>
+                            </body>
+                            </html>
+                            ";
+                            $headers  = 'MIME-Version: 1.0' . "\r\n";
+                            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                            $headers .= 'From: <financial@bensdevelopment>' . "\r\n"; //support is de juiste mail van Bens Development.
+
+                            mail($to, $subject, $message, $headers); 
+                         */
                     }
                     ?>
                     <br>
