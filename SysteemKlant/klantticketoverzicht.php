@@ -142,7 +142,7 @@
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sortcatDESC"]))
@@ -162,7 +162,7 @@
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sortct"]))
@@ -182,7 +182,7 @@
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sortctDESC"]))
@@ -202,7 +202,7 @@
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sortstat"]))
@@ -222,7 +222,7 @@
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sortstatDESC"]))
@@ -242,7 +242,7 @@
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sorttitDESC"]))
@@ -262,7 +262,7 @@
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sorttit"]))
@@ -282,7 +282,7 @@
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         else
@@ -302,7 +302,7 @@
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'</form></tr>";
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         ?>
