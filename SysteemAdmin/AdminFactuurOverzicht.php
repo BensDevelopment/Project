@@ -52,6 +52,7 @@ else
             <div id='content'>
                 <h1>Facturen</h1>
                 <br>
+                <form method="POST" action="AdminFactuurOverzicht.php">
                 <table>
                     <tr>
                         <th>
