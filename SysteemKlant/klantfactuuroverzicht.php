@@ -83,7 +83,7 @@
                         $stat = mysqli_prepare($link, "SELECT invoice_number, date, payment_completed FROM invoice WHERE user_id = $user");
                         mysqli_stmt_execute($stat);
                         mysqli_stmt_bind_result($stat, $invoice_number, $date, $pc);
-                        echo "<table><tr><th>Factuur nummer</th><th>Datum</th><th>Status</th></tr>";
+                        echo "<table><tr><th>Factuur nummer</th><th>Datum</th><th>Status</th><th>Bekijken</th></tr>";
                         while (mysqli_stmt_fetch($stat))
                         {
                             if ($pc == 0)

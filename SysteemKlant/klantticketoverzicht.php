@@ -119,9 +119,9 @@
                                 }
                                 ?>
                             </th>                            
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>Bekijken</th>
+                            <th>Wijzigen</th>
+                            <th>Beantwoorden</th>
                         </tr>
                         <?php
                         include'link.php';
@@ -141,7 +141,7 @@
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
@@ -161,7 +161,7 @@
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
@@ -181,7 +181,7 @@
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
@@ -201,7 +201,7 @@
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
@@ -221,7 +221,7 @@
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
@@ -241,7 +241,7 @@
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
@@ -261,7 +261,7 @@
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
@@ -281,7 +281,7 @@
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
@@ -301,7 +301,7 @@
                                     $completed = "Open";
                                 }
                                 echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/bekijken.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }

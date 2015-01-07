@@ -52,8 +52,8 @@
                 if ($count == 0)
                 {
                     include "link.php";
-                    $description = mysqli_prepare($link, "SELECT T.category, T.description, T.completed_status, T.creation_date FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id=$ticketid");
-                    mysqli_stmt_bind_result($description, $cat, $desc, $completed, $creation);
+                    $description = mysqli_prepare($link, "SELECT T.title,T.category, T.description, T.completed_status, T.creation_date FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id=$ticketid");
+                    mysqli_stmt_bind_result($description, $titel, $cat, $desc, $completed, $creation);
                     mysqli_stmt_execute($description);
                     while (mysqli_stmt_fetch($description))
                     {
@@ -73,8 +73,8 @@
                 else
                 {
                     include "link.php";
-                    $description = mysqli_prepare($link, "SELECT T.category, T.description, T.completed_status, T.creation_date FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id=$ticketid");
-                    mysqli_stmt_bind_result($description, $cat, $desc, $completed, $creation);
+                    $description = mysqli_prepare($link, "SELECT T.title,T.category, T.description, T.completed_status, T.creation_date FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id=$ticketid");
+                    mysqli_stmt_bind_result($description, $titel, $cat, $desc, $completed, $creation);
                     mysqli_stmt_execute($description);
                     while (mysqli_stmt_fetch($description))
                     {
@@ -87,7 +87,8 @@
                         {
                             echo "Open";
                         }
-                        echo "<br><label>Omschrijving:</label><br><table><td class='table_reactie'><span class='datum'>$creation</span><br>$desc</td></table>";
+                        echo "<br><label>Tickettitel:</label> $titel";
+                        echo "<br><br><label>Omschrijving:</label><br><table><td class='table_reactie'><span class='datum'>Datum: $creation</span><br>$desc</td></table>";
                     }
                     mysqli_close($link);
                     include "link.php";
