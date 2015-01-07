@@ -301,6 +301,7 @@ if ($_SESSION["login"] != 1) {
             <form method='POST' action='AdminKlantInzien.php'>
                 <?php
                 include "link.php";
+                
                 if (isset($_POST["sortfac"])) {
                     $stmt12 = mysqli_prepare($link, "SELECT invoice_number, customer_id , date , payment_completed FROM Invoice WHERE customer_id = $customerID ORDER BY invoice_number");
                     mysqli_stmt_execute($stmt12);
