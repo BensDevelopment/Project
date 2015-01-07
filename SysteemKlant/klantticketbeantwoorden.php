@@ -51,7 +51,7 @@
                     {
                         echo "Open";
                     }
-                    echo "<br><br><label>Omschrijving:</label><br><table><td class='table_reactie'><span class='datum'>$creation</span><br>$desc</td></table>";
+                    echo "<br><br><label>Omschrijving:</label><br><table><td class='table_reactie'><span class='datum'>Datum: $creation</span><br>$desc</td></table>";
                 }
 
                 $stmt2 = mysqli_prepare($link, "SELECT text, time, U.mail FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticketid");
@@ -60,7 +60,7 @@
                 echo "<br><label>Reactie:</label>";
                 while (mysqli_stmt_fetch($stmt2))
                 {
-                    echo "<br><table><td class='table_reactie'><span class='datum'>$time</span><br>$text</table>";
+                    echo "<br><table><td class='table_reactie'><span class='datum'>Datum: $time</span><br>$text</table>";
                 }
                 ?>
                 <br>

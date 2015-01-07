@@ -428,6 +428,9 @@ ul li:hover ul {
     margin-top:8px;
 }
 textArea{
+    font-family:Arial,Times;
+    border:1px solid lightgray;
+    border-radius:4px;
     max-width: 800px;
     min-width: 500px;
     min-height: 250px;
