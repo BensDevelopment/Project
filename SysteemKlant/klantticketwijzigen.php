@@ -66,6 +66,7 @@
                             <option value="website">Website</option>
                             <option value="cms">CMS</option>
                             <option value="hosting">Hosting</option>
+                            <option value="factuur">Factuur</option>
                         </select>                                                            
                     </p> 
                     <p>Beschrijving:</p>
