@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Bens Developement</title>
-        <link href="stijl.css" rel="stylesheet" type="text/css"/>
+        <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id='bovenbalk'>
@@ -74,8 +74,8 @@
             </div>
         </div>
         <?php 
-                include 'footeradmin.php';
-                ?>
+            include 'include/php/footeradmin.php';
+        ?>
     </body>
 </html>
 </body>

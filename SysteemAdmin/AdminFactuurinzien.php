@@ -4,7 +4,7 @@
         <head>
             <meta charset="UTF-8">
             <title>Admin Systeem</title>
-            <link href="stijl.css" rel="stylesheet" type="text/css"/>
+            <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
         </head>
         <body>
 
@@ -13,7 +13,7 @@
                     <img src="img/logo-bens.png" alt="">
                 </div>
                 <?php
-                include 'menu.php';
+                include 'include/php/menu.php';
                 ?>
             </div>
             <div id='content'>
@@ -100,9 +100,9 @@
                 	<br>
             	</div>
         	</div></div>
-    	<footer>
-<?php include 'footeradmin.php'; ?>
-    	</footer>
+        <?php 
+        include 'include/php/footeradmin.php'; 
+        ?>
 	</body>
 </html>
 

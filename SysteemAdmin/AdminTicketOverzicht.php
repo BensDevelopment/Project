@@ -29,7 +29,7 @@ if ($_SESSION["login"] != 1) {
         <head>
             <meta charset="UTF-8">
             <title>Admin Systeem</title>
-            <link href="stijl.css" rel="stylesheet" type="text/css"/>
+            <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
         </head>
         <body>
 
@@ -37,9 +37,9 @@ if ($_SESSION["login"] != 1) {
                 <div id='logo'>
                     <img src="img/logo-bens.png" alt="">
                 </div>
-                <?php
-                include 'menu.php';
-                ?>
+            <?php
+                include 'include/php/menu.php';
+            ?>
             </div>
             <div id='content'>
                 <div id="ticket">
@@ -271,12 +271,12 @@ echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</
                 </form>
             </div>
             <?php
-            if (isset($_POST["Openen"]) || isset($_POST["Sluiten"])) {
-                if (empty($_POST["close/wijzig"])) {
-                    echo'<p class="foutmelding"> U heeft geen ticket geselecteerd.</p>';
+                if (isset($_POST["Openen"]) || isset($_POST["Sluiten"])) {
+                    if (empty($_POST["close/wijzig"])) {
+                        echo'<p class="foutmelding"> U heeft geen ticket geselecteerd.</p>';
+                    }
                 }
-            }
-            include 'footeradmin.php';
+                include 'include/php/footeradmin.php';
             ?>
         </body>
     </html>

@@ -23,7 +23,7 @@ if ($_SESSION["login"] != 1) {
         <head>
             <meta charset="UTF-8">
             <title>Admin Systeem</title>
-            <link href="stijl.css" rel="stylesheet" type="text/css">
+            <link href="include/css/stijl.css" rel="stylesheet" type="text/css"/>
         </head>
         <body>
             <div id='bovenbalk'>
@@ -31,7 +31,7 @@ if ($_SESSION["login"] != 1) {
                     <img src="img/logo-bens.png" alt="">
                 </div>
                 <?php
-                include 'menu.php';
+                    include 'include/php/menu.php';
                 ?>
             </div>
             <div id='content'>
@@ -78,7 +78,7 @@ if ($_SESSION["login"] != 1) {
                 </div>
             </div>
             <?php
-            include 'footeradmin.php';
+                include 'include/php/footeradmin.php';
             ?>
         </body>
     </html>
