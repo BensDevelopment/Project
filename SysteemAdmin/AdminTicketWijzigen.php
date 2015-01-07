@@ -34,12 +34,12 @@ if ($_SESSION["login"] != 1) {
                     $category = $_POST["categorie"];
                     $CID = $_POST["Customer_ID"];
                     $titel = $_POST["titel"];
-                    $insert = mysqli_prepare($link, "UPDATE ticket SET last_time_date=NOW(), description='$description', user_id=$userid, category='$category', customer_id=$CID, titel='$titel' WHERE ticket_id=$ticket_id");
+                    $insert = mysqli_prepare($link, "UPDATE ticket SET last_time_date=NOW(), description='$description', user_id=$userid, category='$category', customer_id=$CID, title='$titel' WHERE ticket_id=$ticket_id");
                     mysqli_stmt_execute($insert);
                 } else {
                     $ticket_id = $_POST['ticket_id'];
                 }
-                $stmt1 = mysqli_prepare($link, "SELECT T.customer_id, creation_date, last_time_date, send_date, T.user_id, C.company_name, U.mail, category, description, T.titel FROM ticket T JOIN customer C On c.customer_id = T.customer_id JOIN User U ON U.user_id = T.user_id WHERE ticket_id=$ticket_id ");
+                $stmt1 = mysqli_prepare($link, "SELECT T.customer_id, creation_date, last_time_date, send_date, T.user_id, C.company_name, U.mail, category, description, T.title FROM ticket T JOIN customer C On c.customer_id = T.customer_id JOIN User U ON U.user_id = T.user_id WHERE ticket_id=$ticket_id ");
                 mysqli_stmt_bind_result($stmt1, $CID, $creation, $lastchanged, $send, $userid, $compname, $mail, $category, $desc, $titel);
                 mysqli_execute($stmt1);
                 while (mysqli_stmt_fetch($stmt1)) {
