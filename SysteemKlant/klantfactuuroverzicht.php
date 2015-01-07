@@ -97,7 +97,7 @@
                                 {
                                     $ps = "Betaald";
                                 }
-                                echo "<form method='POST'><tr><td>$invoice_number</td><td>$date</td><td>$ps</td><td><input type='hidden' name='invoice_number' value='$invoice_number'><input type='submit' name='submit' value='Bekijken' formaction='klantfactuurinzien.php'></form></td></tr>";
+                                echo "<form method='POST'><tr><td>$invoice_number</td><td>$date</td><td>$ps</td><td><input type='hidden' name='invoice_number' value='$invoice_number'><input type='image' src='afbeeldingen/bekijken.png'name='submit'  formaction='klantfactuurinzien.php'></form></td></tr>";
                             }
                             print ("</table>");
                             ?>
