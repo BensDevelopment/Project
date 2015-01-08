@@ -46,9 +46,9 @@ else
                 <div id='logo'>
                     <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
-            <?php
+                <?php
                 include 'include/php/menu.php';
-            ?>
+                ?>
             </div>
             <div id='content'>
                 <div id="ticket">
@@ -116,7 +116,7 @@ else
                                     echo "<form class='table_hdr' method='POST' action='AdminTicketOverzicht.php'><input type='submit' name='sortstat' value='Status'></form>";
                                 }
                                 ?>
-                            </th>
+                            </th>                            
                             <th></th>
                             <th>Bekijken</th>
                             <th>Beantwoorden</th>
@@ -344,8 +344,8 @@ else
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr></form>";
                                 }
                             }
-                            ?>
-                    </table>
+                            ?>                       
+                    </table>                                                
                 </div>
                 <input type="submit" name="WijzigenTO" Value="Wijzigen" formaction="AdminTicketWijzigen.php">
                 <!--
@@ -360,12 +360,14 @@ else
                 </form>
             </div>
             <?php
-                if (isset($_POST["Openen"]) || isset($_POST["Sluiten"])) {
-                    if (empty($_POST["close/wijzig"])) {
-                        echo'<p class="foutmelding"> U heeft geen ticket geselecteerd.</p>';
-                    }
+            if (isset($_POST["Openen"]) || isset($_POST["Sluiten"]))
+            {
+                if (empty($_POST["close/wijzig"]))
+                {
+                    echo'<p class="foutmelding"> U heeft geen ticket geselecteerd.</p>';
                 }
-                include 'include/php/footeradmin.php';
+            }
+            include 'include/php/footeradmin.php';
             ?>
         </body>
     </html>
