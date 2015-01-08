@@ -36,6 +36,7 @@ if ($_SESSION["login"] != 1) {
                     mysqli_stmt_execute($status);
                     mysqli_stmt_fetch($status);
                     mysqli_close($link);
+                    
                     if ($count == 0) {
                         include "link.php";
                         $description = mysqli_prepare($link, "SELECT T.category, T.description, T.completed_status, T.creation_date, T.title, C.company_name FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id=$ticket_id");
@@ -75,11 +76,14 @@ if ($_SESSION["login"] != 1) {
                             echo "<br><table class='table_admin'><td class='table_reactie'>$firstname<br><span class='datum'>$time</span><br>$text<br></td></table>";
                         }
                     }
-                    ?><br>
+                    echo '
+                      <br>
                     <form method="POST" action="AdminTicketBeantwoorden.php">
-                        <input type="submit" name="antwoord" value="Ticket beantwoorden">
-                        <input type='hidden' name='ticket_id' value=<?php $ticket_ID ?>>
-                    </form>
+                        <input type="submit" name="Beantwoorden" value="Ticket beantwoorden">
+                        <input type="hidden" name="ticket_id" value="'.$ticket_id.'">
+                    </form>  
+                   ';
+                    ?>
                     <form method="POST" action=''>
                         <input type='submit' name='terug' value='Terug' formaction="AdminTicketOverzicht.php">
                         <!--
