@@ -51,7 +51,8 @@
 
                     <p><?php
                         include "link.php";
-                        $stat1 = mysqli_prepare($link, "SELECT company_name, street, house_number, city, kvk_number, btw_number FROM Customer WHERE customer_id = $user");
+                        $cid=$_POST["cid"];
+                        $stat1 = mysqli_prepare($link, "SELECT company_name, street, house_number, city, kvk_number, btw_number FROM Customer WHERE customer_id = $cid");
                         mysqli_stmt_execute($stat1);
                         mysqli_stmt_bind_result($stat1, $company_name, $street, $housen, $city, $kvk, $btw);
                         while (mysqli_stmt_fetch($stat1))
