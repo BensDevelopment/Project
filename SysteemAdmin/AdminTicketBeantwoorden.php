@@ -86,11 +86,12 @@ else
                         Uw antwoord:<br>
                     <form method="POST">
                         <textarea name="beschrijving"></textarea><br>
-                        <input type='submit' name='terug' value='Terug' formaction='AdminTicketOverzicht.php'>
                         <input type="submit" name="submit" value="Beantwoorden" formaction="AdminTicketBeantwoorden.php">
                         <input type="hidden" name="ticket_id" value='<?php echo $ticketid ?>'>
-                        
                     </form>
+                        <form action='AdminTicketOverzicht.php'>
+                            <input type='submit' name='terug' value='Terug'>
+                        </form>
                 </div>
             </div>
             <?php
