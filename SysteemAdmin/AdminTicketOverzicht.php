@@ -117,20 +117,47 @@ else
                                 ?>
                             </th>                            
                             <th></th>
-                            <th></th>
-                        </tr>                        
-                        <?php
-                        include "link.php";
-                        if (isset($_POST["sortcat"]))
-                        { // Elke if en elseif die hier volgen zijn verschillende clausules voor omhoog en omlaag gesorteerde categorien.
-                            $stmt4 = mysqli_prepare($link, "SELECT T.title, C.company_name, T.category, T.creation_date, T.completed_status, T.ticket_id FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY category ASC");
-                            mysqli_stmt_execute($stmt4);
-                            mysqli_stmt_bind_result($stmt4, $titel, $company_name, $category, $creation, $completed, $ticket_ID);
-                            while (mysqli_stmt_fetch($stmt4))
+                            <th>Bekijken</th>
+                            <th>Beantwoorden</th>
+                        </tr>
+                        <form method="POST" action="AdminTicketOverzicht.php">
+                            <?php
+                            include "link.php";
+                            if (isset($_POST["sortcat"]))
+                            { // Elke if en elseif die hier volgen zijn verschillende clausules voor omhoog en omlaag gesorteerde categorien.
+                                $stmt4 = mysqli_prepare($link, "SELECT title, C.company_name, category, creation_date, completed_status, ticket_id FROM Ticket T JOIN Customer C ON T.customer_id = C.customer_id ORDER BY category ASC");
+                                mysqli_stmt_execute($stmt4);
+                                mysqli_stmt_bind_result($stmt4, $titel, $company_name, $category, $creation, $completed, $ticket_ID);
+                                while (mysqli_stmt_fetch($stmt4))
+                                {
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
+                                }
+                            }
+                            elseif (isset($_POST["sortcatDESC"]))
                             {
                                 if ($completed == 1)
                                 {
-                                    $completed = "Gesloten";
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                                 else
                                 {
@@ -151,7 +178,17 @@ else
                             {
                                 if ($completed == 1)
                                 {
-                                    $completed = "Gesloten";
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                                 else
                                 {
@@ -172,7 +209,17 @@ else
                             {
                                 if ($completed == 1)
                                 {
-                                    $completed = "Gesloten";
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                                 else
                                 {
@@ -193,7 +240,17 @@ else
                             {
                                 if ($completed == 1)
                                 {
-                                    $completed = "Gesloten";
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                                 else
                                 {
@@ -214,7 +271,17 @@ else
                             {
                                 if ($completed == 1)
                                 {
-                                    $completed = "Gesloten";
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                                 else
                                 {
@@ -235,7 +302,17 @@ else
                             {
                                 if ($completed == 1)
                                 {
-                                    $completed = "Gesloten";
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                                 else
                                 {
@@ -256,7 +333,17 @@ else
                             {
                                 if ($completed == 1)
                                 {
-                                    $completed = "Gesloten";
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                                 else
                                 {
@@ -277,7 +364,17 @@ else
                             {
                                 if ($completed == 1)
                                 {
-                                    $completed = "Gesloten";
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                                 else
                                 {
@@ -298,7 +395,17 @@ else
                             {
                                 if ($completed == 1)
                                 {
-                                    $completed = "Gesloten";
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                                 else
                                 {
@@ -319,7 +426,17 @@ else
                             {
                                 if ($completed == 1)
                                 {
-                                    $completed = "Gesloten";
+                                    if ($completed == 1)
+                                    {
+                                        $completed = "Gesloten";
+                                    }
+                                    else
+                                    {
+                                        $completed = "Open";
+                                    }
+                                    echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                                 else
                                 {

@@ -12,18 +12,19 @@ else
 {
     if (isset($_POST["submit"]))
     {
-        $_SESSION = $_POST['ticket_id'];
+        //$_SESSION = $_POST['ticket_id'];
         $ticketid = $_POST['ticket_id'];
         include "link.php"; //Met deze query wordt de nieuwe reactie in de tabel gezet.
         $description = $_POST["beschrijving"];
-        $login = $_SESSION['username'];
+        $login = $_SESSION["username"];
+
         $query1 = mysqli_prepare($link, "SELECT user_id FROM user WHERE mail ='$login'");
         mysqli_stmt_execute($query1);
         mysqli_stmt_bind_result($query1, $loginid);
         while(mysqli_stmt_fetch($query1)){
             $user_id = $loginid;
         }
-        $reactionquery = mysqli_prepare($link, "INSERT INTO Reaction SET ticket_id=$ticketid, text='$description', time=NOW(), user_id=$user_id");
+        $reactionquery = mysqli_prepare($link, "INSERT INTO reaction SET ticket_id=$ticketid, text='$description', time=NOW(), user_id=$user_id");
         mysqli_stmt_execute($reactionquery);
     }
     else
@@ -82,14 +83,15 @@ else
                     }
                     ?>
                     <br>
-                    <form method="POST">
                         Uw antwoord:<br>
+                    <form method="POST">
                         <textarea name="beschrijving"></textarea><br>
-                        <input type='submit' name='terug' value='Terug' formaction='AdminTicketOverzicht.php'>
                         <input type="submit" name="submit" value="Beantwoorden" formaction="AdminTicketBeantwoorden.php">
                         <input type="hidden" name="ticket_id" value='<?php echo $ticketid ?>'>
-                        
                     </form>
+                        <form action='AdminTicketOverzicht.php'>
+                            <input type='submit' name='terug' value='Terug'>
+                        </form>
                 </div>
             </div>
             <?php
