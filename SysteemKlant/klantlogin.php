@@ -51,7 +51,7 @@
                 { //Hier wordt gecontroleerd of de login knop ingedrukt is.
                     $username = $_POST["username"];
                     $password = $_POST["password"];
-                    $hash = sha512($password, $unique_salt); //Hiermee wordt het ingevoerde wachtwoord omgezet in een Hash
+                    $hash = sha512($password, unique_salt()); //Hiermee wordt het ingevoerde wachtwoord omgezet in een Hash
                     $login = $_POST["login"];
                     if (empty($username) || empty($password) || empty($username) && empty($password))
                     {// Deze if loop controleerd of alle velden zijn ingevuld
@@ -64,7 +64,7 @@
                         {//met de volgend if loop wordt bepaald of er goed is ingelogd.
                             $username = $_POST["username"];
                             $password = $_POST["password"];
-                            $hash = sha512($password, $unique_salt);
+                            $hash = sha512($password, unique_salt());
                             $result = mysqli_query($link, "SELECT mail, password FROM User WHERE mail='$username' AND password='$hash'");
                             $rows = mysqli_num_rows($result);
                             if ($rows == 1)
