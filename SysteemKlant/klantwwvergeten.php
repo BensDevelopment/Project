@@ -62,7 +62,7 @@
                         	return $result; //Hier wordt het resultaat terug gegeven.
                     	}
                     	$random_password = makepassword(10); //de variabel krijgt een willekeurige waarde met 10 characters.
-                    	$hash = sha512($random_password, $unique_salt);
+                    	$hash = sha512($random_password, unique_salt());
                     	$final_result = mysqli_query($link, "UPDATE user SET password ='$hash' WHERE mail = '$email' "); //willekeuringe waarde word opgeslagen.
                     	if ($final_result) //Als de willekeurige waarde is gemaakt en opgeslagen...
                     	{
