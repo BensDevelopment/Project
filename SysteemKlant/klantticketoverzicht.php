@@ -109,6 +109,18 @@
                             </th>
                             <th>
                                 <?php
+                                if (isset($_POST["sortscn"]))
+                                {
+                                    echo "<form class='table_hdr' method='POST' action='klantticketoverzicht.php'><input type='submit' name='sortcnDESC' value='Bedrijf'></form>";
+                                }
+                                else
+                                {
+                                    echo "<form class='table_hdr' method='POST' action='klantticketoverzicht.php'><input type='submit' name='sortcn' value='Bedrijf'></form>";
+                                }
+                                ?>
+                            </th> 
+                            <th>
+                               <?php
                                 if (isset($_POST["sortstat"]))
                                 {
                                     echo "<form class='table_hdr' method='POST' action='klantticketoverzicht.php'><input type='submit' name='sortstatDESC' value='Status'></form>";
@@ -117,19 +129,19 @@
                                 {
                                     echo "<form class='table_hdr' method='POST' action='klantticketoverzicht.php'><input type='submit' name='sortstat' value='Status'></form>";
                                 }
-                                ?>
-                            </th>                            
-                            <th>Bekijken</th>
-                            <th>Wijzigen</th>
-                            <th>Beantwoorden</th>
+                                ?> 
+                            </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                         <?php
                         include'link.php';
                         if (isset($_POST["sortcat"]))
                         {
-                            $stmt4 = mysqli_prepare($link, " SELECT title, category, creation_date, completed_status, ticket_id FROM Ticket WHERE user_id=$user ORDER BY category");
+                            $stmt4 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user ORDER BY T.category");
                             mysqli_stmt_execute($stmt4);
-                            mysqli_stmt_bind_result($stmt4, $titel, $category, $creation, $completed, $ticketid);
+                            mysqli_stmt_bind_result($stmt4, $titel, $category, $creation, $completed, $ticketid, $companyname);
                             while (mysqli_stmt_fetch($stmt4))
                             {
                                 if ($completed == 1)
@@ -140,16 +152,16 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sortcatDESC"]))
                         {
-                            $stmt5 = mysqli_prepare($link, " SELECT title, category, creation_date, completed_status, ticket_id FROM Ticket WHERE user_id=$user  ORDER BY category DESC");
+                            $stmt5 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user  ORDER BY T.category DESC");
                             mysqli_stmt_execute($stmt5);
-                            mysqli_stmt_bind_result($stmt5, $titel, $category, $creation, $completed, $ticketid);
+                            mysqli_stmt_bind_result($stmt5, $titel, $category, $creation, $completed, $ticketid, $companyname);
                             while (mysqli_stmt_fetch($stmt5))
                             {
                                 if ($completed == 1)
@@ -160,16 +172,16 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sortct"]))
                         {
-                            $stmt6 = mysqli_prepare($link, " SELECT title, category, creation_date, completed_status, ticket_id FROM Ticket WHERE user_id=$user ORDER BY creation_date ");
+                            $stmt6 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user ORDER BY T.creation_date ");
                             mysqli_stmt_execute($stmt6);
-                            mysqli_stmt_bind_result($stmt6, $titel, $category, $creation, $completed, $ticketid);
+                            mysqli_stmt_bind_result($stmt6, $titel, $category, $creation, $completed, $ticketid, $companyname);
                             while (mysqli_stmt_fetch($stmt6))
                             {
                                 if ($completed == 1)
@@ -180,16 +192,16 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sortctDESC"]))
                         {
-                            $stmt7 = mysqli_prepare($link, " SELECT title, category, creation_date, completed_status, ticket_id FROM ticket WHERE user_id=$user ORDER BY creation_date DESC ");
+                            $stmt7 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user ORDER BY T.creation_date DESC ");
                             mysqli_stmt_execute($stmt7);
-                            mysqli_stmt_bind_result($stmt7, $titel, $category, $creation, $completed, $ticketid);
+                            mysqli_stmt_bind_result($stmt7, $titel, $category, $creation, $completed, $ticketid, $companyname);
                             while (mysqli_stmt_fetch($stmt7))
                             {
                                 if ($completed == 1)
@@ -200,16 +212,16 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sortstat"]))
                         {
-                            $stmt8 = mysqli_prepare($link, " SELECT title, category, creation_date, completed_status, ticket_id FROM ticket WHERE user_id=$user ORDER BY completed_status");
+                            $stmt8 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user ORDER BY T.completed_status");
                             mysqli_stmt_execute($stmt8);
-                            mysqli_stmt_bind_result($stmt8, $titel, $category, $creation, $completed, $ticketid);
+                            mysqli_stmt_bind_result($stmt8, $titel, $category, $creation, $completed, $ticketid, $companyname);
                             while (mysqli_stmt_fetch($stmt8))
                             {
                                 if ($completed == 1)
@@ -220,16 +232,16 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sortstatDESC"]))
                         {
-                            $stmt9 = mysqli_prepare($link, " SELECT title, category, creation_date, completed_status, ticket_id FROM ticket WHERE user_id=$user ORDER BY completed_status DESC ");
+                            $stmt9 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user ORDER BY T.completed_status DESC ");
                             mysqli_stmt_execute($stmt9);
-                            mysqli_stmt_bind_result($stmt9, $titel, $category, $creation, $completed, $ticketid);
+                            mysqli_stmt_bind_result($stmt9, $titel, $category, $creation, $completed, $ticketid, $companyname);
                             while (mysqli_stmt_fetch($stmt9))
                             {
                                 if ($completed == 1)
@@ -240,56 +252,16 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
                         }
                         elseif (isset($_POST["sorttitDESC"]))
                         {
-                            $stmt9 = mysqli_prepare($link, " SELECT title, category, creation_date, completed_status, ticket_id FROM ticket WHERE user_id=$user ORDER BY title DESC ");
-                            mysqli_stmt_execute($stmt9);
-                            mysqli_stmt_bind_result($stmt9, $titel, $category, $creation, $completed, $ticketid);
-                            while (mysqli_stmt_fetch($stmt9))
-                            {
-                                if ($completed == 1)
-                                {
-                                    $completed = "Gesloten";
-                                }
-                                else
-                                {
-                                    $completed = "Open";
-                                }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
-                            }
-                        }
-                        elseif (isset($_POST["sorttit"]))
-                        {
-                            $stmt9 = mysqli_prepare($link, " SELECT title, category, creation_date, completed_status, ticket_id FROM ticket WHERE user_id=$user ORDER BY title ");
-                            mysqli_stmt_execute($stmt9);
-                            mysqli_stmt_bind_result($stmt9, $titel, $category, $creation, $completed, $ticketid);
-                            while (mysqli_stmt_fetch($stmt9))
-                            {
-                                if ($completed == 1)
-                                {
-                                    $completed = "Gesloten";
-                                }
-                                else
-                                {
-                                    $completed = "Open";
-                                }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
-                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
-                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
-                            }
-                        }
-                        else
-                        {
-                            $stmt10 = mysqli_prepare($link, "SELECT title, category, creation_date, completed_status, ticket_id FROM Ticket WHERE user_id=$user ORDER BY completed_status");
+                            $stmt10 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user ORDER BY T.title DESC ");
                             mysqli_stmt_execute($stmt10);
-                            mysqli_stmt_bind_result($stmt10, $titel, $category, $creation, $completed, $ticketid);
+                            mysqli_stmt_bind_result($stmt10, $titel, $category, $creation, $completed, $ticketid, $companyname);
                             while (mysqli_stmt_fetch($stmt10))
                             {
                                 if ($completed == 1)
@@ -300,7 +272,87 @@
                                 {
                                     $completed = "Open";
                                 }
-                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
+                            }
+                        }
+                        elseif (isset($_POST["sorttit"]))
+                        {
+                            $stmt11 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user ORDER BY T.title ");
+                            mysqli_stmt_execute($stmt11);
+                            mysqli_stmt_bind_result($stmt11, $titel, $category, $creation, $completed, $ticketid, $companyname);
+                            while (mysqli_stmt_fetch($stmt11))
+                            {
+                                if ($completed == 1)
+                                {
+                                    $completed = "Gesloten";
+                                }
+                                else
+                                {
+                                    $completed = "Open";
+                                }
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
+                            }
+                        }
+                        elseif (isset($_POST["sortcnDESC"]))
+                        {
+                            $stmt12 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user ORDER BY C.company_name DESC ");
+                            mysqli_stmt_execute($stmt12);
+                            mysqli_stmt_bind_result($stmt12, $titel, $category, $creation, $completed, $ticketid, $companyname);
+                            while (mysqli_stmt_fetch($stmt12))
+                            {
+                                if ($completed == 1)
+                                {
+                                    $completed = "Gesloten";
+                                }
+                                else
+                                {
+                                    $completed = "Open";
+                                }
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
+                            }
+                        }
+                        elseif (isset($_POST["sortcn"]))
+                        {
+                            $stmt13 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user ORDER BY C.company_name ");
+                            mysqli_stmt_execute($stmt13);
+                            mysqli_stmt_bind_result($stmt13, $titel, $category, $creation, $completed, $ticketid, $companyname);
+                            while (mysqli_stmt_fetch($stmt13))
+                            {
+                                if ($completed == 1)
+                                {
+                                    $completed = "Gesloten";
+                                }
+                                else
+                                {
+                                    $completed = "Open";
+                                }
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
+                                . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
+                                . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
+                            }
+                        }
+                        else
+                        {
+                            $stmt14 = mysqli_prepare($link, "SELECT T.title, T.category, T.creation_date, T.completed_status, T.ticket_id, C.company_name FROM Ticket T JOIN Customer C ON C.customer_id=T.customer_id WHERE T.user_id=$user ORDER BY completed_status");
+                            mysqli_stmt_execute($stmt14);
+                            mysqli_stmt_bind_result($stmt14, $titel, $category, $creation, $completed, $ticketid, $companyname);
+                            while (mysqli_stmt_fetch($stmt14))
+                            {
+                                if ($completed == 1)
+                                {
+                                    $completed = "Gesloten";
+                                }
+                                else
+                                {
+                                    $completed = "Open";
+                                }
+                                echo "<tr><td>$titel</td><td>$category</td><td>$creation</td><td>$companyname</td><td>$completed</td><td><form method = 'POST'><input type='image' src='afbeeldingen/bekijken.png'formaction='klantticketinzien.php' ></td>"
                                 . "<td><input type='image' src='afbeeldingen/wijzigen.png' formaction='klantticketwijzigen.php'></td><td><input type='image' src='afbeeldingen/toevoegen.png' formaction='klantticketbeantwoorden.php'></td>"
                                 . "<input type='hidden' name='ticketid' value='$ticketid'></form></tr>";
                             }
