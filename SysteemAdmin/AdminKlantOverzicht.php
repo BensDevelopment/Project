@@ -31,7 +31,7 @@
                 print("<table><tr><th>Bedrijfsnaam</th><th>E-mail</th><th></th></tr>");
                 while (mysqli_stmt_fetch($stat))
                 {
-                    print("<form method='POST' action='AdminKlantInzien.php' ><tr><td>$comname</td><td>$mail</td><td><input type='hidden' name='CID' value='$CID'><input type='image' src='afbeeldingen/bekijken.png'name='submit' ></form></td></tr>");
+                    print("<form method='POST' action='AdminKlantInzien.php' ><tr><td>$comname</td><td>$mail</td><td><input type='hidden' name='CID' value='$CID'><input type='submit' name='submit' value='Bekijken'></form></td></tr>");
                 } // Door de name te veranderen naar CID[$CID] kan je hem aanvragen op andere pagina's
                 print ("</table>");
                 ?>

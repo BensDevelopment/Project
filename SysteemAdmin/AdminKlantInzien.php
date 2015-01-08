@@ -53,6 +53,9 @@ else
                     mysqli_close($link);
                     ?>
                 </p>
+                <form class="knop_link" method="post" action="AdminKlantOverzicht.php">
+                    <input type="submit" name="back" value="Terug">
+                </form>
                 </div> 
                 <?php
             include 'include/php/footeradmin.php';
