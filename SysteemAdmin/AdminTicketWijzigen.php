@@ -76,9 +76,10 @@ if ($_SESSION["login"] != 1) {
                 <br>";
                 }
                 ?>
-
-                <input type="submit" name="Terug" value="Terug" formaction="AdminTicketOverzicht.php">
                 <input type="submit" name="Wijzigen" value="Wijzigen">
+                </form>
+                <form action="AdminTicketOverzicht.php">
+                 <input type="submit" name="Terug" value="Terug">
                 </form>
             </div>
             <?php
