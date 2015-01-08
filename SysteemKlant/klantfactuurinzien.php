@@ -14,7 +14,7 @@
                 </div>                
                 <div id="menu">
                     <?php
-                        include 'include/php/menubackend.php';
+                    include 'include/php/menubackend.php';
                     ?>
                 </div>
             </header>            
@@ -27,31 +27,34 @@
                 $password = $_SESSION['password'];
                 $userid = mysqli_prepare($link, "SELECT user_id,first_name, last_name FROM User WHERE mail='$username'");
                 mysqli_stmt_execute($userid);
-                mysqli_stmt_bind_result($userid,$user,$fname,$lname);
-                while (mysqli_stmt_fetch($userid)){
-                   echo "<label>Naam:</label>$fname $lname";
+                mysqli_stmt_bind_result($userid, $user, $fname, $lname);
+                while (mysqli_stmt_fetch($userid))
+                {
+                    echo "<label>Naam:</label>$fname $lname";
                 }
                 mysqli_close($link);
                 ?>
                 <div id="factuur">
                     <p><?php
-                    /*
-                        include"link.php";
-                        $stmt0 = mysqli_prepare($link, "SELECT first_name, last_name FROM User WHERE userid= $userid");
-                        mysqli_stmt_execute($stmt0);
-                        mysqli_stmt_bind_result($stmt0, $fname, $lname);
-                        while (mysqli_stmt_fetch($stmt0))
-                        {
-                            echo "<label>Naam:</label>$fname $lname";
-                        }
-                        mysqli_close($link);
-                        echo "<label>Naam:</label>$fname $lname";*/
+                        /*
+                          include"link.php";
+                          $stmt0 = mysqli_prepare($link, "SELECT first_name, last_name FROM User WHERE userid= $userid");
+                          mysqli_stmt_execute($stmt0);
+                          mysqli_stmt_bind_result($stmt0, $fname, $lname);
+                          while (mysqli_stmt_fetch($stmt0))
+                          {
+                          echo "<label>Naam:</label>$fname $lname";
+                          }
+                          mysqli_close($link);
+                          echo "<label>Naam:</label>$fname $lname"; */
                         ?>
                     </p>
 
-                    <p><?php
+                    <p>
+                        <?php
                         include "link.php";
-                        $stat1 = mysqli_prepare($link, "SELECT company_name, street, house_number, city, kvk_number, btw_number FROM Customer WHERE customer_id = $user");
+                        $cid = $_POST["cid"];
+                        $stat1 = mysqli_prepare($link, "SELECT company_name, street, house_number, city, kvk_number, btw_number FROM Customer WHERE customer_id = $cid");
                         mysqli_stmt_execute($stat1);
                         mysqli_stmt_bind_result($stat1, $company_name, $street, $housen, $city, $kvk, $btw);
                         while (mysqli_stmt_fetch($stat1))
@@ -63,7 +66,8 @@
 
                         mysqli_close($link);
                         ?>
-                    <p><?php
+                    <p>
+                        <?php
                         $invoiceID = $_POST["invoice_number"];
                         include "link.php";
                         $stat2 = mysqli_prepare($link, "SELECT date, payment_completed FROM invoice WHERE user_id = $user");
@@ -123,31 +127,31 @@
                     if (isset($_POST["betaald"]))
                     {
                         /* Mail word verzonden als deze online staat
-                            $to = 'financial@bensdevelopment.nl';
-                            $subject = "Factuur: $invoiceID is betaald";
-                            $message = "
-                            <html>
-                            <head>
-                              <title>Deze factuur is betaald</title>
-                            </head>
-                            <body>
-                              <p>
-                              Goedendag,<br>
-                              Factuur: $invoiceID is betaald
-                                  
-                              Met vriendelijke groet,
-                              $company_name<br>
-                              <br>
-                              $fname $lname
-                              </p>
-                            </body>
-                            </html>
-                            ";
-                            $headers  = 'MIME-Version: 1.0' . "\r\n";
-                            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-                            $headers .= 'From: <financial@bensdevelopment>' . "\r\n"; //support is de juiste mail van Bens Development.
+                          $to = 'financial@bensdevelopment.nl';
+                          $subject = "Factuur: $invoiceID is betaald";
+                          $message = "
+                          <html>
+                          <head>
+                          <title>Deze factuur is betaald</title>
+                          </head>
+                          <body>
+                          <p>
+                          Goedendag,<br>
+                          Factuur: $invoiceID is betaald
 
-                            mail($to, $subject, $message, $headers); 
+                          Met vriendelijke groet,
+                          $company_name<br>
+                          <br>
+                          $fname $lname
+                          </p>
+                          </body>
+                          </html>
+                          ";
+                          $headers  = 'MIME-Version: 1.0' . "\r\n";
+                          $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                          $headers .= 'From: <financial@bensdevelopment>' . "\r\n"; //support is de juiste mail van Bens Development.
+
+                          mail($to, $subject, $message, $headers);
                          */
                     }
                     ?>
@@ -155,8 +159,8 @@
                 </div>
             </div></div>
         <footer>
-            <?php 
-                include 'include/php/footer.php'; 
+            <?php
+            include 'include/php/footer.php';
             ?>
         </footer>
     </body>

@@ -73,15 +73,15 @@
                             while (mysqli_stmt_fetch($company_name))
                             {
                                 echo " $companyname ";
-                            }                            
+                            }
                         }
                         ?>
                         <br>
                     <p>Facturen: <?php
                         include"link.php";
-                        $stat = mysqli_prepare($link, "SELECT invoice_number, date, payment_completed FROM invoice WHERE user_id = $user");
+                        $stat = mysqli_prepare($link, "SELECT invoice_number, date, payment_completed, customer_id FROM invoice WHERE user_id = $user");
                         mysqli_stmt_execute($stat);
-                        mysqli_stmt_bind_result($stat, $invoice_number, $date, $pc);
+                        mysqli_stmt_bind_result($stat, $invoice_number, $date, $pc, $cid);
                         echo "<table><tr><th>Factuur nummer</th><th>Datum</th><th>Status</th><th>Bekijken</th></tr>";
                         while (mysqli_stmt_fetch($stat))
                         {
@@ -94,7 +94,8 @@
                                 $ps = "Betaald";
                             }
                             echo "<tr><td>$invoice_number</td><td>$date</td><td>$ps</td><td><form method='POST'><input type='hidden' name='invoice_number' value='$invoice_number'>"
-                            . "<input type='image' src='afbeeldingen/bekijken.png' name='submit' formaction='klantfactuurinzien.php'></form></td></tr>";
+                            . "<input type='image' src='afbeeldingen/bekijken.png' name='submit' formaction='klantfactuurinzien.php'>"
+                            . "<input type=hidden name='cid' value='$cid'></form></td></tr>";
                         }
                         print ("</table>");
                         ?>
