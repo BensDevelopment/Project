@@ -347,9 +347,9 @@ else
                             ?>                       
                     </table>                                                
                 </div>
-                <input type="submit" name="WijzigenTO" Value="Wijzigen" formaction="AdminTicketWijzigen.php">
                 <!--
                 Dit is een optie voor Bens Development, dit is als optie ingevuld.
+                <input type="submit" name="WijzigenTO" Value="Wijzigen" formaction="AdminTicketWijzigen.php">
                 <input type ="submit" name="Sluiten" Value="Sluiten" formaction="">
                 <input type="submit" name="Openen" Value="Open" formaction="">
                 -->
