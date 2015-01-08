@@ -78,7 +78,10 @@ if ($_SESSION["login"] != 1) {
                     ?><br>
                     <form method="POST" action=''>
                         <input type='submit' name='terug' value='Terug' formaction="AdminTicketOverzicht.php">
+                        <!--
+                        Optie voor ticket doorsturen naar 3e partijen, Bens Development zal dit zelf invullen
                         <input type='submit' name='Wijzigen' value='Doorsturen' formaction='#'>
+                        -->
                     </form>
                     <form method="POST" action="AdminTicketBeantwoorden.php">
                         <input type="submit" name="antwoord" value="Ticket beantwoorden">
