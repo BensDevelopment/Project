@@ -53,8 +53,8 @@ else
                     include "link.php";
                     $ticketid = $_POST["ticket_id"];
                     //De if loop is hieronder nodig om te true/false status van de ticket om te zetten naar text.
-                    $description = mysqli_prepare($link, "SELECT T.category, T.description, T.completed_status, T.creation_date, T.title FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id=$ticketid");
-                    mysqli_stmt_bind_result($description, $cat, $desc, $completed, $creation, $titel);
+                    $description = mysqli_prepare($link, "SELECT T.ticket_id, T.category, T.description, T.completed_status, T.creation_date, T.title FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id= $ticketid");
+                    mysqli_stmt_bind_result($description, $ticket_ID, $cat, $desc, $completed, $creation, $titel);
                     mysqli_stmt_execute($description);
                     while (mysqli_stmt_fetch($description))
                     {
@@ -72,7 +72,7 @@ else
                     }
                     mysqli_close($link);
                     include "link.php";
-                    $reactions = mysqli_prepare($link, "SELECT text, time, U.mail, U.first_name FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticketid ORDER BY time");
+                    $reactions = mysqli_prepare($link, "SELECT text, time, U.mail, U.first_name FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticket_ID ORDER BY time");
                     mysqli_stmt_bind_result($reactions, $text, $time, $mail, $first_name);
                     mysqli_stmt_execute($reactions); // Deze query wordt gebruikt om alle reacties uit de reaction tabel te halen.
                     echo "<br><label>Reactie:</label>";
