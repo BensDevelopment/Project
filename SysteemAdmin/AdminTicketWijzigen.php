@@ -2,11 +2,14 @@
 <!-- Joshua van Gelder, Jeffrey Hamberg, Daan Hagemans, Sander van der Stelt, Léyon Courtz-->
 <?php
 session_start();
-if ($_SESSION["login"] != 1) {
+if ($_SESSION["login"] != 1)
+{
     echo 'YOU DONT BELONG HERE';
     session_unset();
     session_destroy();
-} else {
+}
+else
+{
     ?>
     <html>
         <head>
@@ -19,15 +22,16 @@ if ($_SESSION["login"] != 1) {
                 <div id='logo'>
                     <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
-                <?php
-                    include 'include/php/menu.php';
-                ?>
+    <?php
+    include 'include/php/menu.php';
+    ?>
             </div>
             <div id='content'>
                 <?php
                 // Hieronder wordt gechecked welke POST gebruikt moet worden
                 include 'link.php';
-                if (isset($_POST["Wijzigen"])) {
+                if (isset($_POST["Wijzigen"]))
+                {
                     $ticket_id = $_POST["ticket_id"];
                     $description = $_POST["Description"];
                     $userid = $_POST["User_ID"];
@@ -36,13 +40,16 @@ if ($_SESSION["login"] != 1) {
                     $titel = $_POST["titel"];
                     $insert = mysqli_prepare($link, "UPDATE ticket SET last_time_date=NOW(), description='$description', user_id=$userid, category='$category', customer_id=$CID, title='$titel' WHERE ticket_id=$ticket_id");
                     mysqli_stmt_execute($insert);
-                } else {
+                }
+                else
+                {
                     $ticket_id = $_POST['ticket_id'];
                 }
                 $stmt1 = mysqli_prepare($link, "SELECT T.customer_id, creation_date, last_time_date, send_date, T.user_id, C.company_name, U.mail, category, description, T.title FROM ticket T JOIN customer C On c.customer_id = T.customer_id JOIN User U ON U.user_id = T.user_id WHERE ticket_id=$ticket_id ");
                 mysqli_stmt_bind_result($stmt1, $CID, $creation, $lastchanged, $send, $userid, $compname, $mail, $category, $desc, $titel);
                 mysqli_execute($stmt1);
-                while (mysqli_stmt_fetch($stmt1)) {
+                while (mysqli_stmt_fetch($stmt1))
+                {
                     echo"
                 <form action='' method='POST'>
                     <label>Klant ID: </label><label><input type='text' value='$CID' name='Customer_ID'></label><br><br>
@@ -70,7 +77,8 @@ if ($_SESSION["login"] != 1) {
                 mysqli_stmt_bind_result($stmt2, $text, $time, $mail);
                 mysqli_execute($stmt2);
                 echo '<label>Reactie:</label><br>';
-                while (mysqli_stmt_fetch($stmt2)) {
+                while (mysqli_stmt_fetch($stmt2))
+                {
                     echo"
                 <br><table class='table_admin'><td class='table_reactie'><span class='datum'>Aan: $mail<br>$time</span><br>$text</td></table>
                 <br>";
@@ -79,12 +87,12 @@ if ($_SESSION["login"] != 1) {
                 <input type="submit" name="Wijzigen" value="Wijzigen">
                 </form>
                 <form action="AdminTicketOverzicht.php">
-                 <input type="submit" name="Terug" value="Terug">
+                    <input type="submit" name="Terug" value="Terug">
                 </form>
             </div>
-            <?php
-                include 'include/php/footeradmin.php';
-            ?>
+    <?php
+    include 'include/php/footeradmin.php';
+    ?>
         </body>
     </html>
 

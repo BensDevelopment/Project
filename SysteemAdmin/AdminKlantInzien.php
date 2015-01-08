@@ -30,9 +30,14 @@ else
             <div id='content'>
                 <p><?php
                     include "link.php";
-                    if(isset($_POST['CID'])){
+                    if (isset($_POST['CID']))
+                    {
                         $_SESSION["CID"] = $_POST['CID'];
-                    } else {}
+                    }
+                    else
+                    {
+                        
+                    }
                     $customerID = $_SESSION['CID'];
                     echo "<label>Klant ID:</label><label>" . $customerID . "</label>";
                     if ($customerID != "")
@@ -56,10 +61,10 @@ else
                 <form class="knop_link" method="post" action="AdminKlantOverzicht.php">
                     <input type="submit" name="back" value="Terug">
                 </form>
-                </div> 
-                <?php
-            include 'include/php/footeradmin.php';
-            ?>
+            </div> 
+    <?php
+    include 'include/php/footeradmin.php';
+    ?>
         </body>
     </html>
 <?php }

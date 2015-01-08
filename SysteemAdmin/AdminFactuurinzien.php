@@ -31,7 +31,7 @@
                 <div id="factuur">
                     <?php
                     include "link.php";
-                    $invoiceID = $_POST["invoice_number"];                
+                    $invoiceID = $_POST["invoice_number"];
                     echo '<h1>Factuur nummer: ' . $invoiceID . '</h1>';
                     if ($invoiceID != "")
                     { //customer (gebruiker) wordt gezocht die correspondeert met de juiste factuurnummer.
@@ -76,14 +76,14 @@
                         include"link.php"; //Artikelen worden opgehaald met aantal, bedrag en omschrijvingen.
                         $stmt3 = mysqli_prepare($link, "SELECT line_id, invoice_number, description, description2, amount, price, btw FROM line WHERE invoice_number = $invoiceID");
                         mysqli_stmt_execute($stmt3);
-                        mysqli_stmt_bind_result($stmt3, $lineID, $IN, $D1, $D2, $amount, $price, $BTW);                        
+                        mysqli_stmt_bind_result($stmt3, $lineID, $IN, $D1, $D2, $amount, $price, $BTW);
                         echo "<table><th>Beschrijving</th><th>Aantal</th><th>Prijs</th>";
                         while ($rij = mysqli_stmt_fetch($stmt3))
                         {
-                            echo "<tr><td>$D1</td><td>$amount</td><td>€ $price</td></tr>";                           
+                            echo "<tr><td>$D1</td><td>$amount</td><td>€ $price</td></tr>";
                         }
-                        
-                        $total=mysqli_prepare($link, "SELECT SUM(price) FROM line WHERE invoice_number=$invoiceID");
+
+                        $total = mysqli_prepare($link, "SELECT SUM(price) FROM line WHERE invoice_number=$invoiceID");
                         mysqli_stmt_execute($total);
                         mysqli_stmt_bind_result($total, $subtotal);
                         mysqli_stmt_fetch($total);
@@ -106,16 +106,16 @@
                     </p>
                     <form class="knop_link" method="post" action="AdminFactuuroverzicht.php">
                         <input type="submit" name="back" value="Terug">
-    <?php
-}
-?>
+                        <?php
+                    }
+                    ?>
                 </form>
                 <br>
             </div>
         </div></div>
-<?php
-include 'include/php/footeradmin.php';
-?>
+    <?php
+    include 'include/php/footeradmin.php';
+    ?>
 </body>
 </html>
 
