@@ -13,14 +13,14 @@
                 <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
             </div>
             <?php
-                include 'include/php/menu.php';
+            include 'include/php/menu.php';
             ?>
         </div>
 
         <div id='content'>
             <h1>Klanten</h1>
-                <br>
-            <p><?php                
+            <br>
+            <p><?php
                 include "link.php";
                 $username = $_SESSION["username"];
                 $password = $_SESSION["password"];
@@ -39,8 +39,8 @@
                 <input type="submit" name="back" value="Terug">
             </form>
         </div>
-        <?php 
-            include 'include/php/footeradmin.php';
+        <?php
+        include 'include/php/footeradmin.php';
         ?>       
     </body>
 </html>

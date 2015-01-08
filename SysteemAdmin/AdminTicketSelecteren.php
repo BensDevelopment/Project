@@ -96,17 +96,17 @@ else
                     <form method="POST">
                         <input type="submit" name="Beantwoorden" value="Ticket beantwoorden" formaction="AdminTicketBeantwoorden.php">
                         <?php
-                        $ticketid=$_POST["ticket_id"];
+                        $ticketid = $_POST["ticket_id"];
                         $openorclosed = mysqli_prepare($link, "SELECT completed_status FROM Ticket WHERE ticket_id=$ticketid");
                         mysqli_stmt_bind_result($openorclosed, $cs);
-                        mysqli_stmt_execute($openorclosed);                        
+                        mysqli_stmt_execute($openorclosed);
                         if ($cs == 1)
                         {
                             ?>
                             <input type="submit" name="Close" value="Sluiten" formaction="AdminTicketSelecteren.php">
                             <?php
                         }
-                        if($cs == 0)
+                        if ($cs == 0)
                         {
                             ?>
                             <input type="submit" name="Open" value="Openen" formaction="AdminTicketSelecteren.php">
@@ -116,14 +116,14 @@ else
                         <input type="hidden" name="ticket_id" value="<?php echo $ticket_id ?>">
                     </form>
                     <?php
-                    if(isset($_POST["Close"]))
+                    if (isset($_POST["Close"]))
                     {
-                        $update1=mysqli_prepare($link, "UPDATE Ticket SET completed_status=1 WHERE ticket_id=$ticket_id");
+                        $update1 = mysqli_prepare($link, "UPDATE Ticket SET completed_status=1 WHERE ticket_id=$ticket_id");
                         mysqli_stmt_execute($update1);
                     }
-                    if(isset($_POST["Open"]))
+                    if (isset($_POST["Open"]))
                     {
-                        $update2=mysqli_prepare($link, "UPDATE Ticket SET completed_status=0 WHERE ticket_id=$ticket_id");
+                        $update2 = mysqli_prepare($link, "UPDATE Ticket SET completed_status=0 WHERE ticket_id=$ticket_id");
                         mysqli_stmt_execute($update2);
                     }
                     ?>

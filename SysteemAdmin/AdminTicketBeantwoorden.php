@@ -21,7 +21,8 @@ else
         $query1 = mysqli_prepare($link, "SELECT user_id FROM user WHERE mail ='$login'");
         mysqli_stmt_execute($query1);
         mysqli_stmt_bind_result($query1, $loginid);
-        while(mysqli_stmt_fetch($query1)){
+        while (mysqli_stmt_fetch($query1))
+        {
             $user_id = $loginid;
         }
         $reactionquery = mysqli_prepare($link, "INSERT INTO reaction SET ticket_id=$ticketid, text='$description', time=NOW(), user_id=$user_id");
@@ -44,7 +45,7 @@ else
                     <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
                 <?php
-                    include 'include/php/menu.php';
+                include 'include/php/menu.php';
                 ?>
             </div>
             <div id='content'>
@@ -83,19 +84,19 @@ else
                     }
                     ?>
                     <br>
-                        Uw antwoord:<br>
+                    Uw antwoord:<br>
                     <form method="POST">
                         <textarea name="beschrijving"></textarea><br>
                         <input type="submit" name="submit" value="Beantwoorden" formaction="AdminTicketBeantwoorden.php">
                         <input type="hidden" name="ticket_id" value='<?php echo $ticketid ?>'>
                     </form>
-                        <form action='AdminTicketOverzicht.php'>
-                            <input type='submit' name='terug' value='Terug'>
-                        </form>
+                    <form action='AdminTicketOverzicht.php'>
+                        <input type='submit' name='terug' value='Terug'>
+                    </form>
                 </div>
             </div>
             <?php
-                include 'include/php/footeradmin.php';
+            include 'include/php/footeradmin.php';
             ?>
         </body>
     </html>
