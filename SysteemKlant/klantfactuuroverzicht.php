@@ -52,7 +52,7 @@
                     <p>Naam: <?php echo "$fname $lname"; ?>
                     </p>
                     <p>
-                        Bedrijfsnaam: <?php
+                        <?php
                         include "link.php";
 
                         $count = mysqli_prepare($link, "SELECT COUNT(C.company_name) FROM Customer C JOIN Customer_User U ON U.user_id=C.customer_id WHERE U.user_id=$user");
@@ -61,20 +61,19 @@
                         mysqli_stmt_fetch($count);
                         if ($ammount == 1)
                         {
-                            echo "$name";
+                            echo "Bedrijfsnaam: $name";
                         }
                         else
                         {
-                            echo "<select name=company_name>";
+                            echo "Bedrijsnamen:";
                             include "link.php";
                             $company_name = mysqli_prepare($link, "SELECT C.company_name, C.customer_id FROM Customer C JOIN Customer_User U ON U.customer_id=C.customer_id WHERE U.user_id=$user");
                             mysqli_stmt_execute($company_name);
                             mysqli_stmt_bind_result($company_name, $companyname, $customerid);
                             while (mysqli_stmt_fetch($company_name))
                             {
-                                echo "<option value='$customerid'>$companyname</option>";
-                            }
-                            echo "</select>";
+                                echo " $companyname ";
+                            }                            
                         }
                         ?>
                         <br>
