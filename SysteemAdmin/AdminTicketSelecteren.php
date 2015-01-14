@@ -33,7 +33,7 @@ else
                     <?php
                     include "link.php";
                     //De Ticked_iD wordt hieronder uit de form gehaald omdat het in array form wordt opgeslagen.
-                    $ticket_id = $_POST["ticket_id"];
+                    $ticket_id = $_POST["bekijken"];
                     $status = mysqli_prepare($link, "SELECT COUNT(reaction_id) FROM Reaction WHERE ticket_id=$ticket_id");
                     mysqli_stmt_bind_result($status, $count);
                     mysqli_stmt_execute($status);

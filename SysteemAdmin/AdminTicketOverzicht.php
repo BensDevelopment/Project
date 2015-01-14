@@ -113,7 +113,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortcatDESC"])) {
@@ -127,7 +127,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortct"])) {
@@ -141,7 +141,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortctDESC"])) {
@@ -155,7 +155,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortcomp"])) {
@@ -169,7 +169,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortcompDESC"])) {
@@ -183,7 +183,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortstat"])) {
@@ -197,7 +197,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sortstatDESC"])) {
@@ -211,7 +211,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sorttitDESC"])) {
@@ -225,7 +225,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } elseif (isset($_POST["sorttit"])) {
@@ -239,7 +239,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             } else {
@@ -253,7 +253,7 @@ if ($_SESSION["login"] != 1) {
                                         $completed = "Open";
                                     }
                                     echo "<tr><td>$titel</td><td>$company_name</td><td>$category</td><td>$creation</td><td>$completed</td><td><input type='checkbox' name='close/wijzig[$ticket_ID]'></td>"
-                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
+                                    . "<td><input type='image' src='afbeeldingen/bekijken.png' name='bekijken' value=$ticket_ID formaction= 'AdminTicketSelecteren.php'><input type='hidden' name='ticket_id' value=$ticket_ID></td>"
                                     . "<td><input type='image' src='afbeeldingen/toevoegen.png' name='Beantwoorden'  formaction='AdminTicketBeantwoorden.php'></td><input type='hidden' name='ticket_id' value=$ticket_ID></tr>";
                                 }
                             }
