@@ -109,6 +109,7 @@
                         $description = $_POST["beschrijving"];
                         $reactionquery = mysqli_prepare($link, "INSERT INTO Reaction SET ticket_id=$ticketid, text='$description', time=NOW(), user_id=$login");
                         mysqli_stmt_execute($reactionquery);
+                        header("klanticketbeantwoorden.php");
                     }
                     ?>               
                     <input type='submit' name='terug' value='terug' formaction="klantticketoverzicht.php">
