@@ -37,40 +37,42 @@ if ($_SESSION["login"] != 1) {
                 <div id='logo'>
                     <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
-    <?php
-    include 'include/php/menu.php';
-    ?>
+                <?php
+                include 'include/php/menu.php';
+                ?>
             </div>
             <div id='content'>
                 <h1>Ticket beantwoorden</h1>
                 <div id="ticket">
-                <?php
-                include "link.php";
-                $ticketid = $_POST["Beantwoorden"];
-                //De if loop is hieronder nodig om te true/false status van de ticket om te zetten naar text.
-                $description = mysqli_prepare($link, "SELECT T.ticket_id, T.category, T.description, T.completed_status, T.creation_date, T.title FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id= $ticketid");
-                mysqli_stmt_bind_result($description, $ticket_ID, $cat, $desc, $completed, $creation, $titel);
-                mysqli_stmt_execute($description);
-                while (mysqli_stmt_fetch($description)) {
-
-                    echo "<label>Titel: </label>$titel<br><label>Categorie:</label> $cat<br><label>Status:</label> ";
-                    if ($completed == 1) {
-                        echo "Gesloten";
-                    } else {
-                        echo "Open";
+                    <?php
+                    include "link.php";
+                    if (isset($_POST['Beantwoorden'])) {
+                        $ticketid = $_POST["Beantwoorden"];
                     }
-                    echo "<br><br><label>Omschrijving:</label><br><table class='table_admin'><td class='table_reactie'><span class='datum'>$creation</span><br>$desc</td></table>";
-                }
-                mysqli_close($link);
-                include "link.php";
-                $reactions = mysqli_prepare($link, "SELECT text, time, U.mail, U.first_name FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticket_ID ORDER BY time");
-                mysqli_stmt_bind_result($reactions, $text, $time, $mail, $first_name);
-                mysqli_stmt_execute($reactions); // Deze query wordt gebruikt om alle reacties uit de reaction tabel te halen.
-                echo "<br><label>Reactie:</label>";
-                while (mysqli_stmt_fetch($reactions)) {
-                    echo "<br><table class='table_admin'><td class='table_reactie'>$first_name<br><span class='datum'>$time</span><br>$text</td></table>";
-                }
-                ?>
+                    //De if loop is hieronder nodig om te true/false status van de ticket om te zetten naar text.
+                    $description = mysqli_prepare($link, "SELECT T.ticket_id, T.category, T.description, T.completed_status, T.creation_date, T.title FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id= $ticketid");
+                    mysqli_stmt_bind_result($description, $ticket_ID, $cat, $desc, $completed, $creation, $titel);
+                    mysqli_stmt_execute($description);
+                    while (mysqli_stmt_fetch($description)) {
+
+                        echo "<label>Titel: </label>$titel<br><label>Categorie:</label> $cat<br><label>Status:</label> ";
+                        if ($completed == 1) {
+                            echo "Gesloten";
+                        } else {
+                            echo "Open";
+                        }
+                        echo "<br><br><label>Omschrijving:</label><br><table class='table_admin'><td class='table_reactie'><span class='datum'>$creation</span><br>$desc</td></table>";
+                    }
+                    mysqli_close($link);
+                    include "link.php";
+                    $reactions = mysqli_prepare($link, "SELECT text, time, U.mail, U.first_name FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticket_ID ORDER BY time");
+                    mysqli_stmt_bind_result($reactions, $text, $time, $mail, $first_name);
+                    mysqli_stmt_execute($reactions); // Deze query wordt gebruikt om alle reacties uit de reaction tabel te halen.
+                    echo "<br><label>Reactie:</label>";
+                    while (mysqli_stmt_fetch($reactions)) {
+                        echo "<br><table class='table_admin'><td class='table_reactie'>$first_name<br><span class='datum'>$time</span><br>$text</td></table>";
+                    }
+                    ?>
                     <br>
                     Uw antwoord:<br>
                     <form method="POST">
@@ -83,9 +85,9 @@ if ($_SESSION["login"] != 1) {
                     </form>
                 </div>
             </div>
-    <?php
-    include 'include/php/footeradmin.php';
-    ?>
+            <?php
+            include 'include/php/footeradmin.php';
+            ?>
         </body>
     </html>
 <?php } ?>
