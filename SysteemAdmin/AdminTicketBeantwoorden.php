@@ -2,16 +2,12 @@
 <!--Joshua van Gelder, Jeffrey Hamberg, , Sander van der Stelt-->
 <?php
 session_start();
-if ($_SESSION["login"] != 1)
-{
+if ($_SESSION["login"] != 1) {
     echo 'U moet ingelogd zijn om deze pagina te bekijken';
     session_unset();
     session_destroy();
-}
-else
-{
-    if (isset($_POST["submit"]))
-    {
+} else {
+    if (isset($_POST["submit"])) {
         //$_SESSION = $_POST['ticket_id'];
         $ticketid = $_POST['ticket_id'];
         include "link.php"; //Met deze query wordt de nieuwe reactie in de tabel gezet.
@@ -21,16 +17,13 @@ else
         $query1 = mysqli_prepare($link, "SELECT user_id FROM user WHERE mail ='$login'");
         mysqli_stmt_execute($query1);
         mysqli_stmt_bind_result($query1, $loginid);
-        while (mysqli_stmt_fetch($query1))
-        {
+        while (mysqli_stmt_fetch($query1)) {
             $user_id = $loginid;
         }
         $reactionquery = mysqli_prepare($link, "INSERT INTO reaction SET ticket_id=$ticketid, text='$description', time=NOW(), user_id=$user_id");
         mysqli_stmt_execute($reactionquery);
-    }
-    else
-    {
-        
+    } else {
+
     }
     ?>
     <html>
@@ -44,45 +37,40 @@ else
                 <div id='logo'>
                     <img src="afbeeldingen/logo-bens.png" alt="Bens Development"/>
                 </div>
-                <?php
-                include 'include/php/menu.php';
-                ?>
+    <?php
+    include 'include/php/menu.php';
+    ?>
             </div>
             <div id='content'>
                 <h1>Ticket beantwoorden</h1>
-                <div id="ticket">                   
-                    <?php
-                    include "link.php";
-                    $ticketid = $_POST["ticket_id"];
-                    //De if loop is hieronder nodig om te true/false status van de ticket om te zetten naar text.
-                    $description = mysqli_prepare($link, "SELECT T.ticket_id, T.category, T.description, T.completed_status, T.creation_date, T.title FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id= $ticketid");
-                    mysqli_stmt_bind_result($description, $ticket_ID, $cat, $desc, $completed, $creation, $titel);
-                    mysqli_stmt_execute($description);
-                    while (mysqli_stmt_fetch($description))
-                    {
+                <div id="ticket">
+                <?php
+                include "link.php";
+                $ticketid = $_POST["Beantwoorden"];
+                //De if loop is hieronder nodig om te true/false status van de ticket om te zetten naar text.
+                $description = mysqli_prepare($link, "SELECT T.ticket_id, T.category, T.description, T.completed_status, T.creation_date, T.title FROM customer C JOIN ticket T ON C.customer_id = T.customer_id WHERE T.ticket_id= $ticketid");
+                mysqli_stmt_bind_result($description, $ticket_ID, $cat, $desc, $completed, $creation, $titel);
+                mysqli_stmt_execute($description);
+                while (mysqli_stmt_fetch($description)) {
 
-                        echo "<label>Titel: </label>$titel<br><label>Categorie:</label> $cat<br><label>Status:</label> ";
-                        if ($completed == 1)
-                        {
-                            echo "Gesloten";
-                        }
-                        else
-                        {
-                            echo "Open";
-                        }
-                        echo "<br><br><label>Omschrijving:</label><br><table class='table_admin'><td class='table_reactie'><span class='datum'>$creation</span><br>$desc</td></table>";
+                    echo "<label>Titel: </label>$titel<br><label>Categorie:</label> $cat<br><label>Status:</label> ";
+                    if ($completed == 1) {
+                        echo "Gesloten";
+                    } else {
+                        echo "Open";
                     }
-                    mysqli_close($link);
-                    include "link.php";
-                    $reactions = mysqli_prepare($link, "SELECT text, time, U.mail, U.first_name FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticket_ID ORDER BY time");
-                    mysqli_stmt_bind_result($reactions, $text, $time, $mail, $first_name);
-                    mysqli_stmt_execute($reactions); // Deze query wordt gebruikt om alle reacties uit de reaction tabel te halen.
-                    echo "<br><label>Reactie:</label>";
-                    while (mysqli_stmt_fetch($reactions))
-                    {
-                        echo "<br><table class='table_admin'><td class='table_reactie'>$first_name<br><span class='datum'>$time</span><br>$text</td></table>";
-                    }
-                    ?>
+                    echo "<br><br><label>Omschrijving:</label><br><table class='table_admin'><td class='table_reactie'><span class='datum'>$creation</span><br>$desc</td></table>";
+                }
+                mysqli_close($link);
+                include "link.php";
+                $reactions = mysqli_prepare($link, "SELECT text, time, U.mail, U.first_name FROM reaction R JOIN User U ON R.user_id = U.user_id WHERE R.ticket_id = $ticket_ID ORDER BY time");
+                mysqli_stmt_bind_result($reactions, $text, $time, $mail, $first_name);
+                mysqli_stmt_execute($reactions); // Deze query wordt gebruikt om alle reacties uit de reaction tabel te halen.
+                echo "<br><label>Reactie:</label>";
+                while (mysqli_stmt_fetch($reactions)) {
+                    echo "<br><table class='table_admin'><td class='table_reactie'>$first_name<br><span class='datum'>$time</span><br>$text</td></table>";
+                }
+                ?>
                     <br>
                     Uw antwoord:<br>
                     <form method="POST">
@@ -95,9 +83,9 @@ else
                     </form>
                 </div>
             </div>
-            <?php
-            include 'include/php/footeradmin.php';
-            ?>
+    <?php
+    include 'include/php/footeradmin.php';
+    ?>
         </body>
     </html>
 <?php } ?>
